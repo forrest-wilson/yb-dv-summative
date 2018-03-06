@@ -9,59 +9,49 @@ var gulp = require("gulp"),
 
 var contributors = ["anthony", "cam", "forrest"];
 
-gulp.task("sass", function() {
+// Compiles SASS to CSS and outputs it to the /stylesheets/css/ folder
+gulp.task("sass-minify", function() {
     for (var i = 0; i < contributors.length; i++) {
-        gulp.src(contributors[i] + "/stylesheets/style.scss")
+        gulp.src(contributors[i] + "/stylesheets/sass/style.scss")
             .pipe(sass().on("error", sass.logError))
             .pipe(autoprefixer({
                 browsers: ["last 2 versions"],
                 cascade: false
             }))
-            .pipe(gulp.dest(contributors[i] + "/stylesheets/compiled/"));
-    }
-});
-
-gulp.task("minify-css", function() {
-    for (var i = 0; i < contributors.length; i++) {
-        gulp.src(contributors[i] + "/stylesheets/compiled/style.css")
+            .pipe(gulp.dest(contributors[i] + "/stylesheets/css/"))
             .pipe(cleanCSS({compatibility: "ie8"}))
             .pipe(rename({suffix: ".min"}))
-            .pipe(gulp.dest(contributors[i] + "/stylesheets/compiled/"));
+            .pipe(gulp.dest(contributors[i] + "/stylesheets/css/"));
     }
 });
 
-gulp.task("jshint", function() {
+// Lints the JS code and checks for errors. .jshintrc config can be found in the root dir
+gulp.task("jshint-minify", function() {
     for (var i = 0; i < contributors.length; i++) {
         gulp.src(contributors[i] + "/js/*.js")
             .pipe(jshint())
             .pipe(jshint.reporter("default"))
-            .pipe(gulp.dest(contributors[i] + "/js/"));
-    }
-});
-
-gulp.task("uglify", function() {
-    for (var i = 0; i < contributors.length; i++) {
-        gulp.src(contributors[i] + "/js/*.js")
+            // .pipe(gulp.dest(contributors[i] + "/js/compiled"))
             .pipe(uglify())
             .pipe(rename({suffix: ".min"}))
             .pipe(gulp.dest(contributors[i] + "/js/compiled/"));
     }
 });
 
+// Runs CSS tasks in sequence
 gulp.task("css", function(cb) {
-    runSequence("sass", "minify-css", cb);
+    runSequence("sass-minify", cb);
 });
 
+// Runs JS tasks in sequence
 gulp.task("js", function(cb) {
-    runSequence("jshint", "uglify", cb);
+    runSequence("jshint-minify", cb);
 });
 
+// Default Gulp task that runs when called in the command line
 gulp.task("default", function(cb) {
     for (var i = 0; i < contributors.length; i++) {
-        gulp.watch(contributors[i] + "/stylesheets/*.scss", ["css"], cb);
-    }
-    
-    for (var i = 0; i < contributors.length; i++) {
+        gulp.watch(contributors[i] + "/stylesheets/sass/*.scss", ["css"], cb);
         gulp.watch(contributors[i] + "/js/*.js", ["js"], cb);
     }
 });
