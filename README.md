@@ -15,6 +15,18 @@ contributor
         |___style.min.css
 ```
 
+## Terminal Commands
+
+Note: If you are developing within Vagrant, please make sure your Vagrant server has NodeJS installed.
+
+#### Gulp
+
+To get Gulp running (compiling SASS, minifying JS, etc.) run the below command in terminal:
+
+```
+gulp
+```
+
 ### Collaborators
 
 [Forrest Wilson-Jennings](https://github.com/forrest-wilson)
