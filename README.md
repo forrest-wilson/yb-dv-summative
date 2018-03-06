@@ -19,6 +19,16 @@ contributor
 
 Note: If you are developing within Vagrant, please make sure your Vagrant server has NodeJS installed.
 
+#### Installing Packages
+
+Upon initially cloning the repo, please run:
+
+```
+npm install
+```
+
+to install all dependencies needed.
+
 #### Gulp
 
 To get Gulp running (compiling SASS, minifying JS, etc.) run the below command in terminal:
