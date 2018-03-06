@@ -1,0 +1,33 @@
+{
+  "name": "yb-dv-summative-forrest-cam-anthony",
+  "version": "1.0.0",
+  "description": "Yoobee Data Visualisation Summative",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/forrest-wilson/yb-dv-summative-forrest-cam-anthony.git"
+  },
+  "author": "Forrest Wilson-Jennings, Cam Shaw, Anthony Ayers",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/forrest-wilson/yb-dv-summative-forrest-cam-anthony/issues"
+  },
+  "homepage": "https://github.com/forrest-wilson/yb-dv-summative-forrest-cam-anthony#readme",
+  "dependencies": {
+    "jquery": "^3.3.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-clean-css": "^3.9.2",
+    "gulp-jshint": "^2.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^3.0.0",
+    "jshint": "^2.9.5",
+    "run-sequence": "^2.2.1"
+  }
+}
