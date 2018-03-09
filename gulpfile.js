@@ -5,7 +5,8 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     runSequence = require('run-sequence'),
     jshint = require('gulp-jshint'),
-    uglify = require('gulp-uglify');
+    uglify = require('gulp-uglify'),
+    browserSync = require('browser-sync').create();
 
 var contributors = ['anthony', 'cam', 'forrest'];
 
@@ -38,6 +39,30 @@ gulp.task('jshint-minify', function() {
     }
 });
 
+// Configures the BrowserSync NPM module
+gulp.task('server', function() {
+    browserSync.init({
+        server: {
+            baseDir: '.', // Where the server will start from
+            index: 'index.html' // Default file to load
+        },
+        port: 3000, // Using the default port. Change if needed but don't commit
+        ui: {
+            port: 3001 // Using the default port. Change if needed but don't commit
+        },
+        notify: false, // Turns off the notification that the browser has connected to BrowserSync server
+        browser: [] // Enter a string or an array of strings to start specific browsers i.e. "google chrome", "safari" or "firefox". Keeping it empty will stop any browsers from opening
+    });
+});
+
+// Reloads the browser
+gulp.task('reload-server', function() {
+    gulp.src('.')
+    .pipe(browserSync.reload({
+        stream: true
+    }));
+});
+
 // Runs CSS tasks in sequence
 gulp.task('css', function(cb) {
     runSequence('sass-minify', cb);
@@ -50,8 +75,13 @@ gulp.task('js', function(cb) {
 
 // Default Gulp task that runs when called in the command line
 gulp.task('default', function(cb) {
+    runSequence('css', 'js', 'server', cb);
+
     for (var i = 0; i < contributors.length; i++) {
-        gulp.watch(contributors[i] + '/stylesheets/sass/*.scss', ['css'], cb);
-        gulp.watch(contributors[i] + '/js/*.js', ['js'], cb);
+        gulp.watch(contributors[i] + '/stylesheets/sass/*.scss', ['css', 'reload-server'], cb);
+        gulp.watch(contributors[i] + '/js/*.js', ['js', 'reload-server'], cb);
     }
+
+    // Watches all HTML files for changes and reloads the browser automatically when a change is detected
+    gulp.watch('**/*.html', ['reload-server'], cb);
 });
