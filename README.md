@@ -50,6 +50,12 @@ into your browser. The terminal should show an external IP address to access the
 
 ![Browser Sync Screenshot](readme-md-assets/browsersync.png)
 
+Accessing your own folder through this method is outlined here:
+
+```
+localhost:3000/anthony/HMTL-FILE.html
+```
+
 ### Collaborators
 
 [Forrest Wilson-Jennings](https://github.com/forrest-wilson)
