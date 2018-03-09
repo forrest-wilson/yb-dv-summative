@@ -1,18 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="stylesheets/css/style.css">
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
 
     <title>Projects</title>
+
+    <link rel='stylesheet' href='../node_modules/bootstrap/dist/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='stylesheets/css/style.css'>
+
+    <script src='../node_modules/template7/dist/template7.min.js'></script>
 </head>
 <body>
-    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="../node_modules/moment/min/moment.min.js"></script>
-    <script src="js/compiled/app.min.js"></script>
+    
+    <script id='designerName' type='text/template7'>
+        <section id={{uid}}>
+            <div class='designerNameWrapper'>
+                <img class='designerImage circle' src={{designerImage}} alt={{name}} />
+                <div class='details'>
+                    <h3><a href={{behance}} target='_blank'>{{name}}</a></h3>
+                    <p>{{job}}</p>
+                </div>
+            </div>
+        </section>
+    </script>
+
+    <script id='designerProjects' type='text/template7'>
+        <div class='project'>
+            <img src={{coverImage}} alt={{projectName}} />
+            <p>{{projectName}}</p>
+        </div>
+    </script>
+    
+    <script src='../node_modules/jquery/dist/jquery.min.js'></script>
+    <script src='../node_modules/moment/min/moment.min.js'></script>
+    <script src='js/compiled/app.min.js'></script>
 </body>
 </html>
