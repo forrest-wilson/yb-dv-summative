@@ -53,7 +53,7 @@ into your browser. The terminal should show an external IP address to access the
 Accessing your own folder through this method is outlined here:
 
 ```
-localhost:3000/anthony/HMTL-FILE.html
+localhost:3000/FOLDER-NAME/HTML-FILE.html
 ```
 
 ### Collaborators
