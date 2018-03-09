@@ -1,0 +1,36 @@
+//**********************//
+//**** Modules SASS ****//
+//**********************//
+
+.designerNameWrapper {
+    margin: 50px;
+    display: inline-block;
+    background-color: $whiteColor;
+    border-radius: $borderRadius;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    box-shadow: $boxShadow;
+
+    .designerImage {
+        height: 100px;
+        width: 100px;
+    }
+
+    .details {
+        display: inline-block;
+        vertical-align: middle;
+        padding: 0 25px;
+
+        * {
+            margin: 0;
+        }
+    }
+}
+
+.project {
+    max-width: 500px;
+
+    img {
+        width: 100%;
+    }
+}

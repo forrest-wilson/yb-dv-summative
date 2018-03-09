@@ -2,7 +2,11 @@
 //**** Base SASS ****//
 //*******************//
 
+html {
+    color: $darkColor;
+}
+
 body {
     min-height: 100vh;
-    background: linear-gradient(-45deg, #A5DFE7, #C7EC75);
+    background: linear-gradient(135deg, #A5DFE7, #C7EC75);
 }
