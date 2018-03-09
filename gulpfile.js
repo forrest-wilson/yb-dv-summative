@@ -78,7 +78,7 @@ gulp.task('default', function(cb) {
     runSequence('css', 'js', 'server', cb);
 
     for (var i = 0; i < contributors.length; i++) {
-        gulp.watch(contributors[i] + '/stylesheets/sass/*.scss', ['css', 'reload-server'], cb);
+        gulp.watch(contributors[i] + '/stylesheets/sass/**/*.scss', ['css', 'reload-server'], cb);
         gulp.watch(contributors[i] + '/js/*.js', ['js', 'reload-server'], cb);
     }
 
