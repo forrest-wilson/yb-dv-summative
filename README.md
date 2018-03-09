@@ -38,6 +38,18 @@ To get Gulp running (compiling SASS, minifying JS, etc.) run the below command i
 gulp
 ```
 
+The above command also starts the development server.
+
+Access this by typing:
+
+```
+localhost:3000
+```
+
+into your browser. The terminal should show an external IP address to access the site on other devices too. The screenshot below will show you what I'm talking about:
+
+![Browser Sync Screenshot](readme-md-assets/browsersync.png)
+
 ### Collaborators
 
 [Forrest Wilson-Jennings](https://github.com/forrest-wilson)
