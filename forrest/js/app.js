@@ -5,26 +5,31 @@ $(document).ready(function() {
     //*******************************//
 
     var apiKey = '8PyTZKuJ1VEQWvDvoOsARLkT8f6N71db',
-        xhr = null; // Needed in order to abort the current AJAX request should another one come along
+        designers = {
+            forrest: 'codycobb',
+            cam: 'ashthorp',
+            // ant: ''
+        };
 
     //*******************//
     //**** Functions ****//
     //*******************//
 
-    function getData(url, successFunction, completionHandler) {
-        if (xhr !== null && xhr.readyState != 4) {
-            xhr.abort();
-        }
-
-        xhr = $.ajax({
+    function getData(url, successFunction) {
+        $.ajax({
             method: 'GET',
-            dataType: 'json',
+            dataType: 'jsonp',
             url: url,
             success: successFunction,
             error: function(err) {
                 throw new Error('Unhandled AJAX Error: ', err);
-            },
-            always: completionHandler
+            }
+        });
+    }
+
+    for (designer in designers) {
+        getData('https://api.behance.net/v2/users/' + designers[designer]+ '/projects?client_id=' + apiKey, function(data) {
+            console.log(data);
         });
     }
 
