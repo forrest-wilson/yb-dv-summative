@@ -5,6 +5,7 @@ $(document).ready(function() {
     //*******************************//
 
     var apiKey = '8PyTZKuJ1VEQWvDvoOsARLkT8f6N71db',
+        baseURL = 'https://api.behance.net/v2/users/',
         designers = {
             forrest: 'codycobb',
             cam: 'ashthorp',
@@ -15,6 +16,7 @@ $(document).ready(function() {
     //**** Functions ****//
     //*******************//
 
+    // Generic AJAX function. Increases reuseablility
     function getData(url, successFunction) {
         $.ajax({
             method: 'GET',
@@ -27,49 +29,30 @@ $(document).ready(function() {
         });
     }
 
-    function getDesigners() {
-        for (var designer in designers) {
-            getData('https://api.behance.net/v2/users/' + designers[designer] + '?client_id=' + apiKey, function(data) {
-                console.log(data);
+    function getProjects() {
+        getData(baseURL + designers.forrest + '/projects?client_id=' + apiKey, function(data) {
+            console.log(data);
 
-                var user = data.user;
+            var projects = data.projects;
 
-                var designerTemplate = $('#designerName').html();
-                var compiledDesignerTemplate = Template7.compile(designerTemplate);
-                var designerInfo = {
-                    uid: user.username,
-                    name: user.display_name,
-                    job: user.occupation,
-                    designerImage: user.images[100],
-                    behance: user.url
-                };
-                var designers = compiledDesignerTemplate(designerInfo);
-
-                $('body').append(designers);
-
-                getData('https://api.behance.net/v2/users/' + user.username + '/projects?client_id=' + apiKey, function(projectResponse) {
-                    console.log(projectResponse);
-
-                    var projects = projectResponse.projects;
-
-                    for (var i = 0; i < projects.length; i++) {
-                        var proj = projects[i];
-                        var projectTemplate = $('#designerProjects').html();
-                        var compiledProjectTemplate = Template7.compile(projectTemplate);
-                        var projectInfo = {
-                            coverImage: proj.covers.original,
-                            projectName: proj.name
-                        };
-                        var project = compiledProjectTemplate(projectInfo);
-
-                        $('#' + user.username).append(project);
-                    }
-                });
-            });
-        }
+            for (var i = 0; i < projects.length; i++) {
+                var projectTemplate = $('#projectTemplate').html(),
+                    compiledProjectTemplate = Template7.compile(projectTemplate),
+                    projectInfo = {
+                        coverImage: projects[i].covers[404],
+                        projectName: projects[i].name,
+                        likes: projects[i].stats.appreciations,
+                        views: projects[i].stats.views,
+                        comments: projects[i].stats.comments
+                    },
+                    toBeAppended = compiledProjectTemplate(projectInfo);
+                
+                $('body').append(toBeAppended);
+            }
+        });
     }
 
-    getDesigners();
+    getProjects();
 
     //*************************//
     //**** Event Listeners ****//
