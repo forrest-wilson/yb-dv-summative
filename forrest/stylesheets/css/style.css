@@ -1,33 +1,47 @@
-html {
+html,
+body {
   color: #291857; }
 
 body {
   min-height: 100vh;
   background: linear-gradient(135deg, #A5DFE7, #C7EC75); }
 
-.designerNameWrapper {
-  margin: 50px;
-  display: inline-block;
-  background-color: #EBEBEB;
-  border-radius: 5px;
-  border-top-left-radius: 50px;
-  border-bottom-left-radius: 50px;
-  -webkit-box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.5);
-  box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.5); }
-  .designerNameWrapper .designerImage {
-    height: 100px;
-    width: 100px; }
-  .designerNameWrapper .details {
-    display: inline-block;
-    vertical-align: middle;
-    padding: 0 25px; }
-    .designerNameWrapper .details * {
-      margin: 0; }
-
 .project {
+  padding: 10px;
   max-width: 500px; }
-  .project img {
+  .project .projectInner {
+    display: inline-block;
+    background-color: #EBEBEB;
+    border-radius: 5px;
+    overflow: hidden;
+    -webkit-box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.5);
     width: 100%; }
+    .project .projectInner .projectImageWrapper {
+      position: relative; }
+    .project .projectInner .projectTitle {
+      margin: 20px 0;
+      text-align: center; }
+    .project .projectInner img {
+      width: 100%; }
+    .project .projectInner .projectStats {
+      background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(black));
+      background: linear-gradient(transparent, black);
+      color: #EBEBEB;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: end;
+      -ms-flex-align: end;
+      align-items: flex-end;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      -ms-flex-pack: distribute;
+      justify-content: space-around; }
+      .project .projectInner .projectStats .stat {
+        padding: 15px 0; }
 
 .circle {
   border-radius: 50%; }

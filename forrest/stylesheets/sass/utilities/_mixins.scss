@@ -1,0 +1,11 @@
+//*********************//
+//**** Mixins SASS ****//
+//*********************//
+
+@mixin positioning($pos: relative, $t: null, $l: null, $b: null, $r: null) {
+    position: $pos;
+    top: $t;
+    left: $l;
+    bottom: $b;
+    right: $r;
+}

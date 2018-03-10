@@ -2,35 +2,42 @@
 //**** Modules SASS ****//
 //**********************//
 
-.designerNameWrapper {
-    margin: 50px;
-    display: inline-block;
-    background-color: $whiteColor;
-    border-radius: $borderRadius;
-    border-top-left-radius: 50px;
-    border-bottom-left-radius: 50px;
-    box-shadow: $boxShadow;
-
-    .designerImage {
-        height: 100px;
-        width: 100px;
-    }
-
-    .details {
-        display: inline-block;
-        vertical-align: middle;
-        padding: 0 25px;
-
-        * {
-            margin: 0;
-        }
-    }
-}
-
 .project {
+    padding: 10px;
     max-width: 500px;
 
-    img {
+    .projectInner {
+        display: inline-block;
+        background-color: $whiteColor;
+        border-radius: $borderRadius;
+        overflow: hidden;
+        box-shadow: $boxShadow;
         width: 100%;
+
+        .projectImageWrapper {
+            position: relative;
+        }
+
+        .projectTitle {
+            margin: 20px 0;
+            text-align: center;
+        }
+    
+        img {
+            width: 100%;
+        }
+
+        .projectStats {
+            background: linear-gradient(transparent, black);
+            color: $whiteColor;
+            display: flex;
+            align-items: flex-end;
+            @include positioning(absolute, $l: 0, $r: 0, $b: 0);
+            justify-content: space-around;
+
+            .stat {
+                padding: 15px 0;
+            }
+        }
     }
 }
