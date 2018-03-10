@@ -2,6 +2,11 @@
 //**** Utilities SASS ****//
 //************************//
 
-.circle {
-    border-radius: 50%;
+.inner {
+    padding: 10px 20px;
+}
+
+.project,
+.sizer {
+    width: 100%;
 }
