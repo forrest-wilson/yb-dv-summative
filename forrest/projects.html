@@ -8,28 +8,35 @@
     <title>Projects</title>
 
     <link rel='stylesheet' href='../node_modules/bootstrap/dist/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.min.css">
     <link rel='stylesheet' href='stylesheets/css/style.css'>
 
     <script src='../node_modules/template7/dist/template7.min.js'></script>
 </head>
 <body>
     
-    <script id='designerName' type='text/template7'>
-        <section id={{uid}}>
-            <div class='designerNameWrapper'>
-                <img class='designerImage circle' src={{designerImage}} alt={{name}} />
-                <div class='details'>
-                    <h3><a href={{behance}} target='_blank'>{{name}}</a></h3>
-                    <p>{{job}}</p>
-                </div>
-            </div>
-        </section>
-    </script>
-
-    <script id='designerProjects' type='text/template7'>
+    <script id='projectTemplate' type='text/template7'>
         <div class='project'>
-            <img src={{coverImage}} alt={{projectName}} />
-            <p>{{projectName}}</p>
+            <div class='projectInner'>
+                <div class='projectImageWrapper'>
+                    <img src={{coverImage}} alt={{projectName}} />
+                    <div class='projectStats'>
+                        <span class='stat'>
+                            <i class='fa fa-thumbs-o-up'></i>
+                            <span>{{likes}}</span>
+                        </span>
+                        <span class='stat'>
+                            <i class='fa fa-eye'></i>
+                            <span>{{views}}</span>
+                        </span>
+                        <span class='stat'>
+                            <i class='fa fa-comments-o'></i>
+                            <span>{{comments}}</span>
+                        </span>
+                    </div>
+                </div>
+                <p class='projectTitle'>{{projectName}}</p>
+            </div>
         </div>
     </script>
     
