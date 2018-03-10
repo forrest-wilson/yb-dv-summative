@@ -4,7 +4,7 @@
 
 .project {
     padding: 10px;
-    max-width: 500px;
+    font-size: 0; // Workaround for empty space on the .project element. Explicit font-size should be defined in child elements
 
     .projectInner {
         display: inline-block;
@@ -14,30 +14,44 @@
         box-shadow: $boxShadow;
         width: 100%;
 
+        &:hover {
+            cursor: pointer;
+        }
+
         .projectImageWrapper {
             position: relative;
+
+            .projectStats {
+                background: linear-gradient(transparent, black);
+                color: $whiteColor;
+                display: flex;
+                align-items: flex-end;
+                @include positioning(absolute, $l: 0, $r: 0, $b: 0);
+                justify-content: space-around;
+                font-size: 14px;
+    
+                .stat {
+                    padding: 15px 0;
+                }
+            }
+        }
+
+        .projectTitle,
+        .projectCreator {
+            margin: 10px 0;
         }
 
         .projectTitle {
-            margin: 20px 0;
-            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .projectCreator {
+            font-size: 14px;
         }
     
         img {
             width: 100%;
-        }
-
-        .projectStats {
-            background: linear-gradient(transparent, black);
-            color: $whiteColor;
-            display: flex;
-            align-items: flex-end;
-            @include positioning(absolute, $l: 0, $r: 0, $b: 0);
-            justify-content: space-around;
-
-            .stat {
-                padding: 15px 0;
-            }
         }
     }
 }
