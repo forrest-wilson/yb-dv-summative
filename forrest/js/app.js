@@ -46,42 +46,9 @@ $(document).ready(function() {
 
     // Gets the projects from a specified 
     function getProjects() {
-        getData(usersURL + designers.forrest + '/projects?client_id=' + apiKey, function(data) {
-            console.log(data);
-
-            var projects = data.projects;
-
-            for (var i = 0; i < projects.length; i++) {
-                var projectTemplate = $('#projectTemplate').html(),
-                    compiledProjectTemplate = Template7.compile(projectTemplate),
-                    projectInfo = {
-                        coverImage: projects[i].covers[404],
-                        projectName: projects[i].name,
-                        likes: projects[i].stats.appreciations,
-                        views: projects[i].stats.views,
-                        comments: projects[i].stats.comments,
-                        projectID: projects[i].id,
-                        creator: null
-                    };
-                
-                // Checks the data to see whether there were multiple owners of the project
-                // If so, set the text to 'Multiple Owners'
-                if (projects[i].owners.length > 1) {
-                    projectInfo.creator = 'Multiple Owners';
-                } else {
-                    projectInfo.creator = projects[i].owners[0].display_name;
-                }
-
-                var toBeAppended = compiledProjectTemplate(projectInfo),
-                    $toBeAppended = $(toBeAppended);
-
-                masonryProjects.append($toBeAppended).masonry('appended', $toBeAppended);
-            }
-
-            masonryProjects.imagesLoaded().progress(function() {
-                masonryProjects.masonry('layout');
-            });
-        });
+        getData(usersURL + designers.forrest + '/projects?client_id=' + apiKey + '&per_page=2&page=1', populateProjects);
+        getData(usersURL + designers.ant + '/projects?client_id=' + apiKey + '&per_page=2&page=1', populateProjects);
+        getData(usersURL + designers.cam + '/projects?client_id=' + apiKey + '&per_page=2&page=1', populateProjects);
     }
 
     getProjects();
@@ -89,6 +56,43 @@ $(document).ready(function() {
     function getProjectDetails(projectID) {
         getData(projectsURL + projectID + '?api_key=' + apiKey, function(projectData) {
             console.log(projectData);
+        });
+    }
+
+    function populateProjects(data) {
+        console.log(data);
+
+        var projects = data.projects;
+
+        for (var i = 0; i < projects.length; i++) {
+            var projectTemplate = $('#projectTemplate').html(),
+                compiledProjectTemplate = Template7.compile(projectTemplate),
+                projectInfo = {
+                    coverImage: projects[i].covers.original,
+                    projectName: projects[i].name,
+                    likes: projects[i].stats.appreciations,
+                    views: projects[i].stats.views,
+                    comments: projects[i].stats.comments,
+                    projectID: projects[i].id,
+                    creator: null
+                };
+            
+            // Checks the data to see whether there were multiple owners of the project
+            // If so, set the text to 'Multiple Owners'
+            if (projects[i].owners.length > 1) {
+                projectInfo.creator = 'Multiple Owners';
+            } else {
+                projectInfo.creator = projects[i].owners[0].display_name;
+            }
+
+            var toBeAppended = compiledProjectTemplate(projectInfo),
+                $toBeAppended = $(toBeAppended);
+
+            masonryProjects.append($toBeAppended).masonry('appended', $toBeAppended);
+        }
+
+        masonryProjects.imagesLoaded().progress(function() {
+            masonryProjects.masonry('layout');
         });
     }
 
