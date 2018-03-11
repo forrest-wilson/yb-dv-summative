@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
     //*******************************//
-    //**** Variable Declarations****//
+    //**** Variable Declarations ****//
     //*******************************//
 
     var apiKey = '8PyTZKuJ1VEQWvDvoOsARLkT8f6N71db',
@@ -44,45 +44,44 @@ $(document).ready(function() {
     //**** Functions ****//
     //*******************//
 
+    // Gets the projects from a specified 
     function getProjects() {
-        // for (var designer in designers) {
-            getData(usersURL + designers.forrest + '/projects?client_id=' + apiKey, function(data) {
-                console.log(data);
+        getData(usersURL + designers.forrest + '/projects?client_id=' + apiKey + '&per_page=5&page=1', function(data) {
+            console.log(data);
 
-                var projects = data.projects;
+            var projects = data.projects;
 
-                for (var i = 0; i < projects.length; i++) {
-                    var projectTemplate = $('#projectTemplate').html(),
-                        compiledProjectTemplate = Template7.compile(projectTemplate),
-                        projectInfo = {
-                            coverImage: projects[i].covers[404],
-                            projectName: projects[i].name,
-                            likes: projects[i].stats.appreciations,
-                            views: projects[i].stats.views,
-                            comments: projects[i].stats.comments,
-                            projectID: projects[i].id,
-                            creator: null
-                        };
-                    
-                    // Checks the data to see whether there were multiple owners of the project
-                    // If so, set the text to 'Multiple Owners'
-                    if (projects[i].owners.length > 1) {
-                        projectInfo.creator = 'Multiple Owners';
-                    } else {
-                        projectInfo.creator = projects[i].owners[0].display_name;
-                    }
-
-                    var toBeAppended = compiledProjectTemplate(projectInfo),
-                        $toBeAppended = $(toBeAppended);
-
-                    masonryProjects.append($toBeAppended).masonry('appended', $toBeAppended);
-
-                    masonryProjects.imagesLoaded().progress(function() {
-                        masonryProjects.masonry('layout');
-                    });
+            for (var i = 0; i < projects.length; i++) {
+                var projectTemplate = $('#projectTemplate').html(),
+                    compiledProjectTemplate = Template7.compile(projectTemplate),
+                    projectInfo = {
+                        coverImage: projects[i].covers[404],
+                        projectName: projects[i].name,
+                        likes: projects[i].stats.appreciations,
+                        views: projects[i].stats.views,
+                        comments: projects[i].stats.comments,
+                        projectID: projects[i].id,
+                        creator: null
+                    };
+                
+                // Checks the data to see whether there were multiple owners of the project
+                // If so, set the text to 'Multiple Owners'
+                if (projects[i].owners.length > 1) {
+                    projectInfo.creator = 'Multiple Owners';
+                } else {
+                    projectInfo.creator = projects[i].owners[0].display_name;
                 }
+
+                var toBeAppended = compiledProjectTemplate(projectInfo),
+                    $toBeAppended = $(toBeAppended);
+
+                masonryProjects.append($toBeAppended).masonry('appended', $toBeAppended);
+            }
+
+            masonryProjects.imagesLoaded().progress(function() {
+                masonryProjects.masonry('layout');
             });
-        // }
+        });
     }
 
     getProjects();
@@ -97,8 +96,28 @@ $(document).ready(function() {
     //**** Event Listeners ****//
     //*************************//
 
+    // Event listener for projects being clicked
     $(document).on('click', '.projectInner', function(e) {
         e.preventDefault();
         getProjectDetails(this.parentNode.dataset.projectid);
     });
+
+    //*******************//
+    //**** Dummy API ****//
+    //*******************//
+
+    // var dummy = {
+    //     project: 'json/project.json',
+    //     projects: 'json/projects.json',
+    //     comments: {
+    //         page1: 'json/projectCommentsP1-10.json',
+    //         page2: 'json/projectCommentsP2-10.json',
+    //         page3: 'json/projectCommentsP3-7.json',
+    //         all: 'json/projectCommentsAll.json'
+    //     }
+    // };
+
+    // $.get(dummy.comments.page1, function(data) {
+    //     console.log(data);
+    // });
 });
