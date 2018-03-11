@@ -17,10 +17,14 @@
 
     <div id='projects' class='projects'>
         <!-- Needed for masonry jQuery plugin -->
-        <div class="sizer"></div>
+        <div class='sizer'></div>
     </div>
 
-    <div id='modalOverlay'></div>
+    <div id='modal' class='modal'></div>
+
+    <div id='modalMask' class='modalMask'>
+        <img class='loader' src='img/loader.svg' alt='AJAX Loader'>
+    </div>
 
     <script id='projectTemplate' type='text/template7'>
         <div class='project' data-projectid={{projectID}}>
