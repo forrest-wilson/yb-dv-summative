@@ -7,11 +7,8 @@ $(document).ready(function() {
     var apiKey = '8PyTZKuJ1VEQWvDvoOsARLkT8f6N71db',
         usersURL = 'https://api.behance.net/v2/users/',
         projectsURL = 'https://www.behance.net/v2/projects/',
-        designers = {
-            forrest: 'codycobb',
-            cam: 'ashthorp',
-            ant: 'Filiphds'
-        };
+        designers = ['codycobb', 'ashthorp', 'Filiphds'],
+        pageNumber = 1;
 
     //*******************************//
     //**** Plugin Initialisation ****//
@@ -45,13 +42,13 @@ $(document).ready(function() {
     //*******************//
 
     // Gets the projects from a specified 
-    function getProjects() {
-        getData(usersURL + designers.forrest + '/projects?client_id=' + apiKey + '&per_page=2&page=1', populateProjects);
-        getData(usersURL + designers.ant + '/projects?client_id=' + apiKey + '&per_page=2&page=1', populateProjects);
-        getData(usersURL + designers.cam + '/projects?client_id=' + apiKey + '&per_page=2&page=1', populateProjects);
+    function getProjects(pageNum) {
+        for (var i = 0; i < designers.length; i++) {
+            getData(usersURL + designers[i] + '/projects?client_id=' + apiKey + '&per_page=2&page=' + pageNum, populateProjects);
+        }
     }
 
-    getProjects();
+    getProjects(pageNumber);
 
     function getProjectDetails(projectID) {
         getData(projectsURL + projectID + '?api_key=' + apiKey, function(projectData) {
@@ -64,36 +61,40 @@ $(document).ready(function() {
 
         var projects = data.projects;
 
-        for (var i = 0; i < projects.length; i++) {
-            var projectTemplate = $('#projectTemplate').html(),
-                compiledProjectTemplate = Template7.compile(projectTemplate),
-                projectInfo = {
-                    coverImage: projects[i].covers.original,
-                    projectName: projects[i].name,
-                    likes: projects[i].stats.appreciations,
-                    views: projects[i].stats.views,
-                    comments: projects[i].stats.comments,
-                    projectID: projects[i].id,
-                    creator: null
-                };
-            
-            // Checks the data to see whether there were multiple owners of the project
-            // If so, set the text to 'Multiple Owners'
-            if (projects[i].owners.length > 1) {
-                projectInfo.creator = 'Multiple Owners';
-            } else {
-                projectInfo.creator = projects[i].owners[0].display_name;
+        if (projects.length > 0) {
+            for (var i = 0; i < projects.length; i++) {
+                var projectTemplate = $('#projectTemplate').html(),
+                    compiledProjectTemplate = Template7.compile(projectTemplate),
+                    projectInfo = {
+                        coverImage: projects[i].covers.original,
+                        projectName: projects[i].name,
+                        likes: projects[i].stats.appreciations,
+                        views: projects[i].stats.views,
+                        comments: projects[i].stats.comments,
+                        projectID: projects[i].id,
+                        creator: null
+                    };
+                
+                // Checks the data to see whether there were multiple owners of the project
+                // If so, set the text to 'Multiple Owners'
+                if (projects[i].owners.length > 1) {
+                    projectInfo.creator = 'Multiple Owners';
+                } else {
+                    projectInfo.creator = projects[i].owners[0].display_name;
+                }
+    
+                var toBeAppended = compiledProjectTemplate(projectInfo),
+                    $toBeAppended = $(toBeAppended);
+    
+                masonryProjects.append($toBeAppended).masonry('appended', $toBeAppended);
             }
 
-            var toBeAppended = compiledProjectTemplate(projectInfo),
-                $toBeAppended = $(toBeAppended);
-
-            masonryProjects.append($toBeAppended).masonry('appended', $toBeAppended);
+            masonryProjects.imagesLoaded().progress(function() {
+                masonryProjects.masonry('layout');
+            });
+        } else {
+            console.log('There aren\'t any more projects for this designer');
         }
-
-        masonryProjects.imagesLoaded().progress(function() {
-            masonryProjects.masonry('layout');
-        });
     }
 
     //*************************//
