@@ -10,3 +10,10 @@
 .sizer {
     width: 100%;
 }
+
+.loader {
+    @include positioning(fixed, $t: 50%, $l: 50%);
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+}
