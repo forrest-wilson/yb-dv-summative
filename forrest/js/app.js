@@ -46,7 +46,7 @@ $(document).ready(function() {
 
     // Gets the projects from a specified 
     function getProjects() {
-        getData(usersURL + designers.forrest + '/projects?client_id=' + apiKey + '&per_page=5&page=1', function(data) {
+        getData(usersURL + designers.forrest + '/projects?client_id=' + apiKey, function(data) {
             console.log(data);
 
             var projects = data.projects;
