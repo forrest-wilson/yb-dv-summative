@@ -1,0 +1,10 @@
+#bodyContainer {
+  width: 100%;
+  min-height: 100vh;
+  max-height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0 auto;
+  background: -webkit-gradient(linear, left top, right bottom, from(#a5dfe7), to(#c7ec75));
+  background: linear-gradient(to bottom right, #a5dfe7, #c7ec75); }
