@@ -141,7 +141,8 @@ $(document).ready(function() {
             initialSlide: 1,
             slidesToShow: 1,
             slidesToScroll: 1,
-            infinite: true
+            infinite: true,
+            adaptiveHeight: true
         });
     }
 
@@ -149,7 +150,7 @@ $(document).ready(function() {
     //**** Event Functions ****//
     //*************************//
 
-    // Shows the AJAX loading GIF
+    // Toggles the AJAX loading GIF
     function toggleLoader() {
         $('#loader').fadeToggle({
             duration: 300,
@@ -157,13 +158,16 @@ $(document).ready(function() {
         });
     }
 
-    function showMask() {
-        $('#modalMask').fadeIn({
+    // Toggles the mask
+    function toggleMask(callback) {
+        $('#modalMask').fadeToggle({
             duration: 300,
-            easing: 'swing'
+            easing: 'swing',
+            complete: callback
         });
     }
 
+    // Toggles scrolling on the body element
     function toggleBodyScroll() {
         $('body').toggleClass('modalShowing');
     }
@@ -176,9 +180,18 @@ $(document).ready(function() {
     $(document).on('click', '.projectInner', function(e) {
         e.preventDefault();
         toggleLoader();
-        showMask();
+        toggleMask();
         getProjectDetails(this.parentNode.dataset.projectid, toggleLoader);
         toggleBodyScroll();
+    });
+
+    $(document).on('click', '#modalMask', function(e) {
+        if (e.target == e.currentTarget) {
+            toggleBodyScroll();
+            toggleMask(function() {
+                $('#modalContent').empty();
+            });
+        }
     });
 
     //*******************//
