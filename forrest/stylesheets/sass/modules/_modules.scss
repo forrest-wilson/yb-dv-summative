@@ -56,9 +56,38 @@
     }
 }
 
+.projectDetails {
+    padding: 10px;
+    box-shadow: $boxShadow;
+
+    .images {
+        overflow-x: hidden;
+
+        .image {
+            vertical-align: middle;
+
+            img {
+                max-width: 100%;
+                max-height: 500px;
+                display: block;
+                margin: 0 auto;
+            }
+        }
+    }
+}
+
+.modalContent {
+    margin: 10px;
+    z-index: 1010;
+    position: relative;
+    background-color: $whiteColor;
+    border-radius: $borderRadius;
+}
+
 .modalMask {
     @include positioning(fixed, 0, 0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.3);
     z-index: 1000;
     display: none;
+    overflow-y: auto;
 }
