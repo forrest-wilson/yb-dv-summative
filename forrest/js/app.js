@@ -61,8 +61,11 @@ $(document).ready(function() {
 
     getProjects(pagination.nextPageNumber);
 
-    function getProjectDetails(projectID) {
-        getData(projectsURL + projectID + '?api_key=' + apiKey, populateModal);
+    function getProjectDetails(projectID, callback) {
+        getData(projectsURL + projectID + '?api_key=' + apiKey, function(data) {
+            populateModal(data);
+            if (callback) callback();
+        });        
     }
 
     //**** Data Parser methods ****//
