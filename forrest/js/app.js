@@ -8,7 +8,10 @@ $(document).ready(function() {
         usersURL = 'https://api.behance.net/v2/users/',
         projectsURL = 'https://www.behance.net/v2/projects/',
         designers = ['codycobb', 'ashthorp', 'Filiphds'],
-        pageNumber = 1;
+        pagination = {
+            projectsPerPage: 3,
+            nextPageNumber: 1
+        };
 
     //*******************************//
     //**** Plugin Initialisation ****//
@@ -41,28 +44,38 @@ $(document).ready(function() {
     //**** Functions ****//
     //*******************//
 
-    // Gets the projects from a specified 
+    //**** Data Getter methods ****//
+
+    // Gets the projects using a specified page number
     function getProjects(pageNum) {
-        for (var i = 0; i < designers.length; i++) {
-            getData(usersURL + designers[i] + '/projects?client_id=' + apiKey + '&per_page=2&page=' + pageNum, populateProjects);
-        }
+        // Commented to reduce AJAX requests during development
+        // for (var i = 0; i < designers.length; i++) {
+        //     getData(usersURL + designers[i] + '/projects?client_id=' + apiKey + '&per_page=' + pagination.projectsPerPage + '&page=' + pageNum, populateProjects);
+        // }
+
+        getData(usersURL + designers[0] + '/projects?client_id=' + apiKey + '&per_page=' + pagination.projectsPerPage + '&page=' + pageNum, populateProjects);
+
+        // Increases the page number to send with the next getProjects AJAX request
+        pagination.nextPageNumber += 1;
     }
 
-    getProjects(pageNumber);
+    getProjects(pagination.nextPageNumber);
 
     function getProjectDetails(projectID) {
-        getData(projectsURL + projectID + '?api_key=' + apiKey, function(projectData) {
-            console.log(projectData);
-        });
+        getData(projectsURL + projectID + '?api_key=' + apiKey, populateModal);
     }
+
+    //**** Data Parser methods ****//
 
     function populateProjects(data) {
         console.log(data);
 
-        var projects = data.projects;
+        var projects = data.projects,
+            counter = $('.project').length;
 
         if (projects.length > 0) {
             for (var i = 0; i < projects.length; i++) {
+                counter = counter + 1;
                 var projectTemplate = $('#projectTemplate').html(),
                     compiledProjectTemplate = Template7.compile(projectTemplate),
                     projectInfo = {
@@ -72,7 +85,8 @@ $(document).ready(function() {
                         views: projects[i].stats.views,
                         comments: projects[i].stats.comments,
                         projectID: projects[i].id,
-                        creator: null
+                        creator: null,
+                        counter: counter
                     };
                 
                 // Checks the data to see whether there were multiple owners of the project
@@ -92,9 +106,30 @@ $(document).ready(function() {
             masonryProjects.imagesLoaded().progress(function() {
                 masonryProjects.masonry('layout');
             });
-        } else {
-            console.log('There aren\'t any more projects for this designer');
         }
+    }
+
+    function populateModal(data) {
+        console.log(data);
+    }
+
+    //*************************//
+    //**** Event Functions ****//
+    //*************************//
+
+    // Shows the AJAX loading GIF
+    function toggleLoader() {
+        $('#loader').fadeToggle({
+            duration: 300,
+            easing: 'swing'
+        });
+    }
+
+    function showMask() {
+        $('#modalMask').fadeIn({
+            duration: 300,
+            easing: 'swing'
+        });
     }
 
     //*************************//
@@ -104,7 +139,9 @@ $(document).ready(function() {
     // Event listener for projects being clicked
     $(document).on('click', '.projectInner', function(e) {
         e.preventDefault();
-        getProjectDetails(this.parentNode.dataset.projectid);
+        toggleLoader();
+        showMask();
+        getProjectDetails(this.parentNode.dataset.projectid, toggleLoader);
     });
 
     //*******************//
