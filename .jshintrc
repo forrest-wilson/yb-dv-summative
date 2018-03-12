@@ -6,6 +6,7 @@
     "devel": true,
     "globals": {
         "Template7": false,
-        "mixitup": false
+        "mixitup": false,
+        "moment": false
     }
 }
