@@ -114,6 +114,35 @@ $(document).ready(function() {
 
     function populateModal(data) {
         console.log(data);
+
+        var project = data.project,
+            projectTemplate = $('#projectDetailsTemplate').html(),
+            compiledProjectDetailsTemplate = Template7.compile(projectTemplate),
+            info = {
+                images: [],
+                creationDate: moment.unix(project.published_on).format('DD MMM YYYY'),
+                projectName: project.name,
+                likes: project.stats.appreciations,
+                views: project.stats.views,
+                comments: project.stats.comments,
+            };
+
+        for (var i = 0; i < project.modules.length; i++) {
+            if (project.modules[i].type == 'image') {
+                info.images.push(project.modules[i].sizes.max_1200);
+            }
+        }
+
+        var compiledTemplate = compiledProjectDetailsTemplate(info);
+
+        $('#modalContent').append(compiledTemplate);
+
+        $('#images').slick({
+            initialSlide: 1,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            infinite: true
+        });
     }
 
     //*************************//
@@ -135,6 +164,10 @@ $(document).ready(function() {
         });
     }
 
+    function toggleBodyScroll() {
+        $('body').toggleClass('modalShowing');
+    }
+
     //*************************//
     //**** Event Listeners ****//
     //*************************//
@@ -145,6 +178,7 @@ $(document).ready(function() {
         toggleLoader();
         showMask();
         getProjectDetails(this.parentNode.dataset.projectid, toggleLoader);
+        toggleBodyScroll();
     });
 
     //*******************//
