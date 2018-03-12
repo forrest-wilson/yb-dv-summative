@@ -4,4 +4,9 @@
 
 .slick-slide {
     display: inline-block;
+    outline: 0;
+}
+
+.slick-list {
+    overflow: hidden;
 }
