@@ -62,10 +62,7 @@ hr {
   right: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1000;
-  visibility: hidden;
-  opacity: 0;
-  -webkit-transition: 300ms ease-in-out;
-  transition: 300ms ease-in-out; }
+  display: none; }
 
 .inner {
   padding: 10px 20px; }
@@ -81,7 +78,9 @@ hr {
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 50%; }
+  border-radius: 50%;
+  display: none;
+  z-index: 1001; }
 
 @media screen and (min-width: 500px) {
   .project,
