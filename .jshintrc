@@ -5,6 +5,7 @@
     "browser": true,
     "devel": true,
     "globals": {
-        "Template7": false
+        "Template7": false,
+        "mixitup": false
     }
 }
