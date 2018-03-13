@@ -173,7 +173,9 @@ $(document).ready(function() {
             slidesToShow: 1,
             slidesToScroll: 1,
             infinite: true,
-            adaptiveHeight: true
+            adaptiveHeight: true,
+            prevArrow: '<i class=\'slick-prev fa fa-angle-left\'>Previous</i>',
+            nextArrow: '<i class=\'slick-next fa fa-angle-right\'>Right</i>'
         });
     }
 
@@ -204,8 +206,6 @@ $(document).ready(function() {
                     $('#comments').append(commentElements);
                 }
             }
-
-            console.log(commentElements);
         }
     }
 
