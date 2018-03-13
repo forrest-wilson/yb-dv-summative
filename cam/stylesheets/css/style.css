@@ -17,16 +17,25 @@
   transform: translate(-50%, -50%); }
 
 #profileUno {
-  background-color: blue;
+  background-color: white;
+  opacity: 0.34;
   height: 300px;
-  margin: 10px auto; }
+  margin: 10px auto;
+  -webkit-box-shadow: 0px 7px 26px 0px rgba(0, 0, 0, 0.86);
+  box-shadow: 0px 7px 26px 0px rgba(0, 0, 0, 0.86); }
 
 #profileDos {
-  background-color: green;
+  background-color: white;
+  opacity: 0.34;
   height: 300px;
-  margin: 10px auto; }
+  margin: 10px auto;
+  -webkit-box-shadow: 0px 7px 26px 0px rgba(0, 0, 0, 0.86);
+  box-shadow: 0px 7px 26px 0px rgba(0, 0, 0, 0.86); }
 
 #profileTres {
-  background-color: yellow;
+  background-color: white;
+  opacity: 0.34;
   height: 300px;
-  margin: 10px auto; }
+  margin: 10px auto;
+  -webkit-box-shadow: 0px 7px 26px 0px rgba(0, 0, 0, 0.86);
+  box-shadow: 0px 7px 26px 0px rgba(0, 0, 0, 0.86); }
