@@ -11,6 +11,10 @@ $(document).ready(function() {
         pagination = {
             projectsPerPage: 3,
             nextPageNumber: 1
+        },
+        commentPagination = {
+            commentsPerPage: 5,
+            nextPageNumber: 1
         };
 
     //*******************************//
@@ -64,8 +68,16 @@ $(document).ready(function() {
     function getProjectDetails(projectID, callback) {
         getData(projectsURL + projectID + '?api_key=' + apiKey, function(data) {
             populateModal(data);
+            getProjectComments(projectID);
+            commentPagination.nextPageNumber++;
             if (callback) callback();
         });        
+    }
+
+    function getProjectComments(projectID) {
+        getData(projectsURL + projectID + '/comments?client_id=' + apiKey + '&per_page=' + commentPagination.commentsPerPage + '&page=' + commentPagination.nextPageNumber, function(data) {
+            populateComments(data);
+        });
     }
 
     //**** Data Parser methods ****//
@@ -78,15 +90,18 @@ $(document).ready(function() {
 
         if (projects.length > 0) {
             for (var i = 0; i < projects.length; i++) {
+                // Counter for data-order in template
                 counter = counter + 1;
                 var projectTemplate = $('#projectTemplate').html(),
                     compiledProjectTemplate = Template7.compile(projectTemplate),
                     projectInfo = {
                         coverImage: projects[i].covers.original,
                         projectName: projects[i].name,
-                        likes: projects[i].stats.appreciations,
-                        views: projects[i].stats.views,
-                        comments: projects[i].stats.comments,
+                        stats: {
+                            likes: projects[i].stats.appreciations,
+                            views: projects[i].stats.views,
+                            comments: projects[i].stats.comments,
+                        },
                         projectID: projects[i].id,
                         creator: null,
                         counter: counter
@@ -120,16 +135,32 @@ $(document).ready(function() {
             compiledProjectDetailsTemplate = Template7.compile(projectTemplate),
             info = {
                 images: [],
-                creationDate: moment.unix(project.published_on).format('DD MMM YYYY'),
+                fields: [],
+                fieldsString: '',
+                description: project.description,
+                creationDate: moment.unix(project.published_on).format('Do MMM YYYY'),
                 projectName: project.name,
-                likes: project.stats.appreciations,
-                views: project.stats.views,
-                comments: project.stats.comments,
+                stats: {
+                    likes: project.stats.appreciations,
+                    views: project.stats.views,
+                    comments: project.stats.comments
+                },
+                projectID: project.id
             };
 
         for (var i = 0; i < project.modules.length; i++) {
             if (project.modules[i].type == 'image') {
                 info.images.push(project.modules[i].sizes.max_1200);
+            }
+        }
+
+        // Concatenates all fields into a string to pass to the template
+        for (var j = 0; j < project.fields.length; j++) {
+            info.fields.push(project.fields[j]);
+            info.fieldsString += info.fields[j];
+
+            if (j < project.fields.length - 1) {
+                info.fieldsString += ', ';
             }
         }
 
@@ -144,6 +175,38 @@ $(document).ready(function() {
             infinite: true,
             adaptiveHeight: true
         });
+    }
+
+    function populateComments(data) {
+        console.log(data);
+
+        var comments = data.comments,
+            commentElements = [];
+
+        if (data.comments.length > 0) {
+            for (var i = 0; i < comments.length; i++) {
+                var comment = comments[i],
+                    commentTemplate = $('#commentTemplate').html(),
+                    compiledCommentTemplate = Template7.compile(commentTemplate),
+                    commentInfo = {
+                        commenter: {
+                            name: comment.user.display_name,
+                            image: comment.user.images[100],
+                            link: comment.user.url
+                        },
+                        comment: comment.comment
+                    },
+                    compiled = compiledCommentTemplate(commentInfo);
+
+                commentElements.push(compiled);
+
+                if (comments.length == commentElements.length) {
+                    $('#comments').append(commentElements);
+                }
+            }
+
+            console.log(commentElements);
+        }
     }
 
     //*************************//
@@ -192,6 +255,21 @@ $(document).ready(function() {
                 $('#modalContent').empty();
             });
         }
+    });
+
+    $('.closeWrapper').on('click', function() {
+        toggleBodyScroll();
+        toggleMask(function() {
+            $('#modalContent').empty();
+        });
+    });
+
+    $(document).on('click', '.loadMoreComments', function(e) {
+        e.preventDefault();
+
+        console.log(this);
+
+        getProjectComments(this.dataset.projectid);
     });
 
     //*******************//
