@@ -24,6 +24,12 @@
     <img id='loader' class='loader' src='img/loader.svg' alt='AJAX Loader'>
 
     <div id='modalMask' class='modalMask'>
+        <div class='closeWrapper'>
+            <div class='closeIcon'>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
         <div id='modalContent' class='modalContent'></div>
     </div>
 
@@ -35,15 +41,15 @@
                     <div class='projectStats'>
                         <span class='stat'>
                             <i class='fa fa-thumbs-o-up'></i>
-                            <span>{{likes}}</span>
+                            <span>{{stats.likes}}</span>
                         </span>
                         <span class='stat'>
                             <i class='fa fa-eye'></i>
-                            <span>{{views}}</span>
+                            <span>{{stats.views}}</span>
                         </span>
                         <span class='stat'>
                             <i class='fa fa-comments-o'></i>
-                            <span>{{comments}}</span>
+                            <span>{{stats.comments}}</span>
                         </span>
                     </div>
                 </div>
@@ -66,12 +72,41 @@
                 {{/each}}
             </div>
             <div class='projectInfo inner'>
-                <h1>{{projectName}}</h1>
-                <h4>{{creationDate}}</h4>
-                <p>{{likes}}</p>
-                <p>{{comments}}</p>
-                <p>{{views}}</p>
+                <p class='projectTitle'>{{projectName}}</p>
+                <p>Published: {{creationDate}}</p>
+                <div class='projectStats'>
+                    <span class='stat'>
+                        <i class='fa fa-thumbs-o-up'></i>
+                        <span>{{stats.likes}}</span>
+                    </span>
+                    <span class='stat'>
+                        <i class='fa fa-eye'></i>
+                        <span>{{stats.views}}</span>
+                    </span>
+                    <span class='stat'>
+                        <i class='fa fa-comments-o'></i>
+                        <span>{{stats.comments}}</span>
+                    </span>
+                </div>
+                <hr>
+                <p class='evenMargin'>{{fieldsString}}</p>
+                <hr>
+                <p class='evenMargin'>{{description}}</p>
+                <hr>
+                <div>
+                    <p class='projectTitle'>Comments:</p>
+                    <div id='comments'></div>
+                    <button class='loadMoreComments' type='button' data-projectid={{projectID}}>Load more comments</button>
+                </div>
             </div>
+        </div>
+    </script>
+
+    <script id='commentTemplate' type='text/template7'>
+        <div class='comment'>
+            <img src={{commenter.image}} alt={{commenter.name}} />
+            <span><b><a href={{commenter.link}} target='_blank'>{{commenter.name}}</a></b></span>
+            <p class='commentText'>{{comment}}</p>
         </div>
     </script>
     
