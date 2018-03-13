@@ -149,6 +149,22 @@ hr {
 .slick-list {
   overflow: hidden; }
 
+.slick-prev {
+  left: 0px; }
+
+.slick-next {
+  right: 0px; }
+
+.slick-next,
+.slick-prev {
+  width: 32px;
+  height: 32px; }
+  .slick-next::before,
+  .slick-prev::before {
+    color: #291857;
+    font-family: FontAwesome;
+    font-size: 32px; }
+
 .inner {
   padding: 10px 20px; }
 
@@ -182,6 +198,28 @@ hr {
   .project,
   .sizer {
     width: 33.33%; } }
+
+@media screen and (min-width: 1000px) {
+  .modalContent {
+    position: fixed;
+    top: 30px;
+    left: 0;
+    bottom: 0;
+    right: 0; }
+  .projectDetails {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 100%; }
+    .projectDetails .images {
+      -webkit-box-flex: 1;
+      -ms-flex: 1;
+      flex: 1; }
+      .projectDetails .images .image {
+        padding: 10px 50px; }
+  .projectInfo {
+    max-width: 500px;
+    overflow-y: scroll; } }
 
 @media screen and (min-width: 1200px) {
   .project,
