@@ -60,7 +60,7 @@ $(document).ready(function() {
         getData(usersURL + designers[0] + '/projects?client_id=' + apiKey + '&per_page=' + pagination.projectsPerPage + '&page=' + pageNum, populateProjects);
 
         // Increases the page number to send with the next getProjects AJAX request
-        pagination.nextPageNumber += 1;
+        pagination.nextPageNumber++;
     }
 
     getProjects(pagination.nextPageNumber);
@@ -69,7 +69,6 @@ $(document).ready(function() {
         getData(projectsURL + projectID + '?api_key=' + apiKey, function(data) {
             populateModal(data);
             getProjectComments(projectID);
-            commentPagination.nextPageNumber++;
             if (callback) callback();
         });        
     }
@@ -78,6 +77,7 @@ $(document).ready(function() {
         getData(projectsURL + projectID + '/comments?client_id=' + apiKey + '&per_page=' + commentPagination.commentsPerPage + '&page=' + commentPagination.nextPageNumber, function(data) {
             if (data.comments.length > 0) {
                 populateComments(data);
+                commentPagination.nextPageNumber++;
             } else {
                 hideMoreCommentsButton();
             }
@@ -227,9 +227,9 @@ $(document).ready(function() {
         }
     }
 
-    //*************************//
-    //**** Event Functions ****//
-    //*************************//
+    //******************************//
+    //**** Event Helper Methods ****//
+    //******************************//
 
     // Toggles the AJAX loading GIF
     function toggleLoader() {
@@ -257,6 +257,19 @@ $(document).ready(function() {
         $('#loadMoreComments').hide();
     }
 
+    function resetCounters() {
+        pagination.nextPageNumber = 1;
+        commentPagination.nextPageNumber = 1;
+    }
+
+    function closeModal() {
+        resetCounters();
+        toggleBodyScroll();
+        toggleMask(function() {
+            $('#modalContent').empty();
+        });
+    }
+
     //*************************//
     //**** Event Listeners ****//
     //*************************//
@@ -272,25 +285,16 @@ $(document).ready(function() {
 
     $(document).on('click', '#modalMask', function(e) {
         if (e.target == e.currentTarget) {
-            toggleBodyScroll();
-            toggleMask(function() {
-                $('#modalContent').empty();
-            });
+            closeModal();
         }
     });
 
     $('.closeWrapper').on('click', function() {
-        toggleBodyScroll();
-        toggleMask(function() {
-            $('#modalContent').empty();
-        });
+        closeModal();
     });
 
     $(document).on('click', '.loadMoreComments', function(e) {
         e.preventDefault();
-
-        console.log(this);
-
         getProjectComments(this.dataset.projectid);
     });
 
