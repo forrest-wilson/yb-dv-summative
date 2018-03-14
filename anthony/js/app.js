@@ -7,10 +7,9 @@ $(document).ready(function() {
 		statsToday = [];
 
 
-	// Function for grabbing data from AJAX
+	// Function for grabbing data from behance
 	function getData(url, designer) {
         $.ajax({
-            method: 'GET',
             dataType: 'jsonp',
             url: url,
             success: function(behanceData) {
@@ -27,7 +26,7 @@ $(document).ready(function() {
         });
     }
 
-    
+    // data grab test
     getData(usersURL + 'codycobb' + '?client_id=' + apiKey, 'codycobb');
     console.log(statsAll);
 
