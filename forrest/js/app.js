@@ -16,7 +16,8 @@ $(document).ready(function() {
             commentsPerPage: 5,
             nextPageNumber: 1
         },
-        activeXhrRequests = [];
+        activeXhrRequests = [],
+        moreProjectsToLoad = [];
 
     //*******************************//
     //**** Plugin Initialisation ****//
@@ -104,6 +105,15 @@ $(document).ready(function() {
 
         var projects = data.projects,
             counter = $('.project').length;
+
+        if (projects.length < 3) {
+            moreProjectsToLoad.push(false);
+
+            if (moreProjectsToLoad.length >= 3) {
+                console.log('no more projects to load');
+                $('#loadMoreProjects').hide();
+            }
+        }
 
         if (projects.length > 0) {
             for (var i = 0; i < projects.length; i++) {
