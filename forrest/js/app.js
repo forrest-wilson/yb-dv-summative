@@ -142,6 +142,8 @@ $(document).ready(function() {
                 masonryProjects.masonry('layout');
             });
         }
+
+        $('#loadMoreProjects').removeClass('disabledButton');
     }
 
     function populateModal(data) {
@@ -285,13 +287,8 @@ $(document).ready(function() {
         $('#loadMoreComments').hide();
     }
 
-    function resetCounters() {
-        pagination.nextPageNumber = 1;
-        commentPagination.nextPageNumber = 1;
-    }
-
     function closeModal() {
-        resetCounters();
+        commentPagination.nextPageNumber = 1;
         toggleBodyScroll();
         toggleMask(function() {
             $('#modalContent').empty();
@@ -326,6 +323,14 @@ $(document).ready(function() {
         if (!$(this).hasClass('disabledButton')) {
             $('#loadMoreComments').addClass('disabledButton');
             getProjectComments(this.dataset.projectid);
+        }
+    });
+
+    $('#loadMoreProjects').on('click', function(e) {
+        e.preventDefault();
+        if (!$(this).hasClass('disabledButton')) {
+            $('#loadMoreProjects').addClass('disabledButton');
+            getProjects(pagination.nextPageNumber);
         }
     });
 

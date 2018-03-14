@@ -151,20 +151,34 @@ hr {
   .comment .publishedOnText {
     color: #909090; }
 
-.loadMoreComments {
-  display: block;
-  width: 100%;
+.loadMoreComments,
+.loadMoreProjects {
   margin: 0;
   border: none;
   border-radius: 5px;
   color: #007BFF;
-  padding: 20px 0;
-  background-color: #F3F3F3; }
-  .loadMoreComments:hover {
+  display: block;
+  width: 100%;
+  padding: 20px 0; }
+  .loadMoreComments:focus,
+  .loadMoreProjects:focus {
+    outline: none; }
+  .loadMoreComments:hover,
+  .loadMoreProjects:hover {
     background-color: #EBEBEB;
     cursor: pointer; }
-  .loadMoreComments:focus {
-    outline: none; }
+
+.loadMoreComments {
+  background-color: #F3F3F3; }
+
+.loadMoreProjectsButtonWrapper {
+  padding: 10px; }
+
+.loadMoreProjects {
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.5);
+  background-color: #F3F3F3; }
 
 .slick-slide {
   display: inline-block;
@@ -225,7 +239,10 @@ hr {
 @media screen and (min-width: 800px) {
   .project,
   .sizer {
-    width: 33.33%; } }
+    width: 33.33%; }
+  .loadMoreProjects {
+    width: 350px;
+    margin: 0 auto; } }
 
 @media screen and (min-width: 1000px) {
   .modalContent {

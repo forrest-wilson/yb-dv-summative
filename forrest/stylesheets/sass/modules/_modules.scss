@@ -173,22 +173,36 @@
     }
 }
 
-.loadMoreComments {
-    display: block;
-    width: 100%;
+.loadMoreComments,
+.loadMoreProjects {
     margin: 0;
     border: none;
     border-radius: $borderRadius;
     color: #007BFF;
+    display: block;
+    width: 100%;
     padding: 20px 0;
-    background-color: $whiteColor;
+
+    &:focus {
+        outline: none;
+    }
 
     &:hover {
         background-color: #EBEBEB;
         cursor: pointer;
     }
+}
 
-    &:focus {
-        outline: none;
-    }
+.loadMoreComments {
+    background-color: $whiteColor;
+}
+
+.loadMoreProjectsButtonWrapper {
+    padding: 10px
+}
+
+.loadMoreProjects {
+    border-radius: $borderRadius;
+    box-shadow: $boxShadow;
+    background-color: $whiteColor;
 }
