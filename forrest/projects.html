@@ -96,7 +96,7 @@
                 <div>
                     <p class='projectTitle'>Comments:</p>
                     <div id='comments'></div>
-                    <button class='loadMoreComments' type='button' data-projectid={{projectID}}>
+                    <button id='loadMoreComments' class='loadMoreComments' type='button' data-projectid={{projectID}}>
                         <span>Load more comments</span>
                         <i class='fa fa-angle-down'></i>
                     </button>
@@ -108,7 +108,7 @@
     <script id='commentTemplate' type='text/template7'>
         <div class='comment'>
             <img src={{commenter.image}} alt={{commenter.name}} />
-            <span><b><a href={{commenter.link}} target='_blank'>{{commenter.name}}</a></b></span>
+            <span><b><a href={{commenter.link}} target='_blank'>{{commenter.name}}</a></b><small class='publishedOnText'> - {{publishedOn}}</small></span>
             <p class='commentText'>{{comment}}</p>
         </div>
     </script>
