@@ -29,14 +29,44 @@
             flex: 1;
 
             .image {
-                padding: 10px 50px;
+                padding: 30px 50px;
+                vertical-align: middle;
             }
         }
     }
 
     .projectInfo {
+        width: 500px;
         max-width: 500px;
         overflow-y: scroll;
+    }
+
+    // Slick
+    .slick-track {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .slick-slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+
+    .slick-list {
+        height: 100%;
+    }
+
+    .slick-next,
+    .slick-prev {
+        &::before {
+            margin: 0 auto;
+            display: block;
+            text-align: center;
+        }
     }
 }
 
