@@ -15,67 +15,67 @@ secondProfile.addEventListener('click', displayDetailSecondProfile, false);
 thirdProfile.addEventListener('click', displayDetailThirdProfile, false);
 
 function displayDetail() {
-	firstProfile.classList.remove('col-lg-3');
-	firstProfile.classList.remove('col-md-3');
-	firstProfile.classList.add('col-lg-12');
-	firstProfile.classList.add('col-md-9');
-	// $(firstProfile).css({'pointer-events': 'none'});
-	$(firstProfile).css({'height': '600px'});
-	$('img').css({'width': '25%'});
+	// firstProfile.classList.remove('col-lg-3');
+	// firstProfile.classList.remove('col-md-3');
+	// firstProfile.classList.add('col-lg-12');
+	// firstProfile.classList.add('col-md-9');
+	// // $(firstProfile).css({'pointer-events': 'none'});
+	// $(firstProfile).css({'height': '600px'});
+	// $('img').css({'width': '25%'});
 
-	secondProfile.classList.remove('col-lg-3');
-	secondProfile.classList.remove('col-md-3');
-	secondProfile.classList.add('col-lg-12');
-	secondProfile.classList.add('col-md-9');
-	$(secondProfile).css({'height': '60px'});
+	// secondProfile.classList.remove('col-lg-3');
+	// secondProfile.classList.remove('col-md-3');
+	// secondProfile.classList.add('col-lg-12');
+	// secondProfile.classList.add('col-md-9');
+	// $(secondProfile).css({'height': '60px'});
 
-	thirdProfile.classList.remove('col-lg-3');
-	thirdProfile.classList.remove('col-md-3');
-	thirdProfile.classList.add('col-lg-12');
-	thirdProfile.classList.add('col-md-9');
-	$(thirdProfile).css({'height': '60px'});
+	// thirdProfile.classList.remove('col-lg-3');
+	// thirdProfile.classList.remove('col-md-3');
+	// thirdProfile.classList.add('col-lg-12');
+	// thirdProfile.classList.add('col-md-9');
+	// $(thirdProfile).css({'height': '60px'});
 }
 function displayDetailSecondProfile() {
-	secondProfile.classList.remove('col-lg-3');
-	secondProfile.classList.remove('col-md-3');
-	secondProfile.classList.add('col-lg-12');
-	secondProfile.classList.add('col-md-9');
-	// $(secondProfile).css({'pointer-events': 'none'});
-	$(secondProfile).css({'height': '600px'});
-	$('img').css({'width': '25%'});
+	// secondProfile.classList.remove('col-lg-3');
+	// secondProfile.classList.remove('col-md-3');
+	// secondProfile.classList.add('col-lg-12');
+	// secondProfile.classList.add('col-md-9');
+	// // $(secondProfile).css({'pointer-events': 'none'});
+	// $(secondProfile).css({'height': '600px'});
+	// $('img').css({'width': '25%'});
 	
-	firstProfile.classList.remove('col-lg-3');
-	firstProfile.classList.remove('col-md-3');
-	firstProfile.classList.add('col-lg-12');
-	firstProfile.classList.add('col-md-9');
-	$(firstProfile).css({'height': '60px'});
+	// firstProfile.classList.remove('col-lg-3');
+	// firstProfile.classList.remove('col-md-3');
+	// firstProfile.classList.add('col-lg-12');
+	// firstProfile.classList.add('col-md-9');
+	// $(firstProfile).css({'height': '60px'});
 
-	thirdProfile.classList.remove('col-lg-3');
-	thirdProfile.classList.remove('col-md-3');
-	thirdProfile.classList.add('col-lg-12');
-	thirdProfile.classList.add('col-md-9');
-	$(thirdProfile).css({'height': '60px'});
+	// thirdProfile.classList.remove('col-lg-3');
+	// thirdProfile.classList.remove('col-md-3');
+	// thirdProfile.classList.add('col-lg-12');
+	// thirdProfile.classList.add('col-md-9');
+	// $(thirdProfile).css({'height': '60px'});
 }
 function displayDetailThirdProfile() {
-	thirdProfile.classList.remove('col-lg-3');
-	thirdProfile.classList.remove('col-md-3');
-	thirdProfile.classList.add('col-lg-12');
-	thirdProfile.classList.add('col-md-9');
-	// $(thirdProfile).css({'pointer-events': 'none'});
-	$(thirdProfile).css({'height': '600px'});
-	$('img').css({'width': '25%'});
+	// thirdProfile.classList.remove('col-lg-3');
+	// thirdProfile.classList.remove('col-md-3');
+	// thirdProfile.classList.add('col-lg-12');
+	// thirdProfile.classList.add('col-md-9');
+	// // $(thirdProfile).css({'pointer-events': 'none'});
+	// $(thirdProfile).css({'height': '600px'});
+	// $('img').css({'width': '25%'});
 	
-	secondProfile.classList.remove('col-lg-3');
-	secondProfile.classList.remove('col-md-3');
-	secondProfile.classList.add('col-lg-12');
-	secondProfile.classList.add('col-md-9');
-	$(secondProfile).css({'height': '60px'});
+	// secondProfile.classList.remove('col-lg-3');
+	// secondProfile.classList.remove('col-md-3');
+	// secondProfile.classList.add('col-lg-12');
+	// secondProfile.classList.add('col-md-9');
+	// $(secondProfile).css({'height': '60px'});
 
-	firstProfile.classList.remove('col-lg-3');
-	firstProfile.classList.remove('col-md-3');
-	firstProfile.classList.add('col-lg-12');
-	firstProfile.classList.add('col-md-9');
-	$(firstProfile).css({'height': '60px'});
+	// firstProfile.classList.remove('col-lg-3');
+	// firstProfile.classList.remove('col-md-3');
+	// firstProfile.classList.add('col-lg-12');
+	// firstProfile.classList.add('col-md-9');
+	// $(firstProfile).css({'height': '60px'});
 }
 
 
@@ -86,7 +86,7 @@ $.ajax ({
 		if (behanceData) {
 			console.log(behanceData);
 			var profileImage = '';
-			profileImage += '<img src= "' + behanceData.user.images[276] + '">' + '<figcaption>' + behanceData.user.display_name + '</figcaption>';
+			profileImage += '<img id="profilePhoto1" src= "' + behanceData.user.images[276] + '">' + '<figcaption>' + behanceData.user.display_name + '</figcaption>';
 			$(secondProfile).append(profileImage);
 		}
 	},
@@ -102,7 +102,7 @@ $.ajax ({
 		if (behanceData) {
 			console.log(behanceData);
 			var profileImage = '';
-			profileImage += '<img src= "' + behanceData.user.images[276] + '">' + '<figcaption>' + behanceData.user.display_name + '</figcaption>';
+			profileImage += '<img id="profilePhoto2" src= "' + behanceData.user.images[276] + '">' + '<figcaption>' + behanceData.user.display_name + '</figcaption>';
 			$(firstProfile).append(profileImage);
 		}
 	},
@@ -117,7 +117,7 @@ $.ajax ({
 		if (behanceData) {
 			console.log(behanceData);
 			var profileImage = '';
-			profileImage += '<img src= "' + behanceData.user.images[276] + '">' + '<figcaption>' + behanceData.user.display_name + '</figcaption>';
+			profileImage += '<img id="profilePhoto3" src= "' + behanceData.user.images[276] + '">' + '<figcaption>' + behanceData.user.display_name + '</figcaption>';
 			$(thirdProfile).append(profileImage);
 		}
 	},
@@ -125,14 +125,6 @@ $.ajax ({
 		console.log('error');
 	}
 });
-
-
-
-
-
-
-
-
 
 
 

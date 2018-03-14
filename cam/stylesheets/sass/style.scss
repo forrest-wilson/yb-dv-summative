@@ -9,6 +9,10 @@
 	background: linear-gradient(to bottom right, #a5dfe7, #c7ec75);
 }
 
+* {
+    box-sizing: border-box;
+}
+
 // .container {
 //     position: absolute;
 //     top: 50%;
@@ -82,9 +86,9 @@
 	    transform: translate(-50%, -50%);
 	}
 	img {
-		height: 50%;
-		width: 100%;
-		// margin: 0 auto;
+		height: 256px;
+		width: 256px;
+		margin: 0 auto;
 		display: block;
 	}
 }

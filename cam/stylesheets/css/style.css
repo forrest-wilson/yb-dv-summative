@@ -9,6 +9,10 @@
   background: -webkit-gradient(linear, left top, right bottom, from(#a5dfe7), to(#c7ec75));
   background: linear-gradient(to bottom right, #a5dfe7, #c7ec75); }
 
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
 #profileUno {
   height: 100%;
   width: 100%;
@@ -62,8 +66,9 @@
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%); }
   img {
-    height: 50%;
-    width: 100%;
+    height: 256px;
+    width: 256px;
+    margin: 0 auto;
     display: block; } }
 
 figcaption {
