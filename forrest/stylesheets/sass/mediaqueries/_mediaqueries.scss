@@ -18,7 +18,7 @@
 
 @media screen and (min-width: 1000px) {
     .modalContent {
-        @include positioning(fixed, 30px, 0, 0, 0);
+        @include positioning(fixed, 50px, 50px, 50px, 50px);
     }
 
     .projectDetails {
@@ -31,6 +31,14 @@
             .image {
                 padding: 30px 50px;
                 vertical-align: middle;
+
+                img {
+                    object-fit: contain;
+                    box-shadow: none;
+                    filter: drop-shadow($lightBoxShadow);
+                    max-height: 100%;
+                    border-radius: 0;
+                }
             }
         }
     }
