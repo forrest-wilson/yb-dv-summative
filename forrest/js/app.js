@@ -57,7 +57,7 @@ $(document).ready(function() {
         //     getData(usersURL + designers[i] + '/projects?client_id=' + apiKey + '&per_page=' + pagination.projectsPerPage + '&page=' + pageNum, populateProjects);
         // }
 
-        getData(usersURL + designers[0] + '/projects?client_id=' + apiKey + '&per_page=' + pagination.projectsPerPage + '&page=' + pageNum, populateProjects);
+        getData(usersURL + designers[2] + '/projects?client_id=' + apiKey + '&per_page=' + pagination.projectsPerPage + '&page=' + pageNum, populateProjects);
 
         // Increases the page number to send with the next getProjects AJAX request
         pagination.nextPageNumber++;
@@ -138,7 +138,7 @@ $(document).ready(function() {
             projectTemplate = $('#projectDetailsTemplate').html(),
             compiledProjectDetailsTemplate = Template7.compile(projectTemplate),
             info = {
-                images: [],
+                articles: [],
                 fields: [],
                 fieldsString: '',
                 description: project.description,
@@ -149,12 +149,27 @@ $(document).ready(function() {
                     views: project.stats.views,
                     comments: project.stats.comments
                 },
-                projectID: project.id
+                projectID: project.id,
+                behanceURL: project.url
             };
 
         for (var i = 0; i < project.modules.length; i++) {
-            if (project.modules[i].type == 'image') {
-                info.images.push(project.modules[i].sizes.max_1200);
+            var mod = project.modules[i];
+            switch(mod.type) {
+                case('image'):
+                    info.articles.push(mod.sizes.max_1200);
+                    break;
+                case('media_collection'):
+                    var component = mod.components;
+
+                    for (var ii = 0; ii < component.length; ii++) {
+                        info.articles.push(component[ii].sizes.max_1200);
+                    }
+
+                    break;
+                default:
+                    console.log('No support has been added for this data type');
+                    break;
             }
         }
 

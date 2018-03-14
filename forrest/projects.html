@@ -65,14 +65,17 @@
     <script id='projectDetailsTemplate' type='text/template7'>
         <div class='projectDetails'>
             <div id='images' class='images'>
-                {{#each images}}
+                {{#each articles}}
                 <div class='image'>
                     <img src={{this}} alt={{this}} />
                 </div>
                 {{/each}}
             </div>
             <div class='projectInfo inner'>
-                <p class='projectTitle'>{{projectName}}</p>
+                <div>
+                    <p class='projectTitle'>{{projectName}}</p>
+                    <small><a href={{behanceURL}} target='_blank'>View on Behance <i class='fa fa-external-link'></i></a></small>
+                </div>
                 <p>Published: {{creationDate}}</p>
                 <div class='projectStats'>
                     <span class='stat'>
