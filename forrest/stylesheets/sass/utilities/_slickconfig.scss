@@ -23,7 +23,8 @@
 .slick-prev {
     width: 32px;
     height: 32px;
-    
+    z-index: 1000;
+
     &::before {
         color: $darkColor;
         font-family: FontAwesome;
