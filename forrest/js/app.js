@@ -76,7 +76,11 @@ $(document).ready(function() {
 
     function getProjectComments(projectID) {
         getData(projectsURL + projectID + '/comments?client_id=' + apiKey + '&per_page=' + commentPagination.commentsPerPage + '&page=' + commentPagination.nextPageNumber, function(data) {
-            populateComments(data);
+            if (data.comments.length > 0) {
+                populateComments(data);
+            } else {
+                hideMoreCommentsButton();
+            }
         });
     }
 
@@ -209,7 +213,8 @@ $(document).ready(function() {
                             image: comment.user.images[115],
                             link: comment.user.url
                         },
-                        comment: comment.comment
+                        comment: comment.comment,
+                        publishedOn: moment.unix(comment.created_on).format('Do MMM YYYY')
                     },
                     compiled = compiledCommentTemplate(commentInfo);
 
@@ -246,6 +251,10 @@ $(document).ready(function() {
     // Toggles scrolling on the body element
     function toggleBodyScroll() {
         $('body').toggleClass('modalShowing');
+    }
+
+    function hideMoreCommentsButton() {
+        $('#loadMoreComments').hide();
     }
 
     //*************************//
