@@ -173,10 +173,23 @@ $(document).ready(function() {
             slidesToShow: 1,
             slidesToScroll: 1,
             infinite: true,
-            adaptiveHeight: true,
+            adaptiveHeight: false,
+            arrows: true,
             prevArrow: '<i class=\'slick-prev fa fa-angle-left\'>Previous</i>',
-            nextArrow: '<i class=\'slick-next fa fa-angle-right\'>Right</i>'
+            nextArrow: '<i class=\'slick-next fa fa-angle-right\'>Right</i>',
+            responsive: [
+                {
+                    breakpoint: 1000,
+                    settings: {
+                        adaptiveHeight: true,
+                        arrows: false
+                    }
+                }
+            ]
         });
+
+        // Forces slick to re-calculate parent image elements
+        $(window).trigger('resize');
     }
 
     function populateComments(data) {
@@ -193,7 +206,7 @@ $(document).ready(function() {
                     commentInfo = {
                         commenter: {
                             name: comment.user.display_name,
-                            image: comment.user.images[100],
+                            image: comment.user.images[115],
                             link: comment.user.url
                         },
                         comment: comment.comment
