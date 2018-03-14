@@ -136,6 +136,11 @@ hr {
   padding: 10px;
   border-radius: 5px;
   margin: 10px 0; }
+  .comment .nameAndDate {
+    display: inline-block;
+    vertical-align: middle; }
+    .comment .nameAndDate p {
+      margin: 0; }
   .comment img {
     border-radius: 5px;
     width: 70px;

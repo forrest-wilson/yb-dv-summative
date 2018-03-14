@@ -148,6 +148,15 @@
     border-radius: $borderRadius;
     margin: 10px 0;
 
+    .nameAndDate {
+        display: inline-block;
+        vertical-align: middle;
+
+        p {
+            margin: 0;
+        }
+    }
+
     img {
         border-radius: $borderRadius;
         width: 70px;
