@@ -158,6 +158,10 @@
     .commentText {
         margin: 10px 0;
     }
+
+    .publishedOnText {
+        color: #909090;
+    }
 }
 
 .loadMoreComments {
@@ -173,5 +177,9 @@
     &:hover {
         background-color: #EBEBEB;
         cursor: pointer;
+    }
+
+    &:focus {
+        outline: none;
     }
 }

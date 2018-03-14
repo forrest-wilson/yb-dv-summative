@@ -143,6 +143,8 @@ hr {
     margin-right: 10px; }
   .comment .commentText {
     margin: 10px 0; }
+  .comment .publishedOnText {
+    color: #909090; }
 
 .loadMoreComments {
   display: block;
@@ -156,6 +158,8 @@ hr {
   .loadMoreComments:hover {
     background-color: #EBEBEB;
     cursor: pointer; }
+  .loadMoreComments:focus {
+    outline: none; }
 
 .slick-slide {
   display: inline-block;
