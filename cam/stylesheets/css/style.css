@@ -60,7 +60,12 @@
     top: 50%;
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%); } }
+    transform: translate(-50%, -50%); }
+  img {
+    height: 276px;
+    width: 276px;
+    margin: 0 auto;
+    display: block; } }
 
 img {
   height: 100%;

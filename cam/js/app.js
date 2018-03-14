@@ -15,44 +15,62 @@ thirdProfile.addEventListener('click', displayDetailThirdProfile, false);
 
 function displayDetail() {
 	firstProfile.classList.remove('col-lg-3');
+	firstProfile.classList.remove('col-md-3');
 	firstProfile.classList.add('col-lg-12');
+	firstProfile.classList.add('col-md-7');
 	// $(firstProfile).css({'pointer-events': 'none'});
 	$(firstProfile).css({'height': '550px'});
 
 	secondProfile.classList.remove('col-lg-3');
+	secondProfile.classList.remove('col-md-3');
 	secondProfile.classList.add('col-lg-12');
+	secondProfile.classList.add('col-md-7');
 	$(secondProfile).css({'height': '80px'});
 
 	thirdProfile.classList.remove('col-lg-3');
+	thirdProfile.classList.remove('col-md-3');
 	thirdProfile.classList.add('col-lg-12');
+	thirdProfile.classList.add('col-md-7');
 	$(thirdProfile).css({'height': '80px'});
 }
 function displayDetailSecondProfile() {
 	secondProfile.classList.remove('col-lg-3');
+	secondProfile.classList.remove('col-md-3');
 	secondProfile.classList.add('col-lg-12');
+	secondProfile.classList.add('col-md-7');
 	// $(secondProfile).css({'pointer-events': 'none'});
 	$(secondProfile).css({'height': '550px'});
 	
 	firstProfile.classList.remove('col-lg-3');
+	firstProfile.classList.remove('col-md-3');
 	firstProfile.classList.add('col-lg-12');
+	firstProfile.classList.add('col-md-7');
 	$(firstProfile).css({'height': '80px'});
 
 	thirdProfile.classList.remove('col-lg-3');
+	thirdProfile.classList.remove('col-md-3');
 	thirdProfile.classList.add('col-lg-12');
+	thirdProfile.classList.add('col-md-7');
 	$(thirdProfile).css({'height': '80px'});
 }
 function displayDetailThirdProfile() {
 	thirdProfile.classList.remove('col-lg-3');
+	thirdProfile.classList.remove('col-md-3');
 	thirdProfile.classList.add('col-lg-12');
+	thirdProfile.classList.add('col-md-7');
 	// $(thirdProfile).css({'pointer-events': 'none'});
 	$(thirdProfile).css({'height': '550px'});
 	
 	secondProfile.classList.remove('col-lg-3');
+	secondProfile.classList.remove('col-md-3');
 	secondProfile.classList.add('col-lg-12');
+	secondProfile.classList.add('col-md-7');
 	$(secondProfile).css({'height': '80px'});
 
 	firstProfile.classList.remove('col-lg-3');
+	firstProfile.classList.remove('col-md-3');
 	firstProfile.classList.add('col-lg-12');
+	firstProfile.classList.add('col-md-7');
 	$(firstProfile).css({'height': '80px'});
 }
 
