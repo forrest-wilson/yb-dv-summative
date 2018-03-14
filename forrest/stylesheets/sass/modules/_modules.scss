@@ -159,3 +159,19 @@
         margin: 10px 0;
     }
 }
+
+.loadMoreComments {
+    display: block;
+    width: 100%;
+    margin: 0;
+    border: none;
+    border-radius: $borderRadius;
+    color: #007BFF;
+    padding: 20px 0;
+    background-color: $whiteColor;
+
+    &:hover {
+        background-color: #EBEBEB;
+        cursor: pointer;
+    }
+}

@@ -144,6 +144,19 @@ hr {
   .comment .commentText {
     margin: 10px 0; }
 
+.loadMoreComments {
+  display: block;
+  width: 100%;
+  margin: 0;
+  border: none;
+  border-radius: 5px;
+  color: #007BFF;
+  padding: 20px 0;
+  background-color: #F3F3F3; }
+  .loadMoreComments:hover {
+    background-color: #EBEBEB;
+    cursor: pointer; }
+
 .slick-slide {
   display: inline-block;
   outline: 0; }
