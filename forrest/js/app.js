@@ -15,7 +15,8 @@ $(document).ready(function() {
         commentPagination = {
             commentsPerPage: 5,
             nextPageNumber: 1
-        };
+        },
+        activeXhrRequests = [];
 
     //*******************************//
     //**** Plugin Initialisation ****//
@@ -33,15 +34,26 @@ $(document).ready(function() {
 
     // Generic AJAX function. Increases reuseablility
     function getData(url, successFunction) {
-        $.ajax({
+        var xhr = $.ajax({
             method: 'GET',
             dataType: 'jsonp',
             url: url,
-            success: successFunction,
+            success: function(data) {
+                // Deleting the request that has just finished
+                for (var i = 0; i < activeXhrRequests.length; i++) {
+                    if (activeXhrRequests[i] == xhr) {
+                        activeXhrRequests.splice(i, 1);
+                    }
+                }
+
+                successFunction(data);
+            },
             error: function(err) {
                 throw new Error('Unhandled AJAX Error: ', err);
             }
         });
+
+        activeXhrRequests.push(xhr);
     }
 
     //*******************//
@@ -57,7 +69,7 @@ $(document).ready(function() {
         //     getData(usersURL + designers[i] + '/projects?client_id=' + apiKey + '&per_page=' + pagination.projectsPerPage + '&page=' + pageNum, populateProjects);
         // }
 
-        getData(usersURL + designers[2] + '/projects?client_id=' + apiKey + '&per_page=' + pagination.projectsPerPage + '&page=' + pageNum, populateProjects);
+        getData(usersURL + designers[0] + '/projects?client_id=' + apiKey + '&per_page=' + pagination.projectsPerPage + '&page=' + pageNum, populateProjects);
 
         // Increases the page number to send with the next getProjects AJAX request
         pagination.nextPageNumber++;
@@ -78,6 +90,7 @@ $(document).ready(function() {
             if (data.comments.length > 0) {
                 populateComments(data);
                 commentPagination.nextPageNumber++;
+                $('#loadMoreComments').removeClass('disabledButton');
             } else {
                 hideMoreCommentsButton();
             }
@@ -168,7 +181,7 @@ $(document).ready(function() {
 
                     break;
                 default:
-                    console.log('No support has been added for this data type');
+                    console.log('No support has been added for this data type: ' + mod.type);
                     break;
             }
         }
@@ -294,7 +307,7 @@ $(document).ready(function() {
         e.preventDefault();
         toggleLoader();
         toggleMask();
-        getProjectDetails(this.parentNode.dataset.projectid, toggleLoader);
+        getProjectDetails(this.dataset.projectid, toggleLoader);
         toggleBodyScroll();
     });
 
@@ -308,9 +321,12 @@ $(document).ready(function() {
         closeModal();
     });
 
-    $(document).on('click', '.loadMoreComments', function(e) {
+    $(document).on('click', '#loadMoreComments', function(e) {
         e.preventDefault();
-        getProjectComments(this.dataset.projectid);
+        if (!$(this).hasClass('disabledButton')) {
+            $('#loadMoreComments').addClass('disabledButton');
+            getProjectComments(this.dataset.projectid);
+        }
     });
 
     //*******************//

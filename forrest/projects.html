@@ -34,8 +34,8 @@
     </div>
 
     <script id='projectTemplate' type='text/template7'>
-        <div class='project' data-projectid={{projectID}} data-order={{counter}}>
-            <div class='projectInner'>
+        <div class='project' data-order={{counter}}>
+            <div class='projectInner' data-projectid={{projectID}}>
                 <div class='projectImageWrapper'>
                     <img src={{coverImage}} alt={{projectName}} />
                     <div class='projectStats'>
@@ -99,7 +99,7 @@
                 <div>
                     <p class='projectTitle'>Comments:</p>
                     <div id='comments'></div>
-                    <button id='loadMoreComments' class='loadMoreComments' type='button' data-projectid={{projectID}}>
+                    <button id='loadMoreComments' class='loadMoreComments disabledButton' type='button' data-projectid={{projectID}}>
                         <span>Load more comments</span>
                         <i class='fa fa-angle-down'></i>
                     </button>

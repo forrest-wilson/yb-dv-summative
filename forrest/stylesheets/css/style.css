@@ -214,6 +214,9 @@ hr {
 .evenMargin {
   margin: 20px 0; }
 
+.disabledButton {
+  color: #909090; }
+
 @media screen and (min-width: 500px) {
   .project,
   .sizer {
