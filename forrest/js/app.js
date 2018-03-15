@@ -23,15 +23,15 @@ $(document).ready(function() {
     //**** Plugin Initialisation ****//
     //*******************************//
 
-    var masonryProjects = $('.projects').masonry({
-        itemSelector: '.project',
-        columnWidth: '.sizer',
-        percentPosition: true
-    });
-
     var mixer = mixitup('.projects', {
         selectors: {
             target: '.project'
+        },
+        animation: {
+            enable: true,
+            queueLimit: 10,
+            duration: 300,
+            easing: 'ease-in-out'
         }
     });
 
@@ -71,11 +71,6 @@ $(document).ready(function() {
             templateToRender = compiledTemplate(_context);
 
         return templateToRender;
-    }
-
-    // Refreshes the grid project layout
-    function refreshLayout() {
-        masonryProjects.masonry();
     }
 
     //*******************//
@@ -149,7 +144,7 @@ $(document).ready(function() {
                 // Context to pass to the Template7 template
                 var project = projects[i],
                     projectInfo = {
-                    coverImage: project.covers.original,
+                    coverImage: project.covers[404],
                     projectName: project.name,
                     stats: {
                         likes: project.stats.appreciations,
@@ -157,6 +152,7 @@ $(document).ready(function() {
                         comments: project.stats.comments,
                     },
                     projectID: project.id,
+                    publishedOn: project.published_on,
                     creator: null,
                     creatorID: [],
                     counter: counter
@@ -176,19 +172,10 @@ $(document).ready(function() {
                 }
     
                 // These variables must be declared after 
-                var template = renderTemplate('#projectTemplate', projectInfo),
-                    $template = $(template);
-                
-                // Appends the project to DOM and let the masonry plugin do its thing
-                masonryProjects.append($template).masonry('appended', $template);
+                var template = renderTemplate('#projectTemplate', projectInfo);
+
+                mixer.append(template, false);
             }
-
-            // Masonry workaround for arranging items with dynamic images
-            masonryProjects.imagesLoaded().progress(function() {
-                masonryProjects.masonry('layout');
-            });
-
-            mixer.forceRefresh();
         }
 
         // Enables the loadMoreProjects button to be clicked again
@@ -400,13 +387,29 @@ $(document).ready(function() {
 
     $('#testOrdering').on('click', function(e) {
         e.preventDefault();
-        mixer.filter($('.544146')).then(refreshLayout);
+        mixer.filter($('.544146')).then();
     });
 
     $('#showAll').on('click', function(e) {
         e.preventDefault();
 
-        mixer.show().then(refreshLayout);
+        mixer.show().then();
+    });
+
+    $('#sortAscending').on('click', function(e) {
+        e.preventDefault();
+
+        mixer.sort('published-on:asc').then(function() {
+            console.log('am i working?');
+        });
+    });
+
+    $('#sortDescending').on('click', function(e) {
+        e.preventDefault();
+
+        mixer.sort('published-on:desc').then(function() {
+            console.log('am i working?');
+        });
     });
 
     //***********************************************//
