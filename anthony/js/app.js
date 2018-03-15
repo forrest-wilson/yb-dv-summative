@@ -3,22 +3,19 @@ $(document).ready(function() {
 	var apiKey = 'nnHT2gNBLBc7MnBAi0G0pGrwuFHmhXzi';
 		usersURL = 'https://api.behance.net/v2/users/',
 		projectsURL = 'https://www.behance.net/v2/projects/',
+		userIds = ['codycobb', 'ashthorp', 'Filiphds' ],
 		statsAll = [],
 		statsToday = [];
 
 
 	// Function for grabbing data from behance
-	function getData(url, designer) {
+	function getData(url) {
         $.ajax({
             dataType: 'jsonp',
             url: url,
             success: function(behanceData) {
-            	if (behanceData) {
-            		console.log(behanceData);
-            		var stats = 'https://api.behance.net/v2/users/' + designer + '/stats?client_id=' + apiKey;
-            		console.log(stats);
-            		statsAll.push(stats);
-            	}
+            	statsAll.push(behanceData);
+            	
         	},
             error: function(error) {
                console.log(error);
@@ -27,7 +24,7 @@ $(document).ready(function() {
     }
 
     // data grab test
-    getData(usersURL + 'codycobb' + '?client_id=' + apiKey, 'codycobb');
+    getData(usersURL + userIds[0] + '/stats?client_id=' + apiKey);
     console.log(statsAll);
 
 
