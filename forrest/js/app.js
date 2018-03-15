@@ -347,9 +347,7 @@ $(document).ready(function() {
     });
 
     // Event listener for closing the modal using the close button
-    $('.closeWrapper').on('click', function() {
-        closeModal();
-    });
+    $('.closeIcon').on('click', closeModal);
 
     // Event listener for loadMoreComments button
     $(document).on('click', '#loadMoreComments', function(e) {
