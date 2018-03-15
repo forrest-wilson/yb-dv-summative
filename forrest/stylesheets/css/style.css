@@ -204,6 +204,9 @@ hr {
     font-family: FontAwesome;
     font-size: 32px; }
 
+.row {
+  margin: 0; }
+
 .inner {
   padding: 10px 20px; }
 
