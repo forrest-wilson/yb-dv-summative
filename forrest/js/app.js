@@ -74,8 +74,6 @@ $(document).ready(function() {
             getData(usersURL + designers[i] + '/projects?client_id=' + apiKey + '&per_page=' + pagination.projectsPerPage + '&page=' + pageNum, populateProjects);
         }
 
-        // getData(usersURL + designers[0] + '/projects?client_id=' + apiKey + '&per_page=' + pagination.projectsPerPage + '&page=' + pageNum, populateProjects);
-
         // Increases the page number to send with the next getProjects AJAX request
         pagination.nextPageNumber++;
     }
@@ -346,13 +344,6 @@ $(document).ready(function() {
         toggleMask();
         getProjectDetails(this.dataset.projectid, toggleLoader);
         toggleBodyScroll();
-    });
-
-    // Event listener for closing the modal by clicking on the modal mask
-    $(document).on('click', '#modalMask', function(e) {
-        if (e.target == e.currentTarget) {
-            closeModal();
-        }
     });
 
     // Event listener for closing the modal using the close button
