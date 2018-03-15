@@ -120,7 +120,6 @@ $(document).ready(function() {
 
             // If the array has more than or the same amount of items that the designers array has, hide the loadMoreProjects button 
             if (moreProjectsToLoad.length >= designers.length) {
-                console.log('no more projects to load');
                 $('#loadMoreProjects').hide();
             }
         }
