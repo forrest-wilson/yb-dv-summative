@@ -13,10 +13,9 @@ $(document).ready(function() {
             nextPageNumber: 1
         },
         commentPagination = {
-            commentsPerPage: 5,
+            commentsPerPage: 10,
             nextPageNumber: 1
         },
-        activeXhrRequests = [],
         moreProjectsToLoad = [];
 
     //*******************************//
@@ -43,26 +42,15 @@ $(document).ready(function() {
 
     // Generic AJAX function. Increases reuseablility
     function getData(url, successFunction) {
-        var xhr = $.ajax({
+        $.ajax({
             method: 'GET',
             dataType: 'jsonp',
             url: url,
-            success: function(data) {
-                // Deleting the request that has just finished
-                for (var i = 0; i < activeXhrRequests.length; i++) {
-                    if (activeXhrRequests[i] == xhr) {
-                        activeXhrRequests.splice(i, 1);
-                    }
-                }
-
-                successFunction(data);
-            },
+            success: successFunction,
             error: function(err) {
                 throw new Error('Unhandled AJAX Error: ', err);
             }
         });
-
-        activeXhrRequests.push(xhr);
     }
 
     // Generic function to render Template7 Scripts
@@ -191,8 +179,9 @@ $(document).ready(function() {
         var project = data.project,
             info = {
                 articles: [],
+                creators: [],
                 fieldsString: '',
-                description: project.description,
+                description: null,
                 creationDate: moment.unix(project.published_on).format('Do MMM YYYY'),
                 projectName: project.name,
                 stats: {
@@ -203,6 +192,10 @@ $(document).ready(function() {
                 projectID: project.id,
                 behanceURL: project.url
             };
+
+        if (project.description != '') {
+            info.description = project.description;
+        }
 
         for (var i = 0; i < project.modules.length; i++) {
             var mod = project.modules[i];
@@ -221,9 +214,22 @@ $(document).ready(function() {
 
                     break;
                 default:
-                    console.log('No support has been added for this data type: ' + mod.type);
                     break;
             }
+        }
+
+        for (var j = 0; j < project.owners.length; j++) {
+            var owner = project.owners[j],
+                ownerDetails = {};
+
+            ownerDetails.url = owner.url;
+            ownerDetails.name = owner.display_name;
+
+            if (j != project.owners.length - 1) {
+                ownerDetails.name += ',';
+            }
+
+            info.creators.push(ownerDetails);
         }
 
         info.fieldsString = project.fields.join(', ');

@@ -19,26 +19,30 @@
     <div id='controls' class='controls'>
         <div class='inner'>
             <h2>Filtering Projects</h2>
-            <button type='button' data-sort='published-on:asc'>Date Asc</button>
-            <button type='button' data-sort='published-on:desc'>Date Desc</button>
+            <button class='controlButton' type='button' data-sort='published-on:asc'>Sort by oldest first</button>
+            <button class='controlButton' type='button' data-sort='published-on:desc'>Sort by most recent first</button>
             <br>
             <br>
-            <button type='button' data-sort='likes:asc'>Sort by least likes</button>
-            <button type='button' data-sort='likes:desc'>Sort by most likes</button>
+            <button class='controlButton' type='button' data-sort='likes:asc'>Sort by least likes</button>
+            <button class='controlButton' type='button' data-sort='likes:desc'>Sort by most likes</button>
             <br>
             <br>
-            <button type='button' data-sort='views:asc'>Sort by least views</button>
-            <button type='button' data-sort='views:desc'>Sort by most views</button>
+            <button class='controlButton' type='button' data-sort='views:asc'>Sort by least views</button>
+            <button class='controlButton' type='button' data-sort='views:desc'>Sort by most views</button>
             <br>
             <br>
-            <button type='button' data-sort='comments:asc'>Sort by least comments</button>
-            <button type='button' data-sort='comments:desc'>Sort by most comments</button>
+            <button class='controlButton' type='button' data-sort='comments:asc'>Sort by least comments</button>
+            <button class='controlButton' type='button' data-sort='comments:desc'>Sort by most comments</button>
             <br>
             <br>
-            <button type='button' data-filter='.id-544146'>View Projs by Cody Cobb</button>
-            <button type='button' data-filter='.id-4342293'>View Projs by Filip Hodas</button>
-            <button type='button' data-filter='.id-6053747'>View Projs by Ash Thorp</button>
-            <button type='button' data-filter='all'>View All Projects</button>
+            <button class='controlButton' type='button' data-sort='name:asc'>Sort by alphabetical order</button>
+            <button class='controlButton' type='button' data-sort='name:desc'>Sort by reverse alphabetical order</button>
+            <br>
+            <br>
+            <button class='controlButton' type='button' data-filter='.id-544146'>View projects by Cody Cobb</button>
+            <button class='controlButton' type='button' data-filter='.id-4342293'>View projects by Filip Hodas</button>
+            <button class='controlButton' type='button' data-filter='.id-6053747'>View projects by Ash Thorp</button>
+            <button class='controlButton' type='button' data-filter='all'>View All Projects</button>
         </div>
     </div>
 
@@ -63,7 +67,7 @@
     </div>
 
     <script id='projectTemplate' type='text/template7'>
-        <div class='project col-sm-12 col-md-6 col-lg-4 col-xl-3 {{#each creatorID}}id-{{this}} {{/each}}' data-published-on={{publishedOn}} data-likes={{stats.likes}} data-views={{stats.views}} data-comments={{stats.comments}}>
+        <div class='project col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-2 {{#each creatorID}}id-{{this}} {{/each}}' data-published-on={{publishedOn}} data-likes={{stats.likes}} data-views={{stats.views}} data-comments={{stats.comments}} data-name={{projectName}}>
             <div class='projectInner' data-projectid={{projectID}}>
                 <div class='projectImageWrapper'>
                     <img src={{coverImage}} alt={{projectName}} />
@@ -103,6 +107,7 @@
             <div class='projectInfo inner'>
                 <div>
                     <p class='projectTitle'>{{projectName}}</p>
+                    <p class='projectCreator'>by {{#each creators}}<a href={{this.url}} target='_blank'>{{this.name}}</a> {{/each}}</p>
                     <small><a href={{behanceURL}} target='_blank'>View on Behance <i class='fa fa-external-link'></i></a></small>
                 </div>
                 <p>Published: {{creationDate}}</p>
@@ -123,8 +128,10 @@
                 <hr>
                 <p class='evenMargin'>{{fieldsString}}</p>
                 <hr>
-                <p class='evenMargin'>{{description}}</p>
-                <hr>
+                {{#if description}}
+                    <p class='evenMargin'>{{description}}</p>
+                    <hr>
+                {{/if}}
                 <div>
                     <p class='projectTitle'>Comments:</p>
                     <div id='comments'></div>
