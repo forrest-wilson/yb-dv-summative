@@ -29,6 +29,12 @@ $(document).ready(function() {
         percentPosition: true
     });
 
+    var mixer = mixitup('.projects', {
+        selectors: {
+            target: '.project'
+        }
+    });
+
     //************************//
     //**** Helper Methods ****//
     //************************//
@@ -67,6 +73,11 @@ $(document).ready(function() {
         return templateToRender;
     }
 
+    // Refreshes the grid project layout
+    function refreshLayout() {
+        masonryProjects.masonry();
+    }
+
     //*******************//
     //**** Functions ****//
     //*******************//
@@ -76,11 +87,11 @@ $(document).ready(function() {
     // Gets the projects using a specified page number
     function getProjects(pageNum) {
         // Commented to reduce AJAX requests during development
-        // for (var i = 0; i < designers.length; i++) {
-        //     getData(usersURL + designers[i] + '/projects?client_id=' + apiKey + '&per_page=' + pagination.projectsPerPage + '&page=' + pageNum, populateProjects);
-        // }
+        for (var i = 0; i < designers.length; i++) {
+            getData(usersURL + designers[i] + '/projects?client_id=' + apiKey + '&per_page=' + pagination.projectsPerPage + '&page=' + pageNum, populateProjects);
+        }
 
-        getData(usersURL + designers[0] + '/projects?client_id=' + apiKey + '&per_page=' + pagination.projectsPerPage + '&page=' + pageNum, populateProjects);
+        // getData(usersURL + designers[0] + '/projects?client_id=' + apiKey + '&per_page=' + pagination.projectsPerPage + '&page=' + pageNum, populateProjects);
 
         // Increases the page number to send with the next getProjects AJAX request
         pagination.nextPageNumber++;
@@ -136,25 +147,32 @@ $(document).ready(function() {
                 counter = counter + 1;
 
                 // Context to pass to the Template7 template
-                var projectInfo = {
-                    coverImage: projects[i].covers.original,
-                    projectName: projects[i].name,
+                var project = projects[i],
+                    projectInfo = {
+                    coverImage: project.covers.original,
+                    projectName: project.name,
                     stats: {
-                        likes: projects[i].stats.appreciations,
-                        views: projects[i].stats.views,
-                        comments: projects[i].stats.comments,
+                        likes: project.stats.appreciations,
+                        views: project.stats.views,
+                        comments: project.stats.comments,
                     },
-                    projectID: projects[i].id,
+                    projectID: project.id,
                     creator: null,
+                    creatorID: [],
                     counter: counter
                 };
                 
                 // Checks the data to see whether there were multiple owners of the project
                 // If so, set the text to 'Multiple Owners'
-                if (projects[i].owners.length > 1) {
+                if (project.owners.length > 1) {
                     projectInfo.creator = 'Multiple Owners';
                 } else {
-                    projectInfo.creator = projects[i].owners[0].display_name;
+                    projectInfo.creator = project.owners[0].display_name;
+                }
+
+                for (var ii = 0; ii < project.owners.length; ii++) {
+                    var owner = project.owners[ii];
+                    projectInfo.creatorID.push(owner.id);
                 }
     
                 // These variables must be declared after 
@@ -169,6 +187,8 @@ $(document).ready(function() {
             masonryProjects.imagesLoaded().progress(function() {
                 masonryProjects.masonry('layout');
             });
+
+            mixer.forceRefresh();
         }
 
         // Enables the loadMoreProjects button to be clicked again
@@ -374,6 +394,19 @@ $(document).ready(function() {
             $('#loadMoreProjects').addClass('disabledButton');
             getProjects(pagination.nextPageNumber);
         }
+    });
+
+    //**** Testing MixItUp ****//
+
+    $('#testOrdering').on('click', function(e) {
+        e.preventDefault();
+        mixer.filter($('.544146')).then(refreshLayout);
+    });
+
+    $('#showAll').on('click', function(e) {
+        e.preventDefault();
+
+        mixer.show().then(refreshLayout);
     });
 
     //***********************************************//
