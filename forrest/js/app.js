@@ -57,6 +57,16 @@ $(document).ready(function() {
         activeXhrRequests.push(xhr);
     }
 
+    // Generic function to render Template7 Scripts
+    function renderTemplate(el, context) {
+        var template = $(el).html(),
+            compiledTemplate = Template7.compile(template),
+            _context = context,
+            templateToRender = compiledTemplate(_context);
+
+        return templateToRender;
+    }
+
     //*******************//
     //**** Functions ****//
     //*******************//
@@ -76,8 +86,7 @@ $(document).ready(function() {
         pagination.nextPageNumber++;
     }
 
-    getProjects(pagination.nextPageNumber);
-
+    // Gets the details on a specific behance project and passes the API data to a population method
     function getProjectDetails(projectID, callback) {
         getData(projectsURL + projectID + '?api_key=' + apiKey, function(data) {
             populateModal(data);
@@ -86,6 +95,7 @@ $(document).ready(function() {
         });        
     }
 
+    // Gets the comments associated with a specific project
     function getProjectComments(projectID) {
         getData(projectsURL + projectID + '/comments?client_id=' + apiKey + '&per_page=' + commentPagination.commentsPerPage + '&page=' + commentPagination.nextPageNumber, function(data) {
             if (data.comments.length > 0) {
@@ -100,39 +110,44 @@ $(document).ready(function() {
 
     //**** Data Parser methods ****//
 
+    // Compiles a project template and appends it to the DOM
     function populateProjects(data) {
         console.log(data);
 
         var projects = data.projects,
             counter = $('.project').length;
 
-        if (projects.length < 3) {
+        // Performs a check on whether or not there will be more projects to load
+        if (projects.length < pagination.projectsPerPage) {
+            // If there are less than pagination.projectsPerPage projects to load, push false to an array
             moreProjectsToLoad.push(false);
 
-            if (moreProjectsToLoad.length >= 3) {
+            // If the array has more than or the same amount of items that the designers array has, hide the loadMoreProjects button 
+            if (moreProjectsToLoad.length >= designers.length) {
                 console.log('no more projects to load');
                 $('#loadMoreProjects').hide();
             }
         }
 
+        // Only run this block of code if there are more than 0 projects in the data object
         if (projects.length > 0) {
             for (var i = 0; i < projects.length; i++) {
                 // Counter for data-order in template
                 counter = counter + 1;
-                var projectTemplate = $('#projectTemplate').html(),
-                    compiledProjectTemplate = Template7.compile(projectTemplate),
-                    projectInfo = {
-                        coverImage: projects[i].covers.original,
-                        projectName: projects[i].name,
-                        stats: {
-                            likes: projects[i].stats.appreciations,
-                            views: projects[i].stats.views,
-                            comments: projects[i].stats.comments,
-                        },
-                        projectID: projects[i].id,
-                        creator: null,
-                        counter: counter
-                    };
+
+                // Context to pass to the Template7 template
+                var projectInfo = {
+                    coverImage: projects[i].covers.original,
+                    projectName: projects[i].name,
+                    stats: {
+                        likes: projects[i].stats.appreciations,
+                        views: projects[i].stats.views,
+                        comments: projects[i].stats.comments,
+                    },
+                    projectID: projects[i].id,
+                    creator: null,
+                    counter: counter
+                };
                 
                 // Checks the data to see whether there were multiple owners of the project
                 // If so, set the text to 'Multiple Owners'
@@ -142,26 +157,29 @@ $(document).ready(function() {
                     projectInfo.creator = projects[i].owners[0].display_name;
                 }
     
-                var toBeAppended = compiledProjectTemplate(projectInfo),
-                    $toBeAppended = $(toBeAppended);
-    
-                masonryProjects.append($toBeAppended).masonry('appended', $toBeAppended);
+                // These variables must be declared after 
+                var template = renderTemplate('#projectTemplate', projectInfo),
+                    $template = $(template);
+                
+                // Appends the project to DOM and let the masonry plugin do its thing
+                masonryProjects.append($template).masonry('appended', $template);
             }
 
+            // Masonry workaround for arranging items with dynamic images
             masonryProjects.imagesLoaded().progress(function() {
                 masonryProjects.masonry('layout');
             });
         }
 
+        // Enables the loadMoreProjects button to be clicked again
         $('#loadMoreProjects').removeClass('disabledButton');
     }
 
+    // Populates the modal with info being passed to a template
     function populateModal(data) {
         console.log(data);
 
         var project = data.project,
-            projectTemplate = $('#projectDetailsTemplate').html(),
-            compiledProjectDetailsTemplate = Template7.compile(projectTemplate),
             info = {
                 articles: [],
                 fields: [],
@@ -180,6 +198,8 @@ $(document).ready(function() {
 
         for (var i = 0; i < project.modules.length; i++) {
             var mod = project.modules[i];
+            
+            // Only allow certain 'types' to be appendable to the DOM
             switch(mod.type) {
                 case('image'):
                     info.articles.push(mod.sizes.max_1200);
@@ -208,10 +228,12 @@ $(document).ready(function() {
             }
         }
 
-        var compiledTemplate = compiledProjectDetailsTemplate(info);
+        // Compiles the template using the info being passed
+        var compiledTemplate = renderTemplate('#projectDetailsTemplate', info);
 
         $('#modalContent').append(compiledTemplate);
 
+        // Initializes the slick slideshow
         $('#images').slick({
             initialSlide: 1,
             slidesToShow: 1,
@@ -236,17 +258,17 @@ $(document).ready(function() {
         $(window).trigger('resize');
     }
 
+    // Populates the comments of a specific project
     function populateComments(data) {
         console.log(data);
 
         var comments = data.comments,
             commentElements = [];
 
-        if (data.comments.length > 0) {
+        // Only run this block if there are more than 0 comments in the data
+        if (comments.length > 0) {
             for (var i = 0; i < comments.length; i++) {
                 var comment = comments[i],
-                    commentTemplate = $('#commentTemplate').html(),
-                    compiledCommentTemplate = Template7.compile(commentTemplate),
                     commentInfo = {
                         commenter: {
                             name: comment.user.display_name,
@@ -256,14 +278,14 @@ $(document).ready(function() {
                         comment: comment.comment,
                         publishedOn: moment.unix(comment.created_on).format('Do MMM YYYY')
                     },
-                    compiled = compiledCommentTemplate(commentInfo);
+                    compiled = renderTemplate('#commentTemplate', commentInfo);
 
+                // Pushes each rendered comment to an array
                 commentElements.push(compiled);
-
-                if (comments.length == commentElements.length) {
-                    $('#comments').append(commentElements);
-                }
             }
+
+            // Append each item in the array to the DOM
+            $('#comments').append(commentElements);
         }
     }
 
@@ -293,10 +315,12 @@ $(document).ready(function() {
         $('body').toggleClass('modalShowing');
     }
 
+    // Hides the more comments button
     function hideMoreCommentsButton() {
         $('#loadMoreComments').hide();
     }
 
+    // When the modal needs to be closed, call this method
     function closeModal() {
         commentPagination.nextPageNumber = 1;
         toggleBodyScroll();
@@ -318,31 +342,45 @@ $(document).ready(function() {
         toggleBodyScroll();
     });
 
+    // Event listener for closing the modal by clicking on the modal mask
     $(document).on('click', '#modalMask', function(e) {
         if (e.target == e.currentTarget) {
             closeModal();
         }
     });
 
+    // Event listener for closing the modal using the close button
     $('.closeWrapper').on('click', function() {
         closeModal();
     });
 
+    // Event listener for loadMoreComments button
     $(document).on('click', '#loadMoreComments', function(e) {
         e.preventDefault();
+
+        // Checks to see whether the button is disabled
         if (!$(this).hasClass('disabledButton')) {
             $('#loadMoreComments').addClass('disabledButton');
             getProjectComments(this.dataset.projectid);
         }
     });
 
+    // Event listener for loadMoreProjects button
     $('#loadMoreProjects').on('click', function(e) {
         e.preventDefault();
+
+        // Checks to see whether the button is disabled
         if (!$(this).hasClass('disabledButton')) {
             $('#loadMoreProjects').addClass('disabledButton');
             getProjects(pagination.nextPageNumber);
         }
     });
+
+    //***********************************************//
+    //**** Functions to run on initial page load ****//
+    //***********************************************//
+
+    getProjects(pagination.nextPageNumber);
 
     //*******************//
     //**** Dummy API ****//
