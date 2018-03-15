@@ -388,23 +388,4 @@ $(document).ready(function() {
     //***********************************************//
 
     getProjects(pagination.nextPageNumber);
-
-    //*******************//
-    //**** Dummy API ****//
-    //*******************//
-
-    // var dummy = {
-    //     project: 'json/project.json',
-    //     projects: 'json/projects.json',
-    //     comments: {
-    //         page1: 'json/projectCommentsP1-10.json',
-    //         page2: 'json/projectCommentsP2-10.json',
-    //         page3: 'json/projectCommentsP3-7.json',
-    //         all: 'json/projectCommentsAll.json'
-    //     }
-    // };
-
-    // $.get(dummy.comments.page1, function(data) {
-    //     console.log(data);
-    // });
 });
