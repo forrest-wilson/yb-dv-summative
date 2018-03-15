@@ -56,11 +56,9 @@ $(document).ready(function() {
     // Generic function to render Template7 Scripts
     function renderTemplate(el, context) {
         var template = $(el).html(),
-            compiledTemplate = Template7.compile(template),
-            _context = context,
-            templateToRender = compiledTemplate(_context);
+            compiledTemplate = Template7.compile(template);
 
-        return templateToRender;
+        return compiledTemplate(context);
     }
 
     //*******************//
