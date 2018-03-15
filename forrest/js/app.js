@@ -294,6 +294,11 @@ $(document).ready(function() {
             // Append each item in the array to the DOM
             $('#comments').append(commentElements);
         }
+
+        // Removes the loadMoreComments button if there are less than a predetermined amount to load
+        if (comments.length < commentPagination.commentsPerPage) {
+            $('#loadMoreComments').hide();
+        }
     }
 
     //******************************//
