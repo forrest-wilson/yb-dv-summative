@@ -193,10 +193,12 @@ $(document).ready(function() {
                 behanceURL: project.url
             };
 
+        // If a description exists, replace the null value with the description
         if (project.description != '') {
             info.description = project.description;
         }
 
+        // Loops through each 'module' and appends useable content to info.articles
         for (var i = 0; i < project.modules.length; i++) {
             var mod = project.modules[i];
             
@@ -218,6 +220,7 @@ $(document).ready(function() {
             }
         }
 
+        // Loops through each owner of the project and adds their name and url to the context passed to the template renderer
         for (var j = 0; j < project.owners.length; j++) {
             var owner = project.owners[j],
                 ownerDetails = {};
