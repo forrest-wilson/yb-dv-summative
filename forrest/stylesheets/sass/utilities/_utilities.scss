@@ -6,8 +6,7 @@
     padding: 10px 20px;
 }
 
-.project,
-.sizer {
+.project {
     width: 100%;
 }
 
@@ -30,4 +29,8 @@
 
 .disabledButton {
     color: #909090;
+
+    &:hover {
+        cursor: wait;
+    }
 }

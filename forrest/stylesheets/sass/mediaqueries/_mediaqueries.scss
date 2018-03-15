@@ -2,19 +2,7 @@
 //**** Media Queries SASS ****//
 //****************************//
 
-@media screen and (min-width: 500px) {
-    .project,
-    .sizer {
-        width: 50%;
-    }
-}
-
 @media screen and (min-width: 800px) {
-    .project,
-    .sizer {
-        width: 33.33%;
-    }
-
     .loadMoreProjects {
         width: 350px;
         margin: 0 auto;
@@ -84,12 +72,15 @@
 }
 
 @media screen and (min-width: 1200px) {
-    .project,
-    .sizer {
-        width: 25%;
-    }
-
     .projectInfo {
         width: 500px;
+    }
+}
+
+@media screen and (min-width: 1660px) {
+    // Adding an extra bootstrap class
+    .col-xxl-2 {
+        flex: 0 0 percentage(1 / 6);
+        max-width: percentage(1 / 6);
     }
 }
