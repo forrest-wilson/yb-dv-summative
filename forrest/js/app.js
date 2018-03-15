@@ -191,7 +191,6 @@ $(document).ready(function() {
         var project = data.project,
             info = {
                 articles: [],
-                fields: [],
                 fieldsString: '',
                 description: project.description,
                 creationDate: moment.unix(project.published_on).format('Do MMM YYYY'),
@@ -227,15 +226,7 @@ $(document).ready(function() {
             }
         }
 
-        // Concatenates all fields into a string to pass to the template
-        for (var j = 0; j < project.fields.length; j++) {
-            info.fields.push(project.fields[j]);
-            info.fieldsString += info.fields[j];
-
-            if (j < project.fields.length - 1) {
-                info.fieldsString += ', ';
-            }
-        }
+        info.fieldsString = project.fields.join(', ');
 
         // Compiles the template using the info being passed
         var compiledTemplate = renderTemplate('#projectDetailsTemplate', info);
