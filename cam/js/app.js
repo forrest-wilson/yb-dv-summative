@@ -18,26 +18,26 @@ secondProfile.addEventListener('click', displayDetailSecondProfile, false);
 thirdProfile.addEventListener('click', displayDetailThirdProfile, false);
 
 function displayDetail() {
-    $(firstProfile).animate({height: "600px", width: "1000px"});
-    $('#profilePhoto2').css({float: 'left', width: '276px'});
+    // $(firstProfile).animate({height: "600px", width: "1000px"});
+    // $('#profilePhoto2').css({float: 'left', width: '276px'});
 
-    $(secondProfile).animate({height: "290px", width: "290px"});
-    $(thirdProfile).animate({height: "290px", width: "290px"});
+    // $(secondProfile).animate({height: "290px", width: "290px"});
+    // $(thirdProfile).animate({height: "290px", width: "290px"});
 }
 
 function displayDetailSecondProfile() {
-    $(secondProfile).animate({height: "600px", width: "1000px"});
-    $('#profilePhoto1').css({float: 'left', width: '276px'});
+ //    $(secondProfile).animate({height: "600px", width: "1000px"});
+ //    $('#profilePhoto1').css({float: 'left', width: '276px'});
 
-    $(firstProfile).animate({height: "290px", width: "290px"});
-	$(thirdProfile).animate({height: "290px", width: "290px"});
+ //    $(firstProfile).animate({height: "290px", width: "290px"});
+	// $(thirdProfile).animate({height: "290px", width: "290px"});
 }
 function displayDetailThirdProfile() {
-    $(thirdProfile).animate({height: "600px", width: "1000px"});
-    $('#profilePhoto3').css({float: 'left', width: '276px'});
+    // $(thirdProfile).animate({height: "600px", width: "1000px"});
+    // $('#profilePhoto3').css({float: 'left', width: '276px'});
 
-    $(secondProfile).animate({height: "290px", width: "290px"});
-    $(firstProfile).animate({height: "290px", width: "290px"});
+    // $(secondProfile).animate({height: "290px", width: "290px"});
+    // $(firstProfile).animate({height: "290px", width: "290px"});
 }
 
 	$.ajax ({
@@ -86,6 +86,9 @@ function displayDetailThirdProfile() {
 			console.log('error');
 		}
 	});
+
+
+
 
 
 }); // end ready function
