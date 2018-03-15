@@ -99,7 +99,7 @@ $(document).ready(function() {
                 commentPagination.nextPageNumber++;
                 $('#loadMoreComments').removeClass('disabledButton');
             } else {
-                hideMoreCommentsButton();
+                $('#loadMoreComments').hide();
             }
         });
     }
@@ -324,11 +324,6 @@ $(document).ready(function() {
     // Toggles scrolling on the body element
     function toggleBodyScroll() {
         $('body').toggleClass('modalShowing');
-    }
-
-    // Hides the more comments button
-    function hideMoreCommentsButton() {
-        $('#loadMoreComments').hide();
     }
 
     // When the modal needs to be closed, call this method
