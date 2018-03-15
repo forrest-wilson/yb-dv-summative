@@ -19,11 +19,26 @@
     <div id='controls' class='controls'>
         <div class='inner'>
             <h2>Filtering Projects</h2>
-            <button id='testOrdering'>ORDER</button>
-            <button id='showAll'>Show All</button>
-            <button id='sortAscending'>Sort Ascending</button>
-            <button id='sortDescending'>Sort Descending</button>
-            <button data-sort='published-on:asc'>Data Asc</button>
+            <button type='button' data-sort='published-on:asc'>Date Asc</button>
+            <button type='button' data-sort='published-on:desc'>Date Desc</button>
+            <br>
+            <br>
+            <button type='button' data-sort='likes:asc'>Sort by least likes</button>
+            <button type='button' data-sort='likes:desc'>Sort by most likes</button>
+            <br>
+            <br>
+            <button type='button' data-sort='views:asc'>Sort by least views</button>
+            <button type='button' data-sort='views:desc'>Sort by most views</button>
+            <br>
+            <br>
+            <button type='button' data-sort='comments:asc'>Sort by least comments</button>
+            <button type='button' data-sort='comments:desc'>Sort by most comments</button>
+            <br>
+            <br>
+            <button type='button' data-filter='.id-544146'>View Projs by Cody Cobb</button>
+            <button type='button' data-filter='.id-4342293'>View Projs by Filip Hodas</button>
+            <button type='button' data-filter='.id-6053747'>View Projs by Ash Thorp</button>
+            <button type='button' data-filter='all'>View All Projects</button>
         </div>
     </div>
 
@@ -48,7 +63,7 @@
     </div>
 
     <script id='projectTemplate' type='text/template7'>
-        <div class='project col-sm-12 col-md-6 col-lg-4 col-xl-3 {{#each creatorID}}{{this}} {{/each}}' data-published-on={{publishedOn}}>
+        <div class='project col-sm-12 col-md-6 col-lg-4 col-xl-3 {{#each creatorID}}id-{{this}} {{/each}}' data-published-on={{publishedOn}} data-likes={{stats.likes}} data-views={{stats.views}} data-comments={{stats.comments}}>
             <div class='projectInner' data-projectid={{projectID}}>
                 <div class='projectImageWrapper'>
                     <img src={{coverImage}} alt={{projectName}} />

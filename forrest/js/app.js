@@ -383,35 +383,6 @@ $(document).ready(function() {
         }
     });
 
-    //**** Testing MixItUp ****//
-
-    $('#testOrdering').on('click', function(e) {
-        e.preventDefault();
-        mixer.filter($('.544146')).then();
-    });
-
-    $('#showAll').on('click', function(e) {
-        e.preventDefault();
-
-        mixer.show().then();
-    });
-
-    $('#sortAscending').on('click', function(e) {
-        e.preventDefault();
-
-        mixer.sort('published-on:asc').then(function() {
-            console.log('am i working?');
-        });
-    });
-
-    $('#sortDescending').on('click', function(e) {
-        e.preventDefault();
-
-        mixer.sort('published-on:desc').then(function() {
-            console.log('am i working?');
-        });
-    });
-
     //***********************************************//
     //**** Functions to run on initial page load ****//
     //***********************************************//
