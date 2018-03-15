@@ -29,9 +29,11 @@ $(document).ready(function() {
         },
         animation: {
             enable: true,
-            queueLimit: 10,
             duration: 300,
             easing: 'ease-in-out'
+        },
+        behavior: {
+            liveSort: true
         }
     });
 
