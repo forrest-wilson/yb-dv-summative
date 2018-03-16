@@ -61,6 +61,11 @@ $(document).ready(function() {
         return compiledTemplate(context);
     }
 
+    // Helper method for formatting time
+    function timeFormatter(time) {
+        return moment.unix(time).format('Do MMM YYYY');
+    }
+
     //*******************//
     //**** Functions ****//
     //*******************//
@@ -177,7 +182,7 @@ $(document).ready(function() {
                 creators: [],
                 fieldsString: '',
                 description: null,
-                creationDate: moment.unix(project.published_on).format('Do MMM YYYY'),
+                creationDate: timeFormatter(project.published_on),
                 projectName: project.name,
                 stats: {
                     likes: project.stats.appreciations,
@@ -280,7 +285,7 @@ $(document).ready(function() {
                             link: comment.user.url
                         },
                         comment: comment.comment,
-                        publishedOn: moment.unix(comment.created_on).format('Do MMM YYYY')
+                        publishedOn: timeFormatter(comment.created_on)
                     },
                     compiled = renderTemplate('#commentTemplate', commentInfo);
 
