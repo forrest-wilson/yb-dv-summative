@@ -52,6 +52,7 @@ function displayDetailThirdProfile() {
 				for (var about in behanceData.user.sections) {
 					$(secondProfile).append('<h3 id="ashThorpAbout">' + behanceData.user.sections[about] + '</h3>');
 					$(secondProfile).append('<h2 id="ashThorpLocation">' + behanceData.user.location + '</h2>');
+					$(secondProfile).append('<h2 id="ashThorpOccupation">' + behanceData.user.occupation + '</h2>');
 				}
 			}
 		},
@@ -72,7 +73,10 @@ function displayDetailThirdProfile() {
 
 				for (var about in behanceData.user.sections) {
 					$(firstProfile).append('<h3 id="codyCobbAbout">' + behanceData.user.sections[about] + '</h3>');
+					$(firstProfile).append('<h2 id="codyCobbOccupation">' + behanceData.user.occupation + '</h2>');					
 					$(firstProfile).append('<h2 id="codyCobbLocation">' + behanceData.user.location + '</h2>');
+
+
 				}
 			}
 		},
@@ -91,7 +95,9 @@ function displayDetailThirdProfile() {
 				$(thirdProfile).append(profileImage);
 
 				$(thirdProfile).append('<h3 id="filipHodasAbout">' + behanceData.user.sections['About Me'] + '</h3>');
+				$(thirdProfile).append('<h2 id="filipHodasOccupation">' + behanceData.user.occupation + '</h2>');				
 				$(thirdProfile).append('<h2 id="filipHodasLocation">' + behanceData.user.location + '</h2>');
+
 			}
 		},
 		error: function(error) {

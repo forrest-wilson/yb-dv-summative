@@ -19,15 +19,15 @@ h3 {
 	font-size: 16px;
 }
 
-#ashThorpAbout, #ashThorpLocation h2 {
+#ashThorpAbout, #ashThorpLocation, #ashThorpOccupation {
 	display: none;
 }
 
-#codyCobbAbout, #codyCobbLocation h2 {
+#codyCobbAbout, #codyCobbLocation, #codyCobbOccupation {
 	display: none;
 }
 
-#filipHodasAbout, #filipHodasLocation h2 {
+#filipHodasAbout, #filipHodasLocation, #filipHodasOccupation {
 	display: none;
 }
 
@@ -123,8 +123,9 @@ h3 {
 			max-width: 25%;
 			height: auto;
 			float: left;
+			margin-right: 15px;
 		}
-		#ashThorpAbout {
+		#ashThorpAbout{
 			margin: 5px auto;
 			display: inline-block;
 			float: right;
@@ -140,6 +141,14 @@ h3 {
 			margin: 5px auto;
 			display: inline-block;
 			float: right;
+		}
+		#ashThorpOccupation, #codyCobbOccupation, #filipHodasOccupation {
+			display: block;
+			margin: 5px auto;
+		}
+		#ashThorpLocation, #codyCobbLocation, #filipHodasLocation {
+			display: block;
+			margin: 5px auto;
 		}
 	}
 
