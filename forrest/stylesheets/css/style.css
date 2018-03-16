@@ -180,6 +180,20 @@ hr {
   box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.5);
   background-color: #F3F3F3; }
 
+.controls .dropdownWrapper {
+  position: relative;
+  display: inline-block; }
+  .controls .dropdownWrapper .dropdownMenu {
+    position: absolute;
+    z-index: 600;
+    background-color: #F3F3F3;
+    display: none; }
+    .controls .dropdownWrapper .dropdownMenu .dropdownItem {
+      display: block;
+      white-space: nowrap; }
+  .controls .dropdownWrapper:hover .dropdownMenu {
+    display: block; }
+
 .slick-slide {
   display: inline-block;
   outline: 0; }

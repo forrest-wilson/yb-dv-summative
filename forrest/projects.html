@@ -18,7 +18,31 @@
 
     <div id='controls' class='controls'>
         <div class='inner'>
-            <h2>Filtering Projects</h2>
+            <div class='sorting'>
+                <span>Sort By:</span>
+                <span class='btn-group sortingButtons'>
+                    <button class='controlButton' type='button' data-sort='published-on:asc'>Age</button>
+                    <button class='controlButton' type='button' data-sort='likes:asc'>Likes</button>
+                    <button class='controlButton' type='button' data-sort='comments:asc'>Comments</button>
+                    <button class='controlButton' type='button' data-sort='views:asc'>Views</button>
+                </span>
+                <span>Order By:</span>
+                <span class='btn-group orderingButtons'>
+                    <button class='controlButton active' type='button' data-sort='default:asc'>Asc</button>
+                    <button class='controlButton' type='button' data-sort='default:desc'>Desc</button>
+                    <button class='controlButton' type='button' data-sort='random'>Random</button>
+                </span>
+                <div class='dropdownWrapper'>
+                    <button class='dropdownButton'>Filter By <i class='fa fa-angle-double-down'></i></button>
+                    <div class='dropdownMenu inner'>
+                        <a href='#' class='controlButton dropdownItem' data-filter='all'>All Designers</a>
+                        <a href='#' class='controlButton dropdownItem' data-filter='.id-544146'>Cody Cobb</a>
+                        <a href='#' class='controlButton dropdownItem' data-filter='.id-4342293'>Filip Hodas</a>
+                        <a href='#' class='controlButton dropdownItem' data-filter='.id-6053747'>Ash Thorp</a>
+                    </div>
+                </div>
+            </div>
+            <!-- <h2>Filtering Projects</h2>
             <button class='controlButton' type='button' data-sort='published-on:asc'>Sort by oldest first</button>
             <button class='controlButton' type='button' data-sort='published-on:desc'>Sort by most recent first</button>
             <br>
@@ -42,7 +66,7 @@
             <button class='controlButton' type='button' data-filter='.id-544146'>View projects by Cody Cobb</button>
             <button class='controlButton' type='button' data-filter='.id-4342293'>View projects by Filip Hodas</button>
             <button class='controlButton' type='button' data-filter='.id-6053747'>View projects by Ash Thorp</button>
-            <button class='controlButton' type='button' data-filter='all'>View All Projects</button>
+            <button class='controlButton' type='button' data-filter='all'>View All Projects</button> -->
         </div>
     </div>
 
@@ -67,7 +91,7 @@
     </div>
 
     <script id='projectTemplate' type='text/template7'>
-        <div class='project col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-2 {{#each creatorID}}id-{{this}} {{/each}}' data-published-on={{publishedOn}} data-likes={{stats.likes}} data-views={{stats.views}} data-comments={{stats.comments}} data-name={{projectName}}>
+        <div class='project col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-2 {{#each creatorID}}id-{{this}} {{/each}}' data-published-on={{publishedOn}} data-likes={{stats.likes}} data-views={{stats.views}} data-comments={{stats.comments}} data-name={{projectName}} data-order={{counter}}>
             <div class='projectInner' data-projectid={{projectID}}>
                 <div class='projectImageWrapper'>
                     <img src={{coverImage}} alt={{projectName}} />

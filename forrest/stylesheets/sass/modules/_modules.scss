@@ -206,3 +206,26 @@
     box-shadow: $boxShadow;
     background-color: $whiteColor;
 }
+
+.controls {
+    .dropdownWrapper {
+        position: relative;
+        display: inline-block;
+
+        .dropdownMenu {
+            position: absolute;
+            z-index: 600;
+            background-color: $whiteColor;
+            display: none;
+    
+            .dropdownItem {
+                display: block;
+                white-space: nowrap;
+            }
+        }
+
+        &:hover .dropdownMenu {
+            display: block;
+        }
+    }
+}
