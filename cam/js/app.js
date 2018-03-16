@@ -2,13 +2,13 @@ $(document).ready(function() {
 
 var apiKey = 'Iamkq0sRqOd6PqC7IEFwofD3YVs30ox9';
 var apiKey2 = 'KxiDWLIreraa9YM633j8JQy3mRmU6Smh';
-var ashThorpUrl = 'https://api.behance.net/v2/users/ashthorp?client_id=KxiDWLIreraa9YM633j8JQy3mRmU6Smh';
-var codyCobbUrl = 'https://api.behance.net/v2/users/codycobb?client_id=KxiDWLIreraa9YM633j8JQy3mRmU6Smh';
-var filipHodasUrl = 'https://api.behance.net/v2/users/Filiphds?client_id=KxiDWLIreraa9YM633j8JQy3mRmU6Smh';
+var ashThorpUrl = 'https://api.behance.net/v2/users/ashthorp?client_id=';
+var codyCobbUrl = 'https://api.behance.net/v2/users/codycobb?client_id=';
+var filipHodasUrl = 'https://api.behance.net/v2/users/Filiphds?client_id=';
 
-var firstProfile  	= document.getElementById('profileUno');
-var secondProfile  	= document.getElementById('profileDos');
-var thirdProfile 	= document.getElementById('profileTres');
+var firstProfile  	= document.getElementsByClassName('profileUno')[0];
+var secondProfile  	= document.getElementsByClassName('profileDos')[0];
+var thirdProfile 	= document.getElementsByClassName('profileTres')[0];
 var hiddenCard1		= document.getElementById('closebtn1');
 var hiddenCard2		= document.getElementById('closebtn2');
 var hiddenCard3		= document.getElementById('closebtn3');
@@ -18,37 +18,41 @@ secondProfile.addEventListener('click', displayDetailSecondProfile, false);
 thirdProfile.addEventListener('click', displayDetailThirdProfile, false);
 
 function displayDetail() {
-    // $(firstProfile).animate({height: "600px", width: "1000px"});
-    // $('#profilePhoto2').css({float: 'left', width: '276px'});
+	firstProfile.classList.toggle("heightToggle");
 
-    // $(secondProfile).animate({height: "290px", width: "290px"});
-    // $(thirdProfile).animate({height: "290px", width: "290px"});
+	secondProfile.classList.toggle("smallToggle");
+	thirdProfile.classList.toggle("smallToggle");
 }
 
 function displayDetailSecondProfile() {
- //    $(secondProfile).animate({height: "600px", width: "1000px"});
- //    $('#profilePhoto1').css({float: 'left', width: '276px'});
+	secondProfile.classList.toggle("heightToggle");
 
- //    $(firstProfile).animate({height: "290px", width: "290px"});
-	// $(thirdProfile).animate({height: "290px", width: "290px"});
+	firstProfile.classList.toggle("smallToggle");
+	thirdProfile.classList.toggle("smallToggle");
 }
+
 function displayDetailThirdProfile() {
-    // $(thirdProfile).animate({height: "600px", width: "1000px"});
-    // $('#profilePhoto3').css({float: 'left', width: '276px'});
+	thirdProfile.classList.toggle("heightToggle");
 
-    // $(secondProfile).animate({height: "290px", width: "290px"});
-    // $(firstProfile).animate({height: "290px", width: "290px"});
+	secondProfile.classList.toggle("smallToggle");
+	firstProfile.classList.toggle("smallToggle");
+
 }
 
 	$.ajax ({
-		url: ashThorpUrl,
+		url: ashThorpUrl + apiKey,
 		dataType: 'jsonp',
 		success: function(behanceData) {
 			if (behanceData) {
 				console.log(behanceData);
 				var profileImage = '';
-				profileImage += '<img id="profilePhoto1" src= "' + behanceData.user.images[276] + '">' + '<figcaption>' + behanceData.user.display_name + '</figcaption>';
+				profileImage += '<img id="profilePhoto1" src= "' + behanceData.user.images[276] + '">';
 				$(secondProfile).append(profileImage);
+
+				for (var about in behanceData.user.sections) {
+					$(secondProfile).append('<h3 id="ashThorpAbout">' + behanceData.user.sections[about] + '</h3>');
+					$(secondProfile).append('<h2 id="ashThorpLocation">' + behanceData.user.location + '</h2>');
+				}
 			}
 		},
 		error: function(error) {
@@ -57,14 +61,19 @@ function displayDetailThirdProfile() {
 	});
 
 	$.ajax ({
-		url: codyCobbUrl,
+		url: codyCobbUrl + apiKey,
 		dataType: 'jsonp',
 		success: function(behanceData) {
 			if (behanceData) {
 				console.log(behanceData);
 				var profileImage = '';
-				profileImage += '<img id="profilePhoto2" src= "' + behanceData.user.images[276] + '">' + behanceData.user.display_name;
+				profileImage += '<img id="profilePhoto2" src= "' + behanceData.user.images[276] + '">';
 				$(firstProfile).append(profileImage);
+
+				for (var about in behanceData.user.sections) {
+					$(firstProfile).append('<h3 id="codyCobbAbout">' + behanceData.user.sections[about] + '</h3>');
+					$(firstProfile).append('<h2 id="codyCobbLocation">' + behanceData.user.location + '</h2>');
+				}
 			}
 		},
 		error: function(error) {
@@ -72,14 +81,17 @@ function displayDetailThirdProfile() {
 		}
 	});
 	$.ajax ({
-		url: filipHodasUrl,
+		url: filipHodasUrl + apiKey2,
 		dataType: 'jsonp',
 		success: function(behanceData) {
 			if (behanceData) {
 				console.log(behanceData);
 				var profileImage = '';
-				profileImage += '<img id="profilePhoto3" src= "' + behanceData.user.images[276] + '">' + '<figcaption>' + behanceData.user.display_name + '</figcaption>';
+				profileImage += '<img id="profilePhoto3" src= "' + behanceData.user.images[276] + '">';
 				$(thirdProfile).append(profileImage);
+
+				$(thirdProfile).append('<h3 id="filipHodasAbout">' + behanceData.user.sections['About Me'] + '</h3>');
+				$(thirdProfile).append('<h2 id="filipHodasLocation">' + behanceData.user.location + '</h2>');
 			}
 		},
 		error: function(error) {
@@ -88,7 +100,7 @@ function displayDetailThirdProfile() {
 	});
 
 
-
+// + '<figcaption>' + behanceData.user.display_name + '</figcaption>'
 
 
 }); // end ready function

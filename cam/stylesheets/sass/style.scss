@@ -15,6 +15,23 @@ h1 {
 	text-shadow: 0px 7px 26px 0px rgba(0,0,0,0.86);
 }
 
+h3 {
+	font-size: 16px;
+}
+
+#ashThorpAbout, #ashThorpLocation h2 {
+	display: none;
+}
+
+#codyCobbAbout, #codyCobbLocation h2 {
+	display: none;
+}
+
+#filipHodasAbout, #filipHodasLocation h2 {
+	display: none;
+}
+
+
 * {
     box-sizing: border-box;
 }
@@ -26,7 +43,7 @@ h1 {
 //     transform: translate(-50%, -50%);
 // }
 
-#profileUno {
+.profileUno {
 	height: 300px;
 	width: 290px;
 	padding: 10px;
@@ -39,13 +56,13 @@ h1 {
 	transition: all .4s ease-in-out;
 }
 
-#profileUno:hover {
+.profileUno:hover {
 	// transform: scale(1.1);
 	-webkit-box-shadow: 0px 7px 50px 20px rgba(0,0,0,0.86); 
 	box-shadow: 0px 7px 80px 10px rgba(15,86,89,0.86);
 }
 
-#profileDos {
+.profileDos {
 	height: 300px;
 	width: 290px;
 	padding: 10px;
@@ -59,13 +76,13 @@ h1 {
 	transition: all .4s ease-in-out;
 }
 
-#profileDos:hover {
+.profileDos:hover {
 	// transform: scale(1.1);
 	-webkit-box-shadow: 0px 7px 50px 20px rgba(0,0,0,0.86); 
 	box-shadow: 0px 7px 80px 10px rgba(15,86,89,0.86);
 }
 
-#profileTres {
+.profileTres {
 	height: 300px;
 	width: 290px;
 	padding: 10px;
@@ -78,11 +95,12 @@ h1 {
 	transition: all .4s ease-in-out;
 }
 
-#profileTres:hover {
+.profileTres:hover {
 	// transform: scale(1.1);
 	-webkit-box-shadow: 0px 7px 50px 20px rgba(0,0,0,0.86); 
 	box-shadow: 0px 7px 80px 10px rgba(15,86,89,0.86);
 }
+
 
 @media only screen and (min-width: 576px) {
 	.container {
@@ -92,14 +110,44 @@ h1 {
 	    transform: translate(-50%, -50%);
 	}
 	img {
-		height: 256px;
-		width: 100%;
+		height: auto;
+		max-width: 100%;
 		margin: 0 auto;
 		display: block;
 		transition: all .4s ease-in-out;
 	}
+	.heightToggle {
+		height: 80vh;
+		width: 50vw;
+		img {
+			max-width: 25%;
+			height: auto;
+			float: left;
+		}
+		#ashThorpAbout {
+			margin: 5px auto;
+			display: inline-block;
+			float: right;
+		}
+
+		#codyCobbAbout {
+			margin: 5px auto;
+			display: inline-block;
+			float: right;
+		}
+
+		#filipHodasAbout {
+			margin: 5px auto;
+			display: inline-block;
+			float: right;
+		}
+	}
+
 }
 
+.smallToggle {
+	display: none;
+}
 
 figcaption {
 	margin: 5px;
