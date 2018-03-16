@@ -180,18 +180,18 @@ hr {
   box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.5);
   background-color: #F3F3F3; }
 
-.controls .dropdownWrapper {
+.projectControls .dropdownWrapper {
   position: relative;
   display: inline-block; }
-  .controls .dropdownWrapper .dropdownMenu {
+  .projectControls .dropdownWrapper .dropdownMenu {
     position: absolute;
     z-index: 600;
     background-color: #F3F3F3;
     display: none; }
-    .controls .dropdownWrapper .dropdownMenu .dropdownItem {
+    .projectControls .dropdownWrapper .dropdownMenu .dropdownItem {
       display: block;
       white-space: nowrap; }
-  .controls .dropdownWrapper:hover .dropdownMenu {
+  .projectControls .dropdownWrapper:hover .dropdownMenu {
     display: block; }
 
 .slick-slide {
@@ -248,6 +248,9 @@ hr {
   color: #909090; }
   .disabledButton:hover {
     cursor: wait; }
+
+.projectControls .active {
+  background-color: red; }
 
 @media screen and (min-width: 800px) {
   .loadMoreProjects {

@@ -376,6 +376,24 @@ $(document).ready(function() {
         }
     });
 
+    $('.sortButton').on('click', function() {
+        var order = $('.orderButton.active')[0].dataset.sortonly;
+
+        $('.sortButton').removeClass('active');
+        $(this).addClass('active');
+
+        mixer.sort(this.dataset.sortonly + ':' + order);
+    });
+
+    $('.orderButton').on('click', function() {
+        var sort = $('.sortButton.active')[0].dataset.sortonly;
+
+        $('.orderButton').removeClass('active');
+        $(this).addClass('active');
+
+        mixer.sort(sort + ':' + this.dataset.sortonly);
+    });
+
     //***********************************************//
     //**** Functions to run on initial page load ****//
     //***********************************************//
