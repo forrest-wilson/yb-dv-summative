@@ -19,6 +19,10 @@ h3 {
 	font-size: 16px;
 }
 
+ul {
+	list-style-type: none;
+}
+
 #ashThorpAbout, #ashThorpLocation, #ashThorpOccupation, #ashThorpWebsite, #ashThorpFields {
 	display: none;
 }
@@ -125,12 +129,12 @@ h3 {
 			float: left;
 			margin-right: 15px;
 		}
-		#ashThorpAbout, #codyCobbAbout, #filipHodasAbout{
-			margin: 5px auto;
+		#ashThorpAbout, #codyCobbAbout, #filipHodasAbout { 
+			margin-top: 30px;
+			// margin: 5px auto;
 			display: inline-block;
 			float: right;
 		}
-
 		#ashThorpOccupation, #codyCobbOccupation, #filipHodasOccupation {
 			display: block;
 			margin: 5px auto;
