@@ -19,15 +19,15 @@ h3 {
 	font-size: 16px;
 }
 
-#ashThorpAbout, #ashThorpLocation, #ashThorpOccupation, #ashThorpWebsite {
+#ashThorpAbout, #ashThorpLocation, #ashThorpOccupation, #ashThorpWebsite, #ashThorpFields {
 	display: none;
 }
 
-#codyCobbAbout, #codyCobbLocation, #codyCobbOccupation, #codyCobbWebsite {
+#codyCobbAbout, #codyCobbLocation, #codyCobbOccupation, #codyCobbWebsite, #codyCobbFields {
 	display: none;
 }
 
-#filipHodasAbout, #filipHodasLocation, #filipHodasOccupation, #filipHodasWebsite {
+#filipHodasAbout, #filipHodasLocation, #filipHodasOccupation, #filipHodasWebsite, #filipHodasFields {
 	display: none;
 }
 
@@ -125,23 +125,12 @@ h3 {
 			float: left;
 			margin-right: 15px;
 		}
-		#ashThorpAbout{
+		#ashThorpAbout, #codyCobbAbout, #filipHodasAbout{
 			margin: 5px auto;
 			display: inline-block;
 			float: right;
 		}
 
-		#codyCobbAbout {
-			margin: 5px auto;
-			display: inline-block;
-			float: right;
-		}
-
-		#filipHodasAbout {
-			margin: 5px auto;
-			display: inline-block;
-			float: right;
-		}
 		#ashThorpOccupation, #codyCobbOccupation, #filipHodasOccupation {
 			display: block;
 			margin: 5px auto;
@@ -152,6 +141,10 @@ h3 {
 			padding: 5px;
 		}
 		#ashThorpWebsite, #codyCobbWebsite, #filipHodasWebsite {
+			display: block;
+			margin: 5px auto;
+		}
+		#ashThorpFields, #codyCobbFields, #filipHodasFields {
 			display: block;
 			margin: 5px auto;
 		}

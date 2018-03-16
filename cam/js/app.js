@@ -54,6 +54,8 @@ function displayDetailThirdProfile() {
 					$(secondProfile).append('<h2 id="ashThorpOccupation">' + behanceData.user.occupation + '</h2>');
 					$(secondProfile).append('<h2 id="ashThorpLocation">' + behanceData.user.location + '</h2>');
 					$(secondProfile).append('<h2 id="ashThorpWebsite">' + behanceData.user.website + '</h2>');
+
+					$(secondProfile).append('<h2 id="ashThorpFields">' + behanceData.user.fields['0'] + ' ' + behanceData.user.fields['1'] + ' ' + behanceData.user.fields['2'] + '</h2>');
 				}
 			}
 		},
@@ -78,6 +80,7 @@ function displayDetailThirdProfile() {
 					$(firstProfile).append('<h2 id="codyCobbLocation">' + behanceData.user.location + '</h2>');
 					$(firstProfile).append('<h2 id="codyCobbWebsite">' + behanceData.user.website + '</h2>');
 
+					$(firstProfile).append('<h2 id="codyCobbFields">' + behanceData.user.fields['0'] + ' ' + behanceData.user.fields['1'] + ' ' + behanceData.user.fields['2'] + '</h2>');
 
 				}
 			}
@@ -101,6 +104,7 @@ function displayDetailThirdProfile() {
 				$(thirdProfile).append('<h2 id="filipHodasLocation">' + behanceData.user.location + '</h2>');
 				$(thirdProfile).append('<h2 id="filipHodasWebsite">' + behanceData.user.url + '</h2>');
 
+				$(thirdProfile).append('<h2 id="filipHodasFields">' + behanceData.user.fields['0'] + ' ' + behanceData.user.fields['1'] + ' ' + behanceData.user.fields['2'] + '</h2>');
 			}
 		},
 		error: function(error) {
