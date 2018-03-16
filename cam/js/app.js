@@ -54,7 +54,7 @@ function displayDetailThirdProfile() {
 					$(secondProfile).append('<h3 id="ashThorpAbout">' + behanceData.user.sections[about] + '</h3>');
 					$(secondProfile).append('<h2 id="ashThorpFields">' + behanceData.user.fields[0] + ',' + '&nbsp' + behanceData.user.fields[1] + ',' + '&nbsp' + behanceData.user.fields[2] + '</h2>');
 					var statsList = '';
-						statsList += '<ul><li>' + 'Appreciations ' + behanceData.user.stats.appreciations + '</li>' + '<li>' + 'Comments ' + behanceData.user.stats.comments + '</li>' + '<li>' + 'Followers ' + behanceData.user.stats.followers + '</li>' + '<li>' + 'Following ' + behanceData.user.stats.following + '</li>' + '<li>' + 'Views ' + behanceData.user.stats.views + '</li></ul>';
+						statsList += '<ul><li>' + 'Appreciations ' + '</br>' + behanceData.user.stats.appreciations + '</li>' + '<li>' + 'Comments ' + '</br>' + behanceData.user.stats.comments + '</li>' + '<li>' + 'Followers ' + '</br>' + behanceData.user.stats.followers + '</li>' + '<li>' + 'Following ' + '</br>' + behanceData.user.stats.following + '</li>' + '<li>' + 'Views ' + '</br>' + behanceData.user.stats.views + '</li></ul>';
 					$(secondProfile).append(statsList);
 				}
 			}
@@ -82,7 +82,7 @@ function displayDetailThirdProfile() {
 					$(firstProfile).append('<h3 id="codyCobbAbout">' + behanceData.user.sections[about] + '</h3>');
 					$(firstProfile).append('<h2 id="codyCobbFields">' + behanceData.user.fields[0] +  ',' + ' ' + behanceData.user.fields[1] + ',' + ' ' + behanceData.user.fields[2] + '</h2>');
 					var statsList = '';
-						statsList += '<ul><li>' + 'Appreciations ' + behanceData.user.stats.appreciations + '</li>' + '<li>' + 'Comments ' + behanceData.user.stats.comments + '</li>' + '<li>' + 'Followers ' + behanceData.user.stats.followers + '</li>' + '<li>' + 'Following ' + behanceData.user.stats.following + '</li>' + '<li>' + 'Views ' + behanceData.user.stats.views + '</li></ul>';
+						statsList += '<ul><li>' + 'Appreciations ' + '</br>' + behanceData.user.stats.appreciations + '</li>' + '<li>' + 'Comments ' + '</br>' + behanceData.user.stats.comments + '</li>' + '<li>' + 'Followers ' + '</br>' + behanceData.user.stats.followers + '</li>' + '<li>' + 'Following ' + '</br>' + behanceData.user.stats.following + '</li>' + '<li>' + 'Views ' + '</br>' + behanceData.user.stats.views + '</li></ul>';
 					$(firstProfile).append(statsList);
 
 				}
@@ -109,7 +109,7 @@ function displayDetailThirdProfile() {
 				$(thirdProfile).append('<h3 id="filipHodasAbout">' + behanceData.user.sections['About Me'] + '</h3>');
 				$(thirdProfile).append('<h2 id="filipHodasFields">' + behanceData.user.fields[0] + ',' + ' ' + behanceData.user.fields[1] + ',' + ' ' + behanceData.user.fields[2] + '</h2>');
 				var statsList = '';
-					statsList += '<ul><li>' + 'Appreciations ' + behanceData.user.stats.appreciations + '</li>' + '<li>' + 'Comments ' + behanceData.user.stats.comments + '</li>' + '<li>' + 'Followers ' + behanceData.user.stats.followers + '</li>' + '<li>' + 'Following ' + behanceData.user.stats.following + '</li>' + '<li>' + 'Views ' + behanceData.user.stats.views + '</li></ul>';
+					statsList += '<ul><li>' + 'Appreciations ' + '&nbsp' + '</br>' + behanceData.user.stats.appreciations + '</li>' + '<li>' + 'Comments ' + '&nbsp' + '</br>' + behanceData.user.stats.comments + '</li>' + '<li>' + 'Followers ' + '&nbsp' + '</br>' + behanceData.user.stats.followers + '</li>' + '<li>' + 'Following ' + '&nbsp' + '</br>' + behanceData.user.stats.following + '</li>' + '<li>' + 'Views ' + '&nbsp' + '</br>' + behanceData.user.stats.views + '</li></ul>';
 				$(thirdProfile).append(statsList);
 			}
 		},
