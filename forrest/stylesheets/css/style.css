@@ -194,6 +194,9 @@ hr {
   .projectControls .dropdownWrapper:hover .dropdownMenu {
     display: block; }
 
+.projectControls .controlButton > i {
+  font-weight: 600; }
+
 .slick-slide {
   display: inline-block;
   outline: 0; }
@@ -220,6 +223,11 @@ hr {
 
 .row {
   margin: 0; }
+
+.btn-group {
+  -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  border-radius: 0.25em; }
 
 .inner {
   padding: 10px 20px; }
@@ -250,7 +258,7 @@ hr {
     cursor: wait; }
 
 .projectControls .active {
-  background-color: red; }
+  background-color: grey; }
 
 @media screen and (min-width: 800px) {
   .loadMoreProjects {
