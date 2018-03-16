@@ -9,9 +9,6 @@ var filipHodasUrl = 'https://api.behance.net/v2/users/Filiphds?client_id=';
 var firstProfile  	= document.getElementsByClassName('profileUno')[0];
 var secondProfile  	= document.getElementsByClassName('profileDos')[0];
 var thirdProfile 	= document.getElementsByClassName('profileTres')[0];
-var hiddenCard1		= document.getElementById('closebtn1');
-var hiddenCard2		= document.getElementById('closebtn2');
-var hiddenCard3		= document.getElementById('closebtn3');
 
 firstProfile.addEventListener('click', displayDetail, false);
 secondProfile.addEventListener('click', displayDetailSecondProfile, false);
@@ -50,15 +47,14 @@ function displayDetailThirdProfile() {
 				$(secondProfile).append(profileImage);
 
 				for (var about in behanceData.user.sections) {
-
+					$(secondProfile).append('<h1 id="ashThorp">' + behanceData.user.display_name + '</h1>');
 					$(secondProfile).append('<h2 id="ashThorpOccupation">' + behanceData.user.occupation + '</h2>');
 					$(secondProfile).append('<h2 id="ashThorpLocation">' + behanceData.user.location + '</h2>');
 					$(secondProfile).append('<h2 id="ashThorpWebsite">' + behanceData.user.website + '</h2>');
 					$(secondProfile).append('<h3 id="ashThorpAbout">' + behanceData.user.sections[about] + '</h3>');
-					$(secondProfile).append('<h2 id="ashThorpFields">' + 'Fields: ' + behanceData.user.fields['0'] + ',' + ' ' + behanceData.user.fields['1'] + ',' + ' ' + behanceData.user.fields['2'] + '</h2>');
+					$(secondProfile).append('<h2 id="ashThorpFields">' + behanceData.user.fields[0] + ',' + '&nbsp' + behanceData.user.fields[1] + ',' + '&nbsp' + behanceData.user.fields[2] + '</h2>');
 					var statsList = '';
-
-						statsList += '<ul><li>' + behanceData.user.stats.appreciations + '</li>' + '<li>' + behanceData.user.stats.comments + '</li>' + '<li>' + behanceData.user.stats.followers + '</li>' + '<li>' + behanceData.user.stats.following + '</li>' + '<li>' + behanceData.user.stats.views + '</li></ul>';
+						statsList += '<ul><li>' + 'Appreciations ' + behanceData.user.stats.appreciations + '</li>' + '<li>' + 'Comments ' + behanceData.user.stats.comments + '</li>' + '<li>' + 'Followers ' + behanceData.user.stats.followers + '</li>' + '<li>' + 'Following ' + behanceData.user.stats.following + '</li>' + '<li>' + 'Views ' + behanceData.user.stats.views + '</li></ul>';
 					$(secondProfile).append(statsList);
 				}
 			}
@@ -79,12 +75,15 @@ function displayDetailThirdProfile() {
 				$(firstProfile).append(profileImage);
 
 				for (var about in behanceData.user.sections) {
-
+					$(firstProfile).append('<h1 id="codyCobb">' + behanceData.user.display_name + '</h1>');
 					$(firstProfile).append('<h2 id="codyCobbOccupation">' + behanceData.user.occupation + '</h2>');					
 					$(firstProfile).append('<h2 id="codyCobbLocation">' + behanceData.user.location + '</h2>');
 					$(firstProfile).append('<h2 id="codyCobbWebsite">' + behanceData.user.website + '</h2>');
 					$(firstProfile).append('<h3 id="codyCobbAbout">' + behanceData.user.sections[about] + '</h3>');
-					$(firstProfile).append('<h2 id="codyCobbFields">' + 'Fields: ' + behanceData.user.fields['0'] +  ',' + ' ' + behanceData.user.fields['1'] + ',' + ' ' + behanceData.user.fields['2'] + '</h2>');
+					$(firstProfile).append('<h2 id="codyCobbFields">' + behanceData.user.fields[0] +  ',' + ' ' + behanceData.user.fields[1] + ',' + ' ' + behanceData.user.fields[2] + '</h2>');
+					var statsList = '';
+						statsList += '<ul><li>' + 'Appreciations ' + behanceData.user.stats.appreciations + '</li>' + '<li>' + 'Comments ' + behanceData.user.stats.comments + '</li>' + '<li>' + 'Followers ' + behanceData.user.stats.followers + '</li>' + '<li>' + 'Following ' + behanceData.user.stats.following + '</li>' + '<li>' + 'Views ' + behanceData.user.stats.views + '</li></ul>';
+					$(firstProfile).append(statsList);
 
 				}
 			}
@@ -103,12 +102,15 @@ function displayDetailThirdProfile() {
 				profileImage += '<img id="profilePhoto3" src= "' + behanceData.user.images[276] + '">';
 				$(thirdProfile).append(profileImage);
 
-
+				$(thirdProfile).append('<h1 id="filipHodas">' + behanceData.user.display_name + '</h1>');
 				$(thirdProfile).append('<h2 id="filipHodasOccupation">' + behanceData.user.occupation + '</h2>');				
 				$(thirdProfile).append('<h2 id="filipHodasLocation">' + behanceData.user.location + '</h2>');
 				$(thirdProfile).append('<h2 id="filipHodasWebsite">' + behanceData.user.url + '</h2>');
 				$(thirdProfile).append('<h3 id="filipHodasAbout">' + behanceData.user.sections['About Me'] + '</h3>');
-				$(thirdProfile).append('<h2 id="filipHodasFields">' + 'Fields: ' + behanceData.user.fields['0'] + ',' + ' ' + behanceData.user.fields['1'] + ',' + ' ' + behanceData.user.fields['2'] + '</h2>');
+				$(thirdProfile).append('<h2 id="filipHodasFields">' + behanceData.user.fields[0] + ',' + ' ' + behanceData.user.fields[1] + ',' + ' ' + behanceData.user.fields[2] + '</h2>');
+				var statsList = '';
+					statsList += '<ul><li>' + 'Appreciations ' + behanceData.user.stats.appreciations + '</li>' + '<li>' + 'Comments ' + behanceData.user.stats.comments + '</li>' + '<li>' + 'Followers ' + behanceData.user.stats.followers + '</li>' + '<li>' + 'Following ' + behanceData.user.stats.following + '</li>' + '<li>' + 'Views ' + behanceData.user.stats.views + '</li></ul>';
+				$(thirdProfile).append(statsList);
 			}
 		},
 		error: function(error) {
