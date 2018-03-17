@@ -24,7 +24,8 @@ $(document).ready(function() {
 
     var mixer = mixitup('.projects', {
         selectors: {
-            target: '.project'
+            target: '.project',
+            control: '[data-mixitup-control]'
         },
         animation: {
             enable: true,
@@ -394,9 +395,13 @@ $(document).ready(function() {
         mixer.sort(sort + ':' + this.dataset.sortonly);
     });
 
-    //***********************************************//
-    //**** Functions to run on initial page load ****//
-    //***********************************************//
+    //*****************************************//
+    //**** Function/Element Initialization ****//
+    //*****************************************//
 
     getProjects(pagination.nextPageNumber);
+
+    $('[data-toggle=\'tooltip\']').tooltip({
+        trigger: 'hover'
+    });
 });

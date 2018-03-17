@@ -17,31 +17,35 @@
 <body>
 
     <div class='projectControls'>
-        <div class='inner'>
-            <div class='sorting'>
+        <div class='padding-10'>
+            <div class='sorting padding-10'>
 
-                <span>Sort By:</span>
-                <span class='btn-group sortingButtons'>
-                    <button class='btn controlButton sortButton active' type='button' data-sortonly='published-on'>Publish Date</button>
-                    <button class='btn controlButton sortButton' type='button' data-sortonly='likes'>Likes</button>
-                    <button class='btn controlButton sortButton' type='button' data-sortonly='comments'>Comments</button>
-                    <button class='btn controlButton sortButton' type='button' data-sortonly='views'>Views</button>
-                </span>
+                <div class='sortingGroup inlineBlock'>
+                    <span>Sort By:</span>
+                    <span class='btn-group sortingButtons'>
+                        <button class='btn controlButton sortButton active' type='button' data-sortonly='published-on'>Publish Date</button>
+                        <button class='btn controlButton sortButton' type='button' data-sortonly='likes'>Likes</button>
+                        <button class='btn controlButton sortButton' type='button' data-sortonly='comments'>Comments</button>
+                        <button class='btn controlButton sortButton' type='button' data-sortonly='views'>Views</button>
+                    </span>
+                </div>
 
-                <span>Order By:</span>
-                <span class='btn-group orderingButtons'>
-                    <button class='btn controlButton orderButton active' type='button' data-sortonly='asc'><i class='fa fa-angle-up'></i></button>
-                    <button class='btn controlButton orderButton' type='button' data-sortonly='desc'><i class='fa fa-angle-down'></i></button>
-                    <button class='btn controlButton' type='button' data-sort='random'><i class='fa fa-random'></i></button>
-                </span>
+                <div class='sortingGroup inlineBlock'>
+                    <span>Order By:</span>
+                    <span class='btn-group orderingButtons'>
+                        <button class='btn controlButton orderButton active' type='button' data-sortonly='asc' data-toggle='tooltip' data-placement='bottom' title='Ascending'><i class='fa fa-angle-up'></i></button>
+                        <button class='btn controlButton orderButton' type='button' data-sortonly='desc' data-toggle='tooltip' data-placement='bottom' title='Descending'><i class='fa fa-angle-down'></i></button>
+                        <button class='btn controlButton' type='button' data-mixitup-control data-sort='random' data-toggle='tooltip' data-placement='bottom' title='Random'><i class='fa fa-random'></i></button>
+                    </span>
+                </div>
 
                 <div class='dropdownWrapper'>
                     <button class='dropdownButton'>Filter By <i class='fa fa-angle-double-down'></i></button>
-                    <div class='dropdownMenu inner'>
-                        <a href='#' class='controlButton filterButton dropdownItem active' data-filter='all'>All Designers</a>
-                        <a href='#' class='controlButton filterButton dropdownItem' data-filter='.id-544146'>Cody Cobb</a>
-                        <a href='#' class='controlButton filterButton dropdownItem' data-filter='.id-4342293'>Filip Hodas</a>
-                        <a href='#' class='controlButton filterButton dropdownItem' data-filter='.id-6053747'>Ash Thorp</a>
+                    <div class='dropdownMenu'>
+                        <span class='controlButton filterButton dropdownItem inner active' data-filter='all'>All Designers</span>
+                        <span class='controlButton filterButton dropdownItem inner' data-filter='.id-544146'>Cody Cobb</span>
+                        <span class='controlButton filterButton dropdownItem inner' data-filter='.id-4342293'>Filip Hodas</span>
+                        <span class='controlButton filterButton dropdownItem inner' data-filter='.id-6053747'>Ash Thorp</span>
                     </div>
                 </div>
 
@@ -159,6 +163,7 @@
     </script>
     
     <script src='../node_modules/jquery/dist/jquery.min.js'></script>
+    <script src='../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js'></script>
     <script src='../node_modules/moment/min/moment.min.js'></script>
     <script src='../node_modules/mixitup/dist/mixitup.min.js'></script>
     <script src='../node_modules/slick-carousel/slick/slick.min.js'></script>
