@@ -395,6 +395,11 @@ $(document).ready(function() {
         mixer.sort(sort + ':' + this.dataset.sortonly);
     });
 
+    $('.filterButton').on('click', function() {
+        $('.filterButton').removeClass('active');
+        $(this).addClass('active');
+    });
+
     //*****************************************//
     //**** Function/Element Initialization ****//
     //*****************************************//
