@@ -1,0 +1,55 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background: linear-gradient(-45deg, #c7ec75, #a5dfe7);
+	height: 100vh;
+}
+
+.header {
+	height: 200px;
+	box-shadow: 0px 3px 10px 2px #888888; 
+	background-color: white;
+}
+
+// Flip Container ---------------------------
+.flip-container {
+	perspective: 1000px;
+}
+
+.flip-container.flip .flipper {
+	transform: rotateY(180deg);
+}
+
+.flip-container, .front, .back {
+	width: 600px;
+	height: 480px;
+}
+
+.flipper {
+	transition: 0.6s;
+	transform-style: preserve-3d;
+	position: relative;
+}
+
+.front, .back {
+	backface-visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.front {
+	z-index: 2;
+	transform: rotateY(0deg);
+
+}
+
+.back {
+	transform: rotateY(180deg);
+	background: #f8f8f8;
+}
+// End ---------------------------
+
