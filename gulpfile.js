@@ -8,7 +8,7 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     browserSync = require('browser-sync').create();
 
-var contributors = ['anthony', 'cam', 'forrest'];
+var contributors = ['anthony', 'cam', 'forrest', 'home'];
 
 // Compiles SASS to CSS and outputs it to the /stylesheets/css/ folder
 gulp.task('sass-minify', function() {
