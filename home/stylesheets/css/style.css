@@ -1,3 +1,43 @@
 body {
   min-height: 100vh;
-  background: linear-gradient(135deg, #A5DFE7, #C7EC75) no-repeat; }
+  background: linear-gradient(135deg, #c7ec75 45%, #e60c2a) no-repeat; }
+
+.intro {
+  color: #C3C3C3;
+  position: relative; }
+  .intro .background {
+    background: -webkit-gradient(linear, left top, left bottom, from(black), to(#464646));
+    background: linear-gradient(black, #464646);
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 10;
+    -webkit-box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.8); }
+    .intro .background::after {
+      height: 20px;
+      display: block;
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -20px;
+      right: 0;
+      -webkit-box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+      box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+      background: -webkit-gradient(linear, left top, left bottom, from(black), to(#464646));
+      background: linear-gradient(black, #464646); }
+  .intro .content {
+    z-index: 100;
+    position: relative; }
+    .intro .content .logo {
+      width: 100%;
+      display: block; }
+    .intro .content .introText,
+    .intro .content .logo {
+      max-width: 400px;
+      margin: 30px auto; }
+
+.inner {
+  padding: 10px; }

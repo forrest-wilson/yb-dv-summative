@@ -2,5 +2,7 @@
 //**** Style SASS ****//
 //********************//
 
+@import "mixins/mixins";
 @import "base/base";
 @import "modules/modules";
+@import "utilities/utilities";
