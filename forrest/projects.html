@@ -40,12 +40,15 @@
                 </div>
 
                 <div class='dropdownWrapper'>
-                    <button class='dropdownButton'>Filter By <i class='fa fa-angle-double-down'></i></button>
-                    <div class='dropdownMenu'>
-                        <span class='controlButton filterButton dropdownItem inner active' data-filter='all'>All Designers</span>
-                        <span class='controlButton filterButton dropdownItem inner' data-filter='.id-544146'>Cody Cobb</span>
-                        <span class='controlButton filterButton dropdownItem inner' data-filter='.id-4342293'>Filip Hodas</span>
-                        <span class='controlButton filterButton dropdownItem inner' data-filter='.id-6053747'>Ash Thorp</span>
+                    <div class='dropdown'>
+                        <button class='btn dropdown-toggle filterToggle' type='button' id='dropdownMenuButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Filter By Designer</button>
+                        <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>
+                            <div class='controlButton filterButton dropdown-item active' data-mixitup-control data-filter='all'>All Designers</div>
+                            <hr>
+                            <div class='controlButton filterButton dropdown-item' data-mixitup-control data-filter='.id-6053747'>Ash Thorp</div>
+                            <div class='controlButton filterButton dropdown-item' data-mixitup-control data-filter='.id-544146'>Cody Cobb</div>
+                            <div class='controlButton filterButton dropdown-item' data-mixitup-control data-filter='.id-4342293'>Filip Hodas</div>
+                        </div>
                     </div>
                 </div>
 

@@ -183,19 +183,6 @@ hr {
 .projectControls .dropdownWrapper {
   position: relative;
   display: inline-block; }
-  .projectControls .dropdownWrapper .dropdownMenu {
-    position: absolute;
-    z-index: 600;
-    background-color: #F3F3F3;
-    display: none; }
-    .projectControls .dropdownWrapper .dropdownMenu .dropdownItem {
-      display: block;
-      white-space: nowrap;
-      color: black; }
-      .projectControls .dropdownWrapper .dropdownMenu .dropdownItem:hover {
-        cursor: pointer; }
-  .projectControls .dropdownWrapper:hover .dropdownMenu {
-    display: block; }
 
 .projectControls .sorting {
   border-radius: 5px;
@@ -205,9 +192,15 @@ hr {
   background-color: #2f3031; }
   .projectControls .sorting .sortingGroup {
     padding-right: 10px; }
+  .projectControls .sorting .filterToggle {
+    background-color: grey;
+    color: #F3F3F3; }
 
 .projectControls .controlButton > i {
   font-weight: 600; }
+
+.projectControls .controlButton.filterButton:hover {
+  cursor: pointer; }
 
 .slick-slide {
   display: inline-block;

@@ -211,27 +211,6 @@
     .dropdownWrapper {
         position: relative;
         display: inline-block;
-
-        .dropdownMenu {
-            position: absolute;
-            z-index: 600;
-            background-color: $whiteColor;
-            display: none;
-    
-            .dropdownItem {
-                display: block;
-                white-space: nowrap;
-                color: black;
-
-                &:hover {
-                    cursor: pointer;
-                }
-            }
-        }
-
-        &:hover .dropdownMenu {
-            display: block;
-        }
     }
 
     .sorting {
@@ -243,9 +222,18 @@
         .sortingGroup {
             padding-right: 10px;
         }
+
+        .filterToggle {
+            background-color: $controlButtonColor;
+            color: $whiteColor;
+        }
     }
 
     .controlButton > i {
         font-weight: 600;
+    }
+
+    .controlButton.filterButton:hover {
+        cursor: pointer;
     }
 }
