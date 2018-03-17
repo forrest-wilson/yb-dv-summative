@@ -57,13 +57,13 @@ $(document).ready(function() {
     // Generic function to render Template7 Scripts
     function renderTemplate(el, context) {
         var template = $(el).html(),
-            compiledTemplate = Template7.compile(template);
+            compiledTemplate = Handlebars.compile(template);
 
         return compiledTemplate(context);
     }
 
     // Helper method for formatting time
-    function timeFormatter(time) {
+    function unixTimeFormatter(time) {
         return moment.unix(time).format('Do MMM YYYY');
     }
 
@@ -183,7 +183,7 @@ $(document).ready(function() {
                 creators: [],
                 fieldsString: '',
                 description: null,
-                creationDate: timeFormatter(project.published_on),
+                creationDate: unixTimeFormatter(project.published_on),
                 projectName: project.name,
                 stats: {
                     likes: project.stats.appreciations,
@@ -286,7 +286,7 @@ $(document).ready(function() {
                             link: comment.user.url
                         },
                         comment: comment.comment,
-                        publishedOn: timeFormatter(comment.created_on)
+                        publishedOn: unixTimeFormatter(comment.created_on)
                     },
                     compiled = renderTemplate('#commentTemplate', commentInfo);
 

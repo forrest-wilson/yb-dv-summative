@@ -5,7 +5,7 @@
     "browser": true,
     "devel": true,
     "globals": {
-        "Template7": false,
+        "Handlebars": false,
         "mixitup": false,
         "moment": false
     }
