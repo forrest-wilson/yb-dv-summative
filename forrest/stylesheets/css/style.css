@@ -190,9 +190,21 @@ hr {
     display: none; }
     .projectControls .dropdownWrapper .dropdownMenu .dropdownItem {
       display: block;
-      white-space: nowrap; }
+      white-space: nowrap;
+      color: black; }
+      .projectControls .dropdownWrapper .dropdownMenu .dropdownItem:hover {
+        cursor: pointer; }
   .projectControls .dropdownWrapper:hover .dropdownMenu {
     display: block; }
+
+.projectControls .sorting {
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.5);
+  color: #F3F3F3;
+  background-color: #2f3031; }
+  .projectControls .sorting .sortingGroup {
+    padding-right: 10px; }
 
 .projectControls .controlButton > i {
   font-weight: 600; }
@@ -258,7 +270,14 @@ hr {
     cursor: wait; }
 
 .projectControls .active {
-  background-color: grey; }
+  background-color: grey;
+  color: white; }
+
+.padding-10 {
+  padding: 10px; }
+
+.inlineBlock {
+  display: inline-block; }
 
 @media screen and (min-width: 800px) {
   .loadMoreProjects {

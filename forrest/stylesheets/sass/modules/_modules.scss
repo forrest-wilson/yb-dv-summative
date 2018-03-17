@@ -221,11 +221,27 @@
             .dropdownItem {
                 display: block;
                 white-space: nowrap;
+                color: black;
+
+                &:hover {
+                    cursor: pointer;
+                }
             }
         }
 
         &:hover .dropdownMenu {
             display: block;
+        }
+    }
+
+    .sorting {
+        border-radius: $borderRadius;
+        box-shadow: $boxShadow;
+        color: $whiteColor;
+        background-color: #2f3031;
+
+        .sortingGroup {
+            padding-right: 10px;
         }
     }
 
