@@ -1,0 +1,21 @@
+//****************************//
+//**** Media Queries SASS ****//
+//****************************//
+
+@media screen and (min-width: 600px) {
+    .intro {
+        .background {
+            transform: skewY(-30deg);
+            min-height: 650px;
+            max-height: 800px;
+            height: 75vh;
+        }
+
+        .content {
+            .introText,
+            .logo {
+                margin: 30px 20px;
+            }
+        }
+    }
+}
