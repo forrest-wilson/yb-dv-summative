@@ -113,6 +113,7 @@ ul li {
 	    left: 50%;
 	    transform: translate(-50%, -50%);
 	}
+}
 	img {
 		height: auto;
 		max-width: 100%;
@@ -184,8 +185,8 @@ ul li {
 			// padding-left: 20px;
 			// padding-right: 20px;
 			text-shadow: 0px 3px 8px rgba(0,0,0,0.54);
-			padding: 20px;
-			font-size: 2.5vh;
+			padding: 10px;
+			font-size: 2vh;
 			list-style-type: none;
 			display: inline-block;
 			margin: 10px;
@@ -196,6 +197,46 @@ ul li {
 			color: white;
 		}
 	}
+
+// }
+
+@media only screen and (max-width: 576px) {
+	.heightToggle {
+		height: 80vh;
+		width: 90vw;
+		overflow: auto;
+		#ashThorpFields, #codyCobbFields, #filipHodasFields {
+			display: block;
+			margin-left: 20px;
+			font-size: 4vw;
+			color: #3a8fb1;
+			text-align: left;
+		}
+		img {
+			max-width: 30%;
+			height: auto;
+			float: left;
+			// margin-right: 15px;
+			margin: 10px;
+		}
+		li {
+			width: 42%;
+		}
+	}
+
+	h3 {
+		font-size: 18px;
+		font-family: 'Oswald', sans-serif;
+	}
+
+	h2 {
+		font-size: 4vw;
+		font-family: 'Oswald', sans-serif;
+	}
+	// #bodyContainer {
+	// 	overflow: auto;
+	// 	display: block;
+	// }
 
 }
 
