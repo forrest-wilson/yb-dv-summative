@@ -150,8 +150,8 @@ img {
     width: 30%;
     text-align: center;
     color: white;
-    background: -webkit-gradient(linear, left top, right bottom, from(#a5dfe7), to(#c7ec75));
-    background: linear-gradient(to bottom right, #a5dfe7, #c7ec75);
+    background: -webkit-gradient(linear, left top, right bottom, from(#33808b), to(#89a747));
+    background: linear-gradient(to bottom right, #33808b, #89a747);
     text-shadow: 0px 3px 8px rgba(0, 0, 0, 0.54);
     padding: 10px;
     font-size: 2vh;
@@ -167,6 +167,7 @@ img {
   .heightToggle {
     height: 80vh;
     width: 90vw;
+    margin-top: 100px;
     overflow: auto; }
     .heightToggle #ashThorpFields, .heightToggle #codyCobbFields, .heightToggle #filipHodasFields {
       display: block;
@@ -186,7 +187,13 @@ img {
     font-family: 'Oswald', sans-serif; }
   h2 {
     font-size: 4vw;
-    font-family: 'Oswald', sans-serif; } }
+    font-family: 'Oswald', sans-serif; }
+  .profileUno {
+    margin-top: 70px; }
+  #backButton {
+    position: absolute;
+    top: 3px !important;
+    left: 43px !important; } }
 
 .smallToggle {
   display: none; }
@@ -213,3 +220,10 @@ img:hover {
   -webkit-box-shadow: 0px 7px 80px 10px rgba(15, 86, 89, 0.86);
   box-shadow: 0px 7px 80px 10px rgba(15, 86, 89, 0.86);
   border-radius: 50%; }
+
+.fa {
+  margin-left: 2px;
+  font-size: 30px;
+  color: rgba(0, 0, 0, 0.24);
+  text-align: center;
+  vertical-align: bottom; }
