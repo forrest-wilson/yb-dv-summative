@@ -2,9 +2,9 @@
 //**** Media Queries SASS ****//
 //****************************//
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 700px) {
     .intro {
-        .background {
+        .backgroundWrapper {
             transform: skewY(-30deg);
             min-height: 650px;
             max-height: 800px;

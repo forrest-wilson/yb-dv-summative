@@ -6,8 +6,7 @@
     color: #C3C3C3;
     position: relative;
 
-    .background {
-        background: linear-gradient(black, rgb(70, 70, 70));
+    .backgroundWrapper {
         @include positioning(absolute);
         width: 100%;
         height: 100%;
@@ -15,11 +14,17 @@
         box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
         transform-origin: top left;
 
-        &::after {
+        .background {
+            background: linear-gradient(black, rgb(70, 70, 70));
+            width: 100%;
+            height: 100%;
+        }
+
+        .lip {
             height: 20px;
             display: block;
             content: '';
-            @include positioning(absolute, $b: -20px, $l: 0, $r: 0);
+            @include positioning(absolute, $b: 0, $l: 0, $r: 0);
             box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
             background: linear-gradient(black, rgb(70, 70, 70));
         }
