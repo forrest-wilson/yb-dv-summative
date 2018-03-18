@@ -302,8 +302,8 @@ hr {
   height: 100%;
   position: relative; }
 
-.evenMargin {
-  margin: 20px 0; }
+.paragraphMargin {
+  margin: 15px 0; }
 
 .disabledButton {
   color: #909090; }

@@ -120,7 +120,7 @@
                 <div>
                     <p class='projectTitle'>{{projectName}}</p>
                     <p class='projectCreator'>by {{#each creators}}<a href={{this.url}} target='_blank'>{{this.name}}</a> {{/each}}</p>
-                    <small><a href={{behanceURL}} target='_blank'>View on Behance <i class='fa fa-external-link'></i></a></small>
+                    <small><a href={{behanceURL}} target='_blank'>View project on Behance <i class='fa fa-external-link'></i></a></small>
                 </div>
                 <p>Published: {{creationDate}}</p>
                 <div class='projectStats'>
@@ -138,10 +138,12 @@
                     </span>
                 </div>
                 <hr>
-                <p class='evenMargin'>{{fieldsString}}</p>
+                <p class='projectTitle'>Fields:</p>
+                <p class='paragraphMargin'>{{fieldsString}}</p>
                 <hr>
                 {{#if description}}
-                    <p class='evenMargin'>{{description}}</p>
+                    <p class='projectTitle'>Description:</p>
+                    <p class='paragraphMargin'>{{description}}</p>
                     <hr>
                 {{/if}}
                 <div>
