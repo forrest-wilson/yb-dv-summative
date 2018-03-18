@@ -79,7 +79,7 @@ function drawChart() {
 
 		setTimeout(function() {
 			var element = document.getElementById('graphContainer');
-			element.classList.toggle('flip');
+			element.classList.add('flip');
 		}, 100);
 
     });
@@ -92,7 +92,7 @@ function drawChart() {
 
 		setTimeout(function() {
 			var element = document.getElementById('graphContainer');
-			element.classList.toggle('flip');
+			element.classList.add('flip');
 		}, 100);
 
     });
@@ -105,7 +105,7 @@ function drawChart() {
 
 		setTimeout(function() {
 			var element = document.getElementById('graphContainer');
-			element.classList.toggle('flip');
+			element.classList.add('flip');
 		}, 100);
 
     });
