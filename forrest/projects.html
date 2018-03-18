@@ -17,42 +17,44 @@
 <body>
 
     <div class='projectControls'>
-        <div class='padding-10'>
-            <div class='sorting padding-10'>
+        <div id='drawerOpener' class='drawerOpener'>
+            <p>Filters <i class='fa fa-angle-double-up'></i></p>
+        </div>
+        <div id='sortingControls' class='sorting padding-10'>
 
-                <div class='sortingGroup inlineBlock'>
-                    <span>Sort By:</span>
-                    <span class='btn-group sortingButtons'>
-                        <button class='btn controlButton sortButton active' type='button' data-sortonly='published-on'>Publish Date</button>
-                        <button class='btn controlButton sortButton' type='button' data-sortonly='likes'>Likes</button>
-                        <button class='btn controlButton sortButton' type='button' data-sortonly='comments'>Comments</button>
-                        <button class='btn controlButton sortButton' type='button' data-sortonly='views'>Views</button>
-                    </span>
-                </div>
+            <div class='sortingGroup inlineBlock'>
+                <span class='btn-group orderingButtons'>
+                    <button class='btn controlButton orderButton active' type='button' data-sortonly='asc' data-toggle='tooltip' data-placement='bottom' title='Ascending Order'><i class='fa fa-angle-up'></i></button>
+                    <button class='btn controlButton orderButton' type='button' data-sortonly='desc' data-toggle='tooltip' data-placement='bottom' title='Descending Order'><i class='fa fa-angle-down'></i></button>
+                    <button class='btn controlButton orderButtonInlineControl' type='button' data-mixitup-control data-sort='random' data-toggle='tooltip' data-placement='bottom' title='Random'><i class='fa fa-random'></i></button>
+                </span>
+            </div>
 
-                <div class='sortingGroup inlineBlock'>
-                    <span>Order By:</span>
-                    <span class='btn-group orderingButtons'>
-                        <button class='btn controlButton orderButton active' type='button' data-sortonly='asc' data-toggle='tooltip' data-placement='bottom' title='Ascending'><i class='fa fa-angle-up'></i></button>
-                        <button class='btn controlButton orderButton' type='button' data-sortonly='desc' data-toggle='tooltip' data-placement='bottom' title='Descending'><i class='fa fa-angle-down'></i></button>
-                        <button class='btn controlButton' type='button' data-mixitup-control data-sort='random' data-toggle='tooltip' data-placement='bottom' title='Random'><i class='fa fa-random'></i></button>
-                    </span>
-                </div>
-
-                <div class='dropdownWrapper'>
-                    <div class='dropdown'>
-                        <button class='btn dropdown-toggle filterToggle' type='button' id='dropdownMenuButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Filter By Designer</button>
-                        <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>
-                            <div class='controlButton filterButton dropdown-item active' data-mixitup-control data-filter='all'>All Designers</div>
-                            <hr>
-                            <div class='controlButton filterButton dropdown-item' data-mixitup-control data-filter='.id-6053747'>Ash Thorp</div>
-                            <div class='controlButton filterButton dropdown-item' data-mixitup-control data-filter='.id-544146'>Cody Cobb</div>
-                            <div class='controlButton filterButton dropdown-item' data-mixitup-control data-filter='.id-4342293'>Filip Hodas</div>
-                        </div>
+            <div class='dropdownWrapper'>
+                <div class='dropdown'>
+                    <button class='btn dropdown-toggle filterToggle' type='button' id='dropdownMenuButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Sort By: <span id='sortingTopic'>Publish Date</span></button>
+                    <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>
+                        <div class='controlButton sortButton dropdown-item active' data-sortonly='published-on'>Publish Date</div>
+                        <div class='controlButton sortButton dropdown-item' data-sortonly='likes'>Likes</div>
+                        <div class='controlButton sortButton dropdown-item' data-sortonly='comments'>Comments</div>
+                        <div class='controlButton sortButton dropdown-item' data-sortonly='views'>Views</div>
                     </div>
                 </div>
-
             </div>
+
+            <div class='dropdownWrapper'>
+                <div class='dropdown'>
+                    <button class='btn dropdown-toggle filterToggle' type='button' id='dropdownMenuButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Filter By: <span id='filteringTopic'>All Designers</span></button>
+                    <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>
+                        <div class='controlButton filterButton dropdown-item active' data-mixitup-control data-filter='all'>All Designers</div>
+                        <hr>
+                        <div class='controlButton filterButton dropdown-item' data-mixitup-control data-filter='.id-6053747'>Ash Thorp</div>
+                        <div class='controlButton filterButton dropdown-item' data-mixitup-control data-filter='.id-544146'>Cody Cobb</div>
+                        <div class='controlButton filterButton dropdown-item' data-mixitup-control data-filter='.id-4342293'>Filip Hodas</div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 

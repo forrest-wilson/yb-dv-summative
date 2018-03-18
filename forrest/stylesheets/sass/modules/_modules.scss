@@ -209,24 +209,69 @@
 }
 
 .projectControls {
+    @include positioning(fixed, $b: 0, $l: 0, $r: 0);
+    z-index: 250;
+    border-radius: $borderRadius;
+
+    .drawerOpener {
+        @include positioning(relative, $l: 50%);
+        transform: translateX(-50%);
+        display: inline-block;
+        border-top-left-radius: $borderRadius;
+        border-top-right-radius: $borderRadius;
+        background-color: #2f3031;
+        color: $whiteColor;
+        box-shadow: $boxShadow;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        p {
+            margin: 5px 20px;
+
+            i {
+                transition: $transTime;
+            }
+        }
+    }
+
     .dropdownWrapper {
         position: relative;
-        display: inline-block;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+
+        .dropdown {
+            width: 100%;
+
+            .filterToggle {
+                background-color: $controlButtonColor;
+                color: $whiteColor;
+                width: 100%;
+            }
+        }
     }
 
     .sorting {
-        border-radius: $borderRadius;
-        box-shadow: $boxShadow;
         color: $whiteColor;
         background-color: #2f3031;
+        box-shadow: $boxShadow;
+        display: none;
 
         .sortingGroup {
-            padding-right: 10px;
-        }
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
 
-        .filterToggle {
-            background-color: $controlButtonColor;
-            color: $whiteColor;
+            .orderingButtons {
+                width: 100%;
+
+                .orderButton,
+                .orderButtonInlineControl {
+                    width: calc(100% / 3);
+                }
+            }
         }
     }
 
