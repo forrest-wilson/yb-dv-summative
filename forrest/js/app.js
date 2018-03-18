@@ -404,11 +404,13 @@ $(document).ready(function() {
 
     //**** Filtering Event Listeners ****//
 
+    // Event listener for mobile filter 'drawer'
     $('#drawerOpener').on('click', function() {
         $('#sortingControls').slideToggle(300);
         $('#drawerOpener p i').toggleClass('rotationalInvert');
     });
 
+    // Triggers a MixItUp API event to sort projects
     $('.sortButton').on('click', function() {
         var order = $('.orderButton.active')[0].dataset.sortonly;
 
@@ -420,6 +422,7 @@ $(document).ready(function() {
         mixer.sort(this.dataset.sortonly + ':' + order);
     });
 
+    // Triggers a MixItUp API event to order projects
     $('.orderButton').on('click', function() {
         var sort = $('.sortButton.active')[0].dataset.sortonly;
 
@@ -429,6 +432,7 @@ $(document).ready(function() {
         mixer.sort(sort + ':' + this.dataset.sortonly);
     });
 
+    // Triggers a MixItUp API event to filter projects
     $('.filterButton').on('click', function() {
         $('#filteringTopic').text(this.innerText);
         $('.filterButton').removeClass('active');
