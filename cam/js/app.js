@@ -17,23 +17,23 @@ thirdProfile.addEventListener('click', displayDetailThirdProfile, false);
 
 // when first profile is clicked run function
 function displayDetail() {
-	firstProfile.classList.toggle("heightToggle");
-	secondProfile.classList.toggle("smallToggle");
-	thirdProfile.classList.toggle("smallToggle");
+	firstProfile.classList.toggle('heightToggle');
+	secondProfile.classList.toggle('smallToggle');
+	thirdProfile.classList.toggle('smallToggle');
 }
 
 // when second profile is clicked run function
 function displayDetailSecondProfile() {
-	secondProfile.classList.toggle("heightToggle");
-	firstProfile.classList.toggle("smallToggle");
-	thirdProfile.classList.toggle("smallToggle");
+	secondProfile.classList.toggle('heightToggle');
+	firstProfile.classList.toggle('smallToggle');
+	thirdProfile.classList.toggle('smallToggle');
 }
 
 // when third profile is clicked run function
 function displayDetailThirdProfile() {
-	thirdProfile.classList.toggle("heightToggle");
-	secondProfile.classList.toggle("smallToggle");
-	firstProfile.classList.toggle("smallToggle");
+	thirdProfile.classList.toggle('heightToggle');
+	secondProfile.classList.toggle('smallToggle');
+	firstProfile.classList.toggle('smallToggle');
 
 }
 	// ajax request to get behance profile data 
