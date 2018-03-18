@@ -42,6 +42,22 @@ body {
       max-width: 400px;
       margin: 30px auto; }
 
+.buttons a {
+  display: block;
+  margin: 0 auto 10px 0;
+  width: 100%;
+  color: white;
+  padding: 30px 50px;
+  background: -webkit-gradient(linear, left top, left bottom, from(black), to(#464646));
+  background: linear-gradient(black, #464646);
+  border: 5px solid #717171;
+  -webkit-box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+  outline: 0;
+  text-align: center; }
+  .buttons a:hover {
+    text-decoration: none; }
+
 .inner {
   padding: 10px; }
 
