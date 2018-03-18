@@ -16,6 +16,7 @@ $(document).ready(function() {
             commentsPerPage: 10,
             nextPageNumber: 1
         },
+        slick,
         moreProjectsToLoad = {};
 
     //*******************************//
@@ -256,7 +257,8 @@ $(document).ready(function() {
         $('#modalContent').append(compiledTemplate);
 
         // Initializes the slick slideshow
-        $('#images').slick({
+        slick = $('#images').slick({
+            lazyLoad: 'progressive',
             initialSlide: 1,
             slidesToShow: 1,
             slidesToScroll: 1,
@@ -276,8 +278,9 @@ $(document).ready(function() {
             ]
         });
 
-        // Forces slick to re-calculate parent image elements
-        $(window).trigger('resize');
+        slick.on('lazyLoaded', function() {
+            slick.slick('setPosition');
+        });
     }
 
     // Populates the comments of a specific project
@@ -354,6 +357,7 @@ $(document).ready(function() {
         commentPagination.nextPageNumber = 1;
         toggleBodyScroll();
         toggleMask(function() {
+            slick.slick('unslick');
             $('#modalContent').empty();
         });
     }
