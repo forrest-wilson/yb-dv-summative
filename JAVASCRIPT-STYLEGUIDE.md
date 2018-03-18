@@ -1,6 +1,6 @@
 # JavaScript Style Guide / Best Practices
 
-### Single quotion marks to be used in all JavaScript documents
+### Single quotation marks to be used in all JavaScript documents
 
 ### Variables to be placed at the top of the document or top of the code block (function)
 
