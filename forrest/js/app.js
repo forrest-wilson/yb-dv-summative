@@ -402,8 +402,17 @@ $(document).ready(function() {
         }
     });
 
+    //**** Filtering Event Listeners ****//
+
+    $('#drawerOpener').on('click', function() {
+        $('#sortingControls').slideToggle(300);
+        $('#drawerOpener p i').toggleClass('rotationalInvert');
+    });
+
     $('.sortButton').on('click', function() {
         var order = $('.orderButton.active')[0].dataset.sortonly;
+
+        $('#sortingTopic').text(this.innerText);
 
         $('.sortButton').removeClass('active');
         $(this).addClass('active');
@@ -421,6 +430,7 @@ $(document).ready(function() {
     });
 
     $('.filterButton').on('click', function() {
+        $('#filteringTopic').text(this.innerText);
         $('.filterButton').removeClass('active');
         $(this).addClass('active');
     });
