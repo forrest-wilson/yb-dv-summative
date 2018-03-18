@@ -4,6 +4,8 @@ $(document).ready(function() {
     //**** Variable Declarations ****//
     //*******************************//
 
+    // var apiKey = 'bkY4tooDFiYTkMp6XERO1F9ZEyRdTbNJ',
+    // var apiKey = 'z8OjkjKiNmjfHT2A68DFrSojrYTtlCRE',
     var apiKey = '8PyTZKuJ1VEQWvDvoOsARLkT8f6N71db',
         usersURL = 'https://api.behance.net/v2/users/',
         projectsURL = 'https://www.behance.net/v2/projects/',
