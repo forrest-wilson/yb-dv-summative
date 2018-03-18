@@ -134,7 +134,7 @@ $(document).ready(function() {
 
             // If the array has more than or the same amount of items that the designers array has, hide the loadMoreProjects button 
             if (Object.keys(moreProjectsToLoad).length >= 3) {
-                $('#loadMoreProjects').text('No More Projects to Load').css('cursor', 'not-allowed');
+                $('#loadMoreProjects').text('No more projects to load').css('cursor', 'not-allowed');
                 buttonDisabled = true;
             }
         }
@@ -319,7 +319,7 @@ $(document).ready(function() {
 
         // Removes the loadMoreComments button if there are less than a predetermined amount to load
         if (comments.length < commentPagination.commentsPerPage) {
-            $('#loadMoreComments').text('No More Comments to Display').css('cursor', 'not-allowed');
+            $('#loadMoreComments').text('No more comments to load').css('cursor', 'not-allowed');
             buttonDisabled = true;
         }
 
