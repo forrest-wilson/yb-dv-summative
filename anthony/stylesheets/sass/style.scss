@@ -14,9 +14,35 @@ body {
 	background-color: white;
 }
 
+.filler {
+	width: 50%;
+}
+
+.col-centered {
+    float: left;
+    margin: 0 auto;
+    padding:0;
+}
+
+.graph {
+	padding-top: 45px;
+}
+
+.iconContainer {
+	margin-top: 30px;
+	text-align: center;
+	z-index: 100;
+}
+
+.icons {
+	display: inline-block;
+	margin: 0 25px;
+}
+
 // Flip Container ---------------------------
 .flip-container {
 	perspective: 1000px;
+	overflow: hidden;
 }
 
 .flip-container.flip .flipper {
@@ -24,8 +50,8 @@ body {
 }
 
 .flip-container, .front, .back {
-	width: 600px;
-	height: 480px;
+	width: 700px;
+	height: 500px;
 }
 
 .flipper {
@@ -44,6 +70,8 @@ body {
 .front {
 	z-index: 2;
 	transform: rotateY(0deg);
+	width: 800px;
+	height: 500px;
 
 }
 

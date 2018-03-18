@@ -15,22 +15,34 @@
 <body>
 
     <div id="header" class="container-fluid header">
-        
+        <img src="img/Header.png">
     </div>
     
-    <!-- Flip Contaier -->
-    <div id="graphContainer" class="flip-container" ontouchstart="this.classList.toggle('hover');">
-        <div class="flipper">
-            <div class="front">
-                <img id="graph" src="img/line_graph.png">
-                <p>HELLO</p>
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col-xs-4 col-centered">
+                <!-- Flip Contaier -->
+                <div id="graphContainer" class="flip-container graph" ontouchstart="this.classList.toggle('hover');">
+                    <div class="flipper">
+                        <div id="chartLocation" class="front">
+                            
+                        </div>
+                        <div id="dataLocation" class="back">
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            <div class="back">
-                <img src="img/line_graph.png">
-                <p>WORLD</p>
-            </div>
+            <div class="col-xs-4 filler"></div>
         </div>
     </div>
+
+    <div class="iconContainer">
+        <img id="cody" class="icons" src="img/cody.png">
+        <img id="ash" class="icons" src="img/ash.png">
+        <img id="filip" class="icons" src="img/filip.png">
+    </div>
+    
 
 	
 	
