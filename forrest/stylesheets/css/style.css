@@ -253,7 +253,9 @@ hr {
   z-index: 1001; }
 
 .modalShowing {
-  overflow: hidden; }
+  overflow: hidden;
+  height: 100%;
+  position: relative; }
 
 .evenMargin {
   margin: 20px 0; }
