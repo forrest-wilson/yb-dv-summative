@@ -147,7 +147,8 @@ hr {
     height: 70px;
     margin-right: 10px; }
   .comment .commentText {
-    margin: 10px 0; }
+    margin: 10px 0;
+    word-wrap: break-word; }
   .comment .publishedOnText {
     color: #909090; }
 
