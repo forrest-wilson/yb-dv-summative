@@ -173,7 +173,8 @@ hr {
   background-color: #F3F3F3; }
 
 .loadMoreProjectsButtonWrapper {
-  padding: 10px; }
+  padding: 10px;
+  margin-bottom: 50px; }
 
 .loadMoreProjects {
   border-radius: 5px;
@@ -203,7 +204,7 @@ hr {
     .projectControls .drawerOpener:hover {
       cursor: pointer; }
     .projectControls .drawerOpener p {
-      margin: 5px 20px; }
+      margin: 8px 25px; }
       .projectControls .drawerOpener p i {
         -webkit-transition: 300ms ease-in-out;
         transition: 300ms ease-in-out; }

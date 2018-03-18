@@ -199,7 +199,8 @@
 }
 
 .loadMoreProjectsButtonWrapper {
-    padding: 10px
+    padding: 10px;
+    margin-bottom: 50px;
 }
 
 .loadMoreProjects {
@@ -228,7 +229,7 @@
         }
 
         p {
-            margin: 5px 20px;
+            margin: 8px 25px;
 
             i {
                 transition: $transTime;
