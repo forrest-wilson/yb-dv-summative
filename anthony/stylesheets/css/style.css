@@ -12,17 +12,38 @@ body {
   box-shadow: 0px 3px 10px 2px #888888;
   background-color: white; }
 
+.filler {
+  width: 50%; }
+
+.col-centered {
+  float: left;
+  margin: 0 auto;
+  padding: 0; }
+
+.graph {
+  padding-top: 43px; }
+
+.iconContainer {
+  margin-top: 30px;
+  text-align: center;
+  z-index: 100; }
+
+.icons {
+  display: inline-block;
+  margin: 10px 25px; }
+
 .flip-container {
   -webkit-perspective: 1000px;
-  perspective: 1000px; }
+  perspective: 1000px;
+  overflow: hidden; }
 
 .flip-container.flip .flipper {
   -webkit-transform: rotateY(180deg);
   transform: rotateY(180deg); }
 
 .flip-container, .front, .back {
-  width: 600px;
-  height: 480px; }
+  width: 700px;
+  height: 500px; }
 
 .flipper {
   -webkit-transition: 0.6s;
@@ -41,7 +62,9 @@ body {
 .front {
   z-index: 2;
   -webkit-transform: rotateY(0deg);
-  transform: rotateY(0deg); }
+  transform: rotateY(0deg);
+  width: 800px;
+  height: 500px; }
 
 .back {
   -webkit-transform: rotateY(180deg);
