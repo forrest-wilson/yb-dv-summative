@@ -44,7 +44,6 @@ function displayDetailThirdProfile() {
 		dataType: 'jsonp',
 		success: function(behanceData) {
 			if (behanceData) {
-				console.log(behanceData);
 				var profileImage = '';
 				// grab behance user profile picture and append it to the DOM
 				profileImage += '<img id="profilePhoto1" src= "' + behanceData.user.images[276] + '">';
@@ -82,7 +81,6 @@ function displayDetailThirdProfile() {
 		dataType: 'jsonp',
 		success: function(behanceData) {
 			if (behanceData) {
-				console.log(behanceData);
 				var profileImage = '';
 				// grab behance user profile picture and append it to the DOM
 				profileImage += '<img id="profilePhoto2" src= "' + behanceData.user.images[276] + '">';
@@ -121,7 +119,6 @@ function displayDetailThirdProfile() {
 		dataType: 'jsonp',
 		success: function(behanceData) {
 			if (behanceData) {
-				console.log(behanceData);
 				var profileImage = '';
 				// grab behance user profile picture and append it to the DOM
 				profileImage += '<img id="profilePhoto3" src= "' + behanceData.user.images[276] + '">';
