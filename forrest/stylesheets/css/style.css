@@ -48,9 +48,14 @@ hr {
         left: 0;
         bottom: 0;
         right: 0;
-        color: #F3F3F3; }
+        color: #F3F3F3;
+        -webkit-transition: 300ms ease-in-out;
+        transition: 300ms ease-in-out;
+        opacity: 0; }
         .project .projectInner .projectImageWrapper .projectStats .stat {
           padding: 15px 0; }
+      .project .projectInner .projectImageWrapper:hover .projectStats {
+        opacity: 1; }
     .project .projectInner img {
       width: 100%; }
 

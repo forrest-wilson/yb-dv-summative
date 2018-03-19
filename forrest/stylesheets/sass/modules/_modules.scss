@@ -44,9 +44,17 @@
                 background: linear-gradient(transparent, black);
                 @include positioning(absolute, $l: 0, $r: 0, $b: 0);
                 color: $whiteColor;
+                transition: $transTime;
+                opacity: 0;
 
                 .stat {
                     padding: 15px 0;
+                }
+            }
+
+            &:hover {
+                .projectStats {
+                    opacity: 1;
                 }
             }
         }
