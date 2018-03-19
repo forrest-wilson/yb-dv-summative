@@ -71,7 +71,7 @@ function displayDetailThirdProfile() {
 		},
 		// if an error in recieving api data run function and console log error
 		error: function(error) {
-			console.log('error');
+			console.log(error);
 		}
 	});
 
@@ -109,7 +109,7 @@ function displayDetailThirdProfile() {
 		},
 		// if an error in recieving api data run function and console log error
 		error: function(error) {
-			console.log('error');
+			console.log(error);
 		}
 	});
 
@@ -143,12 +143,9 @@ function displayDetailThirdProfile() {
 		},
 		// if an error in recieving api data run function and console log error
 		error: function(error) {
-			console.log('error');
+			console.log(error);
 		}
 	});
-
-
-// + '<figcaption>' + behanceData.user.display_name + '</figcaption>'
 
 
 }); // end ready function
