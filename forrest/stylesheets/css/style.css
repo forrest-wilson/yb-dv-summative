@@ -81,6 +81,8 @@ hr {
   -ms-flex-pack: distribute;
   justify-content: space-around;
   font-size: 14px; }
+  .projectStats .stat {
+    text-align: center; }
 
 .projectDetails {
   -webkit-box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.5);
