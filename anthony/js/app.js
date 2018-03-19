@@ -3,7 +3,7 @@ google.charts.setOnLoadCallback(drawChart);
 
 function drawChart() {
 	
-	var apiKey = 'nnHT2gNBLBc7MnBAi0G0pGrwuFHmhXzi';
+	var apiKey = 'nnHT2gNBLBc7MnBAi0G0pGrwuFHmhXzi',
 		usersURL = 'https://api.behance.net/v2/users/',
 		projectsURL = 'https://www.behance.net/v2/projects/',
 		userIds = ['codycobb', 'ashthorp', 'Filiphds'],
@@ -49,6 +49,7 @@ function drawChart() {
 				['Filip Hodas', statsAll[2].stats.all_time.project_views, '#eb0d30', statsAll[2].stats.all_time.profile_views, '#cff074', statsAll[2].stats.all_time.project_appreciations, '#a9e6ec']
 			]);
 			var options = {
+				title: 'Profile Statistics Comparison',
                 height: 500,
                 width: 700,
                 legend: { position: 'top', maxLines: 3 },
@@ -63,57 +64,142 @@ function drawChart() {
     }
 
     // Remove elements
-	function removeElements(ele) {
-		var img = ele;
-	    while (img.hasChildNodes()) {   
-		    img.removeChild(img.firstChild);
-		}
-	};
+	// function removeElements(ele) {
+	// 	var img = ele;
+	//     while (img.hasChildNodes()) {   
+	// 	    img.removeChild(img.firstChild);
+	// 	}
+	// }
 
     // Container Flips
     document.getElementById('cody').addEventListener('click', function() {
 
-		var img = document.createElement('img');
-		img.src = 'img/line_graph.png';
-		document.getElementById('dataLocation').appendChild(img);
-
+    	document.getElementById('projectVInfo').innerHTML = '';
+    	document.getElementById('profileVInfo').innerHTML = '';
+    	document.getElementById('appreciationsInfo').innerHTML = '';
+    	document.getElementById('projectCInfo').innerHTML = '';
+	
 		setTimeout(function() {
+
+			var numAnim1 = new CountUp('projectVInfo', 0, statsAll[0].stats.today.project_views);
+				if (!numAnim1.error) {
+				    numAnim1.start();
+				} else {
+				    console.error(numAnim1.error);
+			};
+			var numAnim2 = new CountUp('profileVInfo', 0, statsAll[0].stats.today.profile_views);
+				if (!numAnim2.error) {
+				    numAnim2.start();
+				} else {
+				    console.error(numAnim2.error);
+			};
+			var numAnim3 = new CountUp('appreciationsInfo', 0, statsAll[0].stats.today.project_appreciations);
+				if (!numAnim3.error) {
+				    numAnim3.start();
+				} else {
+				    console.error(numAnim3.error);
+			};
+			var numAnim4 = new CountUp('projectCInfo', 0, statsAll[0].stats.today.project_comments);
+				if (!numAnim4.error) {
+				    numAnim4.start();
+				} else {
+				    console.error(numAnim4.error);
+			};
+
 			var element = document.getElementById('graphContainer');
 			element.classList.add('flip');
+
 		}, 100);
+		
 
     });
 
     document.getElementById('ash').addEventListener('click', function() {
 
-		var img = document.createElement('img');
-		img.src = 'img/line_graph.png';
-		document.getElementById('dataLocation').appendChild(img);
+		document.getElementById('projectVInfo').innerHTML = '';
+    	document.getElementById('profileVInfo').innerHTML = '';
+    	document.getElementById('appreciationsInfo').innerHTML = '';
+    	document.getElementById('projectCInfo').innerHTML = '';
 
 		setTimeout(function() {
+
+			var numAnim1 = new CountUp('projectVInfo', 0, statsAll[1].stats.today.project_views);
+				if (!numAnim1.error) {
+				    numAnim1.start();
+				} else {
+				    console.error(numAnim1.error);
+			};
+			var numAnim2 = new CountUp('profileVInfo', 0, statsAll[1].stats.today.profile_views);
+				if (!numAnim2.error) {
+				    numAnim2.start();
+				} else {
+				    console.error(numAnim2.error);
+			};
+			var numAnim3 = new CountUp('appreciationsInfo', 0, statsAll[1].stats.today.project_appreciations);
+				if (!numAnim3.error) {
+				    numAnim3.start();
+				} else {
+				    console.error(numAnim3.error);
+			};
+			var numAnim4 = new CountUp('projectCInfo', 0, statsAll[1].stats.today.project_comments);
+				if (!numAnim4.error) {
+				    numAnim4.start();
+				} else {
+				    console.error(numAnim4.error);
+			};
+
 			var element = document.getElementById('graphContainer');
 			element.classList.add('flip');
 		}, 100);
+		
 
     });
 
     document.getElementById('filip').addEventListener('click', function() {
 
-		var img = document.createElement('img');
-		img.src = 'img/line_graph.png';
-		document.getElementById('dataLocation').appendChild(img);
-
+    	document.getElementById('projectVInfo').innerHTML = '';
+    	document.getElementById('profileVInfo').innerHTML = '';
+    	document.getElementById('appreciationsInfo').innerHTML = '';
+    	document.getElementById('projectCInfo').innerHTML = '';
+		
 		setTimeout(function() {
+
+			var numAnim1 = new CountUp('projectVInfo', 0, statsAll[2].stats.today.project_views);
+				if (!numAnim1.error) {
+				    numAnim1.start();
+				} else {
+				    console.error(numAnim1.error);
+			};
+			var numAnim2 = new CountUp('profileVInfo', 0, statsAll[2].stats.today.profile_views);
+				if (!numAnim2.error) {
+				    numAnim2.start();
+				} else {
+				    console.error(numAnim2.error);
+			};
+			var numAnim3 = new CountUp('appreciationsInfo', 0, statsAll[2].stats.today.project_appreciations);
+				if (!numAnim3.error) {
+				    numAnim3.start();
+				} else {
+				    console.error(numAnim3.error);
+			};
+			var numAnim4 = new CountUp('projectCInfo', 0, statsAll[2].stats.today.project_comments);
+				if (!numAnim4.error) {
+				    numAnim4.start();
+				} else {
+				    console.error(numAnim4.error);
+			};
+
 			var element = document.getElementById('graphContainer');
 			element.classList.add('flip');
+
 		}, 100);
+		
 
     });
     
     document.getElementById('dataLocation').addEventListener('click', function() {
 
-   		removeElements(document.getElementById('dataLocation'));
-
+   		// removeElements(document.getElementById('dataLocation'));
    		var element = document.getElementById('graphContainer');
 		element.classList.toggle('flip');
 

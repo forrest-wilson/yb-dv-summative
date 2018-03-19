@@ -28,6 +28,7 @@ body {
 	padding-top: 43px;
 }
 
+// Icons ---------------------------
 .iconContainer {
 	margin-top: 30px;
 	text-align: center;
@@ -38,6 +39,68 @@ body {
 	display: inline-block;
 	margin: 10px 25px;
 }
+
+#projectV {
+	display: block;
+	position: absolute;
+	top: 60px;
+	left: 60px;
+}
+
+#profileV {
+	display: block;
+	position: absolute;
+	top: 160px;
+	left: 60px;
+}
+
+#appreciations {
+	display: block;
+	position: absolute;
+	top: 260px;
+	left: 60px;
+}
+
+#projectC {
+	display: block;
+	position: absolute;
+	top: 360px;
+	left: 60px;
+}
+
+#projectVInfo {
+	font-size: 2.3em;
+	display: block;
+	position: absolute;
+	top: 65px;
+	left: 150px;
+}
+
+#profileVInfo {
+	font-size: 2.3em;
+	display: block;
+	position: absolute;
+	top: 165px;
+	left: 150px;
+}
+
+#appreciationsInfo {
+	font-size: 2.3em;
+	display: block;
+	position: absolute;
+	top: 265px;
+	left: 150px;
+}
+
+#projectCInfo {
+	font-size: 2.3em;
+	display: block;
+	position: absolute;
+	top: 365px;
+	left: 150px;
+}
+
+//  End ---------------------------
 
 // Flip Container ---------------------------
 .flip-container {
@@ -51,7 +114,7 @@ body {
 
 .flip-container, .front, .back {
 	width: 700px;
-	height: 500px;
+	height: 540px;
 }
 
 .flipper {
@@ -70,14 +133,14 @@ body {
 .front {
 	z-index: 2;
 	transform: rotateY(0deg);
-	width: 800px;
+	width: 700px;
 	height: 500px;
 
 }
 
 .back {
 	transform: rotateY(180deg);
-	background: #f8f8f8;
 }
 // End ---------------------------
+
 
