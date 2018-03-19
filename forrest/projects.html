@@ -15,13 +15,19 @@
     <script src='../node_modules/handlebars/dist/handlebars.min.js'></script>
 </head>
 <body>
+    <header id='header' class='header'>
+        <div class='wrapper'>
+            <img class='logo' src='img/creoLogo.png' alt='Creo Logo'>
+        </div>
+        <div class='lip'></div>
+    </header>
 
     <div class='projectControls'>
         <div id='drawerOpener' class='drawerOpener'>
             <p>Filters <i class='fa fa-angle-double-up'></i></p>
         </div>
-        <div id='sortingControls' class='sorting padding-10'>
 
+        <div id='sortingControls' class='sorting padding-10'>
             <div class='sortingGroup inlineBlock'>
                 <span class='btn-group orderingButtons'>
                     <button class='btn controlButton orderButton active' type='button' data-sortonly='asc' data-toggle='tooltip' data-placement='bottom' title='Ascending Order'><i class='fa fa-angle-up'></i></button>
@@ -32,8 +38,8 @@
 
             <div class='dropdownWrapper'>
                 <div class='dropdown'>
-                    <button class='btn dropdown-toggle filterToggle' type='button' id='dropdownMenuButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Sort By: <span id='sortingTopic'>Publish Date</span></button>
-                    <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>
+                    <button class='btn dropdown-toggle filterToggle' type='button' id='dropdownSortButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Sort By: <span id='sortingTopic'>Publish Date</span></button>
+                    <div class='dropdown-menu' aria-labelledby='dropdownSort'>
                         <div class='controlButton sortButton dropdown-item active' data-sortonly='published-on'>Publish Date</div>
                         <div class='controlButton sortButton dropdown-item' data-sortonly='likes'>Likes</div>
                         <div class='controlButton sortButton dropdown-item' data-sortonly='comments'>Comments</div>
@@ -44,8 +50,8 @@
 
             <div class='dropdownWrapper'>
                 <div class='dropdown'>
-                    <button class='btn dropdown-toggle filterToggle' type='button' id='dropdownMenuButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Filter By: <span id='filteringTopic'>All Designers</span></button>
-                    <div class='dropdown-menu' aria-labelledby='dropdownMenuButton'>
+                    <button class='btn dropdown-toggle filterToggle' type='button' id='dropdownFilterButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Filter By: <span id='filteringTopic'>All Designers</span></button>
+                    <div class='dropdown-menu' aria-labelledby='dropdownFilterButton'>
                         <div class='controlButton filterButton dropdown-item active' data-mixitup-control data-filter='all'>All Designers</div>
                         <hr>
                         <div class='controlButton filterButton dropdown-item' data-mixitup-control data-filter='.id-6053747'>Ash Thorp</div>

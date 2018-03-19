@@ -2,6 +2,25 @@
 //**** Modules SASS ****//
 //**********************//
 
+.header {
+    .wrapper {
+        background: linear-gradient(to bottom right, black, #464646);
+        height: 100px;
+        box-shadow: $boxShadow;
+
+        .logo {
+            height: 100%;
+            padding: 10px;
+        }
+    }
+
+    .lip {
+        height: 10px;
+        box-shadow: $boxShadow;
+        background: linear-gradient(to bottom right, black, #464646);
+    }
+}
+
 .project {
     padding: 10px;
     font-size: 0; // Workaround for empty space on the .project element. Explicit font-size should be defined in child elements
@@ -254,33 +273,6 @@
         }
     }
 
-    .sorting {
-        color: $whiteColor;
-        background-color: #2f3031;
-        box-shadow: $boxShadow;
-        display: none;
-
-        & > *:last-child {
-            margin-bottom: 0;
-        }
-
-        .sortingGroup {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 10px;
-
-            .orderingButtons {
-                width: 100%;
-
-                .orderButton,
-                .orderButtonInlineControl {
-                    width: calc(100% / 3);
-                    background-color: $whiteColor;
-                }
-            }
-        }
-    }
-
     .controlButton > i {
         font-weight: 600;
     }
@@ -289,6 +281,33 @@
         &.filterButton:hover,
         &.sortButton:hover {
             cursor: pointer;
+        }
+    }
+}
+
+.sorting {
+    color: $whiteColor;
+    background-color: #2f3031;
+    box-shadow: $boxShadow;
+    display: none;
+
+    & > *:last-child {
+        margin-bottom: 0;
+    }
+
+    .sortingGroup {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+
+        .orderingButtons {
+            width: 100%;
+
+            .orderButton,
+            .orderButtonInlineControl {
+                width: calc(100% / 3);
+                background-color: $whiteColor;
+            }
         }
     }
 }
