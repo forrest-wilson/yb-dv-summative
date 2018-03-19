@@ -5,10 +5,8 @@ function drawChart() {
 	
 	var apiKey = 'nnHT2gNBLBc7MnBAi0G0pGrwuFHmhXzi',/* 'uASQiBZVNZdHoFeil4ZlXU3USDC0rfV8',*/
 		usersURL = 'https://api.behance.net/v2/users/',
-		projectsURL = 'https://www.behance.net/v2/projects/',
 		userIds = ['codycobb', 'ashthorp', 'Filiphds'],
-		statsAll = [],
-		statsToday = [];
+		statsAll = [];
 	
 	// Grabs data from behance
 	function dataGrab(url) {
@@ -104,17 +102,17 @@ function drawChart() {
 
     	hideProjs();
 
-    	var element = document.getElementById('ash');
-    	element.classList.remove('active');
-    	var element = document.getElementById('filip');
-    	element.classList.remove('active');
+    	var elementAsh = document.getElementById('ash');
+    	elementAsh.classList.remove('active');
+    	var elementFilip = document.getElementById('filip');
+    	elementFilip.classList.remove('active');
 	
 		setTimeout(function() {
 
 			$('#codyProj').show();
 
-			var element = document.getElementById('cody');
-    		element.classList.add('active');
+			var elementCody = document.getElementById('cody');
+    		elementCody.classList.add('active');
 
 			var numAnim1 = new CountUp('projectVInfo', 0, statsAll[0].stats.today.project_views);
 				if (!numAnim1.error) {
@@ -157,17 +155,17 @@ function drawChart() {
     	document.getElementById('projectCInfo').innerHTML = '';
     	hideProjs();
 
-    	var element = document.getElementById('cody');
-    	element.classList.remove('active');
-    	var element = document.getElementById('filip');
-    	element.classList.remove('active');
+    	var elementCody = document.getElementById('cody');
+    	elementCody.classList.remove('active');
+    	var elementFilip = document.getElementById('filip');
+    	elementFilip.classList.remove('active');
 
 		setTimeout(function() {
 
 			$('#ashProj').show();
 
-			var element = document.getElementById('ash');
-    		element.classList.add('active');
+			var elementAsh = document.getElementById('ash');
+    		elementAsh.classList.add('active');
 
 			var numAnim1 = new CountUp('projectVInfo', 0, statsAll[1].stats.today.project_views);
 				if (!numAnim1.error) {
@@ -209,17 +207,17 @@ function drawChart() {
     	document.getElementById('projectCInfo').innerHTML = '';
     	hideProjs();
 
-    	var element = document.getElementById('ash');
-    	element.classList.remove('active');
-    	var element = document.getElementById('cody');
-    	element.classList.remove('active');
+    	var elementAsh = document.getElementById('ash');
+    	elementAsh.classList.remove('active');
+    	var elementCody = document.getElementById('cody');
+    	elementCody.classList.remove('active');
 		
 		setTimeout(function() {
 
 			$('#filipProj').show();
 
-			var element = document.getElementById('filip');
-    		element.classList.add('active');
+			var elementFilip = document.getElementById('filip');
+    		elementFilip.classList.add('active');
 
 			var numAnim1 = new CountUp('projectVInfo', 0, statsAll[2].stats.today.project_views);
 				if (!numAnim1.error) {
@@ -256,13 +254,13 @@ function drawChart() {
     
     document.getElementById('backBtn').addEventListener('click', function() {
 
-    	var element = document.getElementById('ash');
-    	element.classList.remove('active');
-    	var element = document.getElementById('cody');
-    	element.classList.remove('active');
-   		var element = document.getElementById('filip');
-   		
-    	element.classList.remove('active');
+    	var elementAsh = document.getElementById('ash');
+    	elementAsh.classList.remove('active');
+    	var elementCody = document.getElementById('cody');
+    	elementCody.classList.remove('active');
+   		var elementFilip = document.getElementById('filip');
+    	elementFilip.classList.remove('active');
+
    		var element = document.getElementById('graphContainer');
 		element.classList.toggle('flip');
 
