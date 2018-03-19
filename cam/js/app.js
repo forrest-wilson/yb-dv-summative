@@ -1,7 +1,9 @@
+
 $(document).ready(function() {
 
 var apiKey = 'Iamkq0sRqOd6PqC7IEFwofD3YVs30ox9';
 var apiKey2 = 'KxiDWLIreraa9YM633j8JQy3mRmU6Smh';
+
 var ashThorpUrl = 'https://api.behance.net/v2/users/ashthorp?client_id=';
 var codyCobbUrl = 'https://api.behance.net/v2/users/codycobb?client_id=';
 var filipHodasUrl = 'https://api.behance.net/v2/users/Filiphds?client_id=';
@@ -15,25 +17,25 @@ firstProfile.addEventListener('click', displayDetail, false);
 secondProfile.addEventListener('click', displayDetailSecondProfile, false);
 thirdProfile.addEventListener('click', displayDetailThirdProfile, false);
 
-// when first profile is clicked run function
+// when first profile is clicked run function displayDetail
 function displayDetail() {
-	firstProfile.classList.toggle("heightToggle");
-	secondProfile.classList.toggle("smallToggle");
-	thirdProfile.classList.toggle("smallToggle");
+  	firstProfile.classList.toggle('heightToggle');
+	secondProfile.classList.toggle('smallToggle');
+	thirdProfile.classList.toggle('smallToggle');
 }
 
-// when second profile is clicked run function
+// when second profile is clicked run function displayDetailSecondProfile
 function displayDetailSecondProfile() {
-	secondProfile.classList.toggle("heightToggle");
-	firstProfile.classList.toggle("smallToggle");
-	thirdProfile.classList.toggle("smallToggle");
+	secondProfile.classList.toggle('heightToggle');
+	firstProfile.classList.toggle('smallToggle');
+	thirdProfile.classList.toggle('smallToggle');
 }
 
-// when third profile is clicked run function
+// when third profile is clicked run function displayDetailThirdProfile
 function displayDetailThirdProfile() {
-	thirdProfile.classList.toggle("heightToggle");
-	secondProfile.classList.toggle("smallToggle");
-	firstProfile.classList.toggle("smallToggle");
+	thirdProfile.classList.toggle('heightToggle');
+	secondProfile.classList.toggle('smallToggle');
+	firstProfile.classList.toggle('smallToggle');
 
 }
 	// ajax request to get behance profile data 
@@ -42,7 +44,6 @@ function displayDetailThirdProfile() {
 		dataType: 'jsonp',
 		success: function(behanceData) {
 			if (behanceData) {
-				console.log(behanceData);
 				var profileImage = '';
 				// grab behance user profile picture and append it to the DOM
 				profileImage += '<img id="profilePhoto1" src= "' + behanceData.user.images[276] + '">';
@@ -80,7 +81,6 @@ function displayDetailThirdProfile() {
 		dataType: 'jsonp',
 		success: function(behanceData) {
 			if (behanceData) {
-				console.log(behanceData);
 				var profileImage = '';
 				// grab behance user profile picture and append it to the DOM
 				profileImage += '<img id="profilePhoto2" src= "' + behanceData.user.images[276] + '">';
@@ -119,7 +119,6 @@ function displayDetailThirdProfile() {
 		dataType: 'jsonp',
 		success: function(behanceData) {
 			if (behanceData) {
-				console.log(behanceData);
 				var profileImage = '';
 				// grab behance user profile picture and append it to the DOM
 				profileImage += '<img id="profilePhoto3" src= "' + behanceData.user.images[276] + '">';

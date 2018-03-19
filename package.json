@@ -21,7 +21,11 @@
     "behance-api": "^1.1.4",
     "bootstrap": "^4.0.0",
     "font-awesome": "^4.7.0",
+<<<<<<< HEAD
     "handlebars": "^4.0.11",
+=======
+    "gulp-cli": "^2.0.1",
+>>>>>>> cam
     "jquery": "^3.3.1",
     "mixitup": "^3.2.2",
     "moment": "^2.21.0",
