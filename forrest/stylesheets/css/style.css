@@ -17,7 +17,7 @@ hr {
   box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.5); }
   .header .wrapper .logo {
     height: 100%;
-    padding: 10px; }
+    padding: 20px; }
 
 .header .lip {
   height: 10px;
@@ -48,9 +48,14 @@ hr {
         left: 0;
         bottom: 0;
         right: 0;
-        color: #F3F3F3; }
+        color: #F3F3F3;
+        -webkit-transition: 300ms ease-in-out;
+        transition: 300ms ease-in-out;
+        opacity: 0; }
         .project .projectInner .projectImageWrapper .projectStats .stat {
           padding: 15px 0; }
+      .project .projectInner .projectImageWrapper:hover .projectStats {
+        opacity: 1; }
     .project .projectInner img {
       width: 100%; }
 
@@ -76,6 +81,8 @@ hr {
   -ms-flex-pack: distribute;
   justify-content: space-around;
   font-size: 14px; }
+  .projectStats .stat {
+    text-align: center; }
 
 .projectDetails {
   -webkit-box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.5);
@@ -244,6 +251,8 @@ hr {
     font-weight: 600; }
   .projectControls .controlButton.filterButton:hover, .projectControls .controlButton.sortButton:hover {
     cursor: pointer; }
+  .projectControls .controlButton.filterButton:active, .projectControls .controlButton.sortButton:active {
+    background-color: rgba(0, 0, 0, 0.2); }
 
 .sorting {
   color: #F3F3F3;
@@ -267,6 +276,29 @@ hr {
       .sorting .sortingGroup .orderingButtons .orderButtonInlineControl {
         width: calc(100% / 3);
         background-color: #F3F3F3; }
+
+.errorModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  display: none; }
+  .errorModal .errorMessage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background-color: #F3F3F3;
+    text-align: center;
+    border-radius: 5px;
+    width: 90%;
+    max-width: 400px;
+    -webkit-box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.5); }
 
 .slick-slide {
   display: inline-block;

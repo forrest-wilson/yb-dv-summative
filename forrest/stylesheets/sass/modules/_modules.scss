@@ -10,7 +10,7 @@
 
         .logo {
             height: 100%;
-            padding: 10px;
+            padding: 20px;
         }
     }
 
@@ -44,9 +44,17 @@
                 background: linear-gradient(transparent, black);
                 @include positioning(absolute, $l: 0, $r: 0, $b: 0);
                 color: $whiteColor;
+                transition: $transTime;
+                opacity: 0;
 
                 .stat {
                     padding: 15px 0;
+                }
+            }
+
+            &:hover {
+                .projectStats {
+                    opacity: 1;
                 }
             }
         }
@@ -78,6 +86,10 @@
     align-items: flex-end;
     justify-content: space-around;
     font-size: 14px;
+
+    .stat {
+        text-align: center;
+    }
 }
 
 .projectDetails {
@@ -282,6 +294,11 @@
         &.sortButton:hover {
             cursor: pointer;
         }
+
+        &.filterButton:active,
+        &.sortButton:active {
+            background-color: rgba(0, 0, 0, 0.2);
+        }
     }
 }
 
@@ -309,5 +326,23 @@
                 background-color: $whiteColor;
             }
         }
+    }
+}
+
+.errorModal {
+    @include positioning(fixed, 0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    display: none;
+
+    .errorMessage {
+        @include positioning(absolute, $t: 50%, $l: 50%);
+        transform: translate(-50%, -50%);
+        background-color: $whiteColor;
+        text-align: center;
+        border-radius: $borderRadius;
+        width: 90%;
+        max-width: 400px;
+        box-shadow: $boxShadow;
     }
 }
