@@ -7,6 +7,8 @@
     "globals": {
         "Handlebars": false,
         "mixitup": false,
-        "moment": false
+        "moment": false,
+    	"google": false,
+    	"CountUp": false
     }
 }
