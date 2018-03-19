@@ -260,6 +260,10 @@
         box-shadow: $boxShadow;
         display: none;
 
+        & > *:last-child {
+            margin-bottom: 0;
+        }
+
         .sortingGroup {
             display: flex;
             justify-content: center;
@@ -281,7 +285,10 @@
         font-weight: 600;
     }
 
-    .controlButton.filterButton:hover {
-        cursor: pointer;
+    .controlButton {
+        &.filterButton:hover,
+        &.sortButton:hover {
+            cursor: pointer;
+        }
     }
 }

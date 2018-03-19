@@ -229,6 +229,8 @@ hr {
     -webkit-box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.5);
     box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.5);
     display: none; }
+    .projectControls .sorting > *:last-child {
+      margin-bottom: 0; }
     .projectControls .sorting .sortingGroup {
       display: -webkit-box;
       display: -ms-flexbox;
@@ -245,7 +247,7 @@ hr {
           background-color: #F3F3F3; }
   .projectControls .controlButton > i {
     font-weight: 600; }
-  .projectControls .controlButton.filterButton:hover {
+  .projectControls .controlButton.filterButton:hover, .projectControls .controlButton.sortButton:hover {
     cursor: pointer; }
 
 .slick-slide {
