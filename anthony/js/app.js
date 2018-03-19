@@ -3,7 +3,7 @@ google.charts.setOnLoadCallback(drawChart);
 
 function drawChart() {
 	
-	var apiKey = 'nnHT2gNBLBc7MnBAi0G0pGrwuFHmhXzi',
+	var apiKey = 'nnHT2gNBLBc7MnBAi0G0pGrwuFHmhXzi',/* 'uASQiBZVNZdHoFeil4ZlXU3USDC0rfV8',*/
 		usersURL = 'https://api.behance.net/v2/users/',
 		projectsURL = 'https://www.behance.net/v2/projects/',
 		userIds = ['codycobb', 'ashthorp', 'Filiphds'],
@@ -50,8 +50,8 @@ function drawChart() {
 			]);
 			var options = {
 				title: 'Profile Statistics Comparison',
-                height: 500,
-                width: 700,
+                height: 494,
+                width: 694,
                 legend: { position: 'top', maxLines: 3 },
                 colors: ['#eb0d30', '#cff074', '#a9e6ec'],
                 minorTicks: 10
@@ -62,14 +62,37 @@ function drawChart() {
 		}, 500);
           	
     }
+	// $('#cody').click(function(){
+ //        $('#codyProj').hide();
+ //        $('#ashProj').hide();
+ //        $('#filipProj').hide();
+ //    });
 
-    // Remove elements
-	// function removeElements(ele) {
-	// 	var img = ele;
-	//     while (img.hasChildNodes()) {   
-	// 	    img.removeChild(img.firstChild);
-	// 	}
-	// }
+    function hideProjs() {
+        $('#codyProj').hide();
+        $('#ashProj').hide();
+        $('#filipProj').hide();
+        $('#profTitle').hide();
+        $('#projTitle').hide();
+    }
+
+    $('.profLink').hover(
+	  function () {
+	    $('#profTitle').fadeIn();
+	  }, 
+	  function () {
+	    $('#profTitle').fadeOut();
+	  }
+	);
+
+    $('.projLink').hover(
+	  function () {
+	    $('#projTitle').fadeIn();
+	  }, 
+	  function () {
+	    $('#projTitle').fadeOut();
+	  }
+	);
 
     // Container Flips
     document.getElementById('cody').addEventListener('click', function() {
@@ -78,33 +101,45 @@ function drawChart() {
     	document.getElementById('profileVInfo').innerHTML = '';
     	document.getElementById('appreciationsInfo').innerHTML = '';
     	document.getElementById('projectCInfo').innerHTML = '';
+
+    	hideProjs();
+
+    	var element = document.getElementById('ash');
+    	element.classList.remove('active');
+    	var element = document.getElementById('filip');
+    	element.classList.remove('active');
 	
 		setTimeout(function() {
+
+			$('#codyProj').show();
+
+			var element = document.getElementById('cody');
+    		element.classList.add('active');
 
 			var numAnim1 = new CountUp('projectVInfo', 0, statsAll[0].stats.today.project_views);
 				if (!numAnim1.error) {
 				    numAnim1.start();
 				} else {
 				    console.error(numAnim1.error);
-			};
+			}
 			var numAnim2 = new CountUp('profileVInfo', 0, statsAll[0].stats.today.profile_views);
 				if (!numAnim2.error) {
 				    numAnim2.start();
 				} else {
 				    console.error(numAnim2.error);
-			};
+			}
 			var numAnim3 = new CountUp('appreciationsInfo', 0, statsAll[0].stats.today.project_appreciations);
 				if (!numAnim3.error) {
 				    numAnim3.start();
 				} else {
 				    console.error(numAnim3.error);
-			};
+			}
 			var numAnim4 = new CountUp('projectCInfo', 0, statsAll[0].stats.today.project_comments);
 				if (!numAnim4.error) {
 				    numAnim4.start();
 				} else {
 				    console.error(numAnim4.error);
-			};
+			}
 
 			var element = document.getElementById('graphContainer');
 			element.classList.add('flip');
@@ -120,33 +155,44 @@ function drawChart() {
     	document.getElementById('profileVInfo').innerHTML = '';
     	document.getElementById('appreciationsInfo').innerHTML = '';
     	document.getElementById('projectCInfo').innerHTML = '';
+    	hideProjs();
+
+    	var element = document.getElementById('cody');
+    	element.classList.remove('active');
+    	var element = document.getElementById('filip');
+    	element.classList.remove('active');
 
 		setTimeout(function() {
+
+			$('#ashProj').show();
+
+			var element = document.getElementById('ash');
+    		element.classList.add('active');
 
 			var numAnim1 = new CountUp('projectVInfo', 0, statsAll[1].stats.today.project_views);
 				if (!numAnim1.error) {
 				    numAnim1.start();
 				} else {
 				    console.error(numAnim1.error);
-			};
+			}
 			var numAnim2 = new CountUp('profileVInfo', 0, statsAll[1].stats.today.profile_views);
 				if (!numAnim2.error) {
 				    numAnim2.start();
 				} else {
 				    console.error(numAnim2.error);
-			};
+			}
 			var numAnim3 = new CountUp('appreciationsInfo', 0, statsAll[1].stats.today.project_appreciations);
 				if (!numAnim3.error) {
 				    numAnim3.start();
 				} else {
 				    console.error(numAnim3.error);
-			};
+			}
 			var numAnim4 = new CountUp('projectCInfo', 0, statsAll[1].stats.today.project_comments);
 				if (!numAnim4.error) {
 				    numAnim4.start();
 				} else {
 				    console.error(numAnim4.error);
-			};
+			}
 
 			var element = document.getElementById('graphContainer');
 			element.classList.add('flip');
@@ -161,33 +207,44 @@ function drawChart() {
     	document.getElementById('profileVInfo').innerHTML = '';
     	document.getElementById('appreciationsInfo').innerHTML = '';
     	document.getElementById('projectCInfo').innerHTML = '';
+    	hideProjs();
+
+    	var element = document.getElementById('ash');
+    	element.classList.remove('active');
+    	var element = document.getElementById('cody');
+    	element.classList.remove('active');
 		
 		setTimeout(function() {
+
+			$('#filipProj').show();
+
+			var element = document.getElementById('filip');
+    		element.classList.add('active');
 
 			var numAnim1 = new CountUp('projectVInfo', 0, statsAll[2].stats.today.project_views);
 				if (!numAnim1.error) {
 				    numAnim1.start();
 				} else {
 				    console.error(numAnim1.error);
-			};
+			}
 			var numAnim2 = new CountUp('profileVInfo', 0, statsAll[2].stats.today.profile_views);
 				if (!numAnim2.error) {
 				    numAnim2.start();
 				} else {
 				    console.error(numAnim2.error);
-			};
+			}
 			var numAnim3 = new CountUp('appreciationsInfo', 0, statsAll[2].stats.today.project_appreciations);
 				if (!numAnim3.error) {
 				    numAnim3.start();
 				} else {
 				    console.error(numAnim3.error);
-			};
+			}
 			var numAnim4 = new CountUp('projectCInfo', 0, statsAll[2].stats.today.project_comments);
 				if (!numAnim4.error) {
 				    numAnim4.start();
 				} else {
 				    console.error(numAnim4.error);
-			};
+			}
 
 			var element = document.getElementById('graphContainer');
 			element.classList.add('flip');
@@ -197,9 +254,15 @@ function drawChart() {
 
     });
     
-    document.getElementById('dataLocation').addEventListener('click', function() {
+    document.getElementById('backBtn').addEventListener('click', function() {
 
-   		// removeElements(document.getElementById('dataLocation'));
+    	var element = document.getElementById('ash');
+    	element.classList.remove('active');
+    	var element = document.getElementById('cody');
+    	element.classList.remove('active');
+   		var element = document.getElementById('filip');
+   		
+    	element.classList.remove('active');
    		var element = document.getElementById('graphContainer');
 		element.classList.toggle('flip');
 

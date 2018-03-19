@@ -4,10 +4,10 @@
 
 body {
   background: linear-gradient(-45deg, #c7ec75, #a5dfe7);
-  height: 100vh; }
+  height: 130vh; }
 
 .header {
-  height: 200px;
+  height: 100px;
   -webkit-box-shadow: 0px 3px 10px 2px #888888;
   box-shadow: 0px 3px 10px 2px #888888;
   background-color: white; }
@@ -21,67 +21,118 @@ body {
   padding: 0; }
 
 .graph {
-  padding-top: 43px; }
+  margin-top: 43px; }
+
+#backBtn {
+  display: block;
+  position: absolute;
+  top: 174px;
+  left: 272px;
+  opacity: 0;
+  -webkit-transition: .5s ease;
+  transition: .5s ease; }
+
+#backBtn:hover {
+  opacity: 1; }
+
+.projLink {
+  position: absolute;
+  top: 280px;
+  left: 450px;
+  border-radius: 4px;
+  -webkit-transition: .5s ease;
+  transition: .5s ease; }
+
+.projLink:hover {
+  opacity: 0.7; }
+
+.profLink {
+  position: absolute;
+  top: 50px;
+  left: 440px;
+  -webkit-transition: .5s ease;
+  transition: .5s ease; }
+
+.profLink:hover {
+  opacity: 0.7; }
+
+#profTitle {
+  position: absolute;
+  font-size: 1.5em;
+  top: 20px;
+  left: 490px; }
+
+#projTitle {
+  position: absolute;
+  font-size: 1.5em;
+  top: 235px;
+  left: 490px; }
 
 .iconContainer {
-  margin-top: 30px;
   text-align: center;
   z-index: 100; }
 
 .icons {
+  border: 3px solid #888888;
+  border-radius: 100px;
   display: inline-block;
-  margin: 10px 25px; }
+  margin: 20px 25px;
+  -webkit-transition: .5s ease;
+  transition: .5s ease; }
+
+.active, .icons:hover {
+  border: 3px solid black; }
 
 #projectV {
   display: block;
   position: absolute;
-  top: 60px;
+  top: 70px;
   left: 60px; }
 
 #profileV {
   display: block;
   position: absolute;
-  top: 160px;
+  top: 170px;
   left: 60px; }
 
 #appreciations {
   display: block;
   position: absolute;
-  top: 260px;
+  top: 270px;
   left: 60px; }
 
 #projectC {
   display: block;
   position: absolute;
-  top: 360px;
+  top: 370px;
   left: 60px; }
 
 #projectVInfo {
   font-size: 2.3em;
   display: block;
   position: absolute;
-  top: 65px;
+  top: 75px;
   left: 150px; }
 
 #profileVInfo {
   font-size: 2.3em;
   display: block;
   position: absolute;
-  top: 165px;
+  top: 175px;
   left: 150px; }
 
 #appreciationsInfo {
   font-size: 2.3em;
   display: block;
   position: absolute;
-  top: 265px;
+  top: 275px;
   left: 150px; }
 
 #projectCInfo {
   font-size: 2.3em;
   display: block;
   position: absolute;
-  top: 365px;
+  top: 375px;
   left: 150px; }
 
 .flip-container {
@@ -95,7 +146,7 @@ body {
 
 .flip-container, .front, .back {
   width: 700px;
-  height: 540px; }
+  height: 500px; }
 
 .flipper {
   -webkit-transition: 0.6s;
@@ -109,14 +160,15 @@ body {
   backface-visibility: hidden;
   position: absolute;
   top: 0;
-  left: 0; }
+  left: 0;
+  width: 700px;
+  height: 500px;
+  border: 3px solid #888888; }
 
 .front {
   z-index: 2;
   -webkit-transform: rotateY(0deg);
-  transform: rotateY(0deg);
-  width: 700px;
-  height: 500px; }
+  transform: rotateY(0deg); }
 
 .back {
   -webkit-transform: rotateY(180deg);
