@@ -46,6 +46,7 @@ gulp.task('server', function() {
             baseDir: '.', // Where the server will start from
             index: 'index.html' // Default file to load
         },
+        ghostMode: false,
         port: 3000, // Using the default port. Change if needed but don't commit
         ui: {
             port: 3001 // Using the default port. Change if needed but don't commit

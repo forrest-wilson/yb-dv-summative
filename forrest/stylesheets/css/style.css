@@ -9,6 +9,23 @@ body {
 hr {
   margin: 10px 0; }
 
+.header .wrapper {
+  background: -webkit-gradient(linear, left top, right bottom, from(black), to(#464646));
+  background: linear-gradient(to bottom right, black, #464646);
+  height: 100px;
+  -webkit-box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.5); }
+  .header .wrapper .logo {
+    height: 100%;
+    padding: 10px; }
+
+.header .lip {
+  height: 10px;
+  -webkit-box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.5);
+  background: -webkit-gradient(linear, left top, right bottom, from(black), to(#464646));
+  background: linear-gradient(to bottom right, black, #464646); }
+
 .project {
   padding: 10px;
   font-size: 0; }
@@ -91,7 +108,7 @@ hr {
   left: 0;
   bottom: 0;
   right: 0;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.6);
   z-index: 1000;
   display: none;
   overflow-y: auto;
@@ -147,7 +164,8 @@ hr {
     height: 70px;
     margin-right: 10px; }
   .comment .commentText {
-    margin: 10px 0; }
+    margin: 10px 0;
+    word-wrap: break-word; }
   .comment .publishedOnText {
     color: #909090; }
 
@@ -172,7 +190,8 @@ hr {
   background-color: #F3F3F3; }
 
 .loadMoreProjectsButtonWrapper {
-  padding: 10px; }
+  padding: 10px;
+  margin-bottom: 50px; }
 
 .loadMoreProjects {
   border-radius: 5px;
@@ -180,27 +199,74 @@ hr {
   box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.5);
   background-color: #F3F3F3; }
 
-.projectControls .dropdownWrapper {
-  position: relative;
-  display: inline-block; }
+.projectControls {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 250;
+  border-radius: 5px; }
+  .projectControls .drawerOpener {
+    position: relative;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    display: inline-block;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: #2f3031;
+    color: #F3F3F3;
+    -webkit-box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.5); }
+    .projectControls .drawerOpener:hover {
+      cursor: pointer; }
+    .projectControls .drawerOpener p {
+      margin: 8px 25px; }
+      .projectControls .drawerOpener p i {
+        -webkit-transition: 300ms ease-in-out;
+        transition: 300ms ease-in-out; }
+  .projectControls .dropdownWrapper {
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    margin-bottom: 10px; }
+    .projectControls .dropdownWrapper .dropdown {
+      width: 100%; }
+      .projectControls .dropdownWrapper .dropdown .filterToggle {
+        background-color: grey;
+        color: #F3F3F3;
+        width: 100%; }
+  .projectControls .controlButton > i {
+    font-weight: 600; }
+  .projectControls .controlButton.filterButton:hover, .projectControls .controlButton.sortButton:hover {
+    cursor: pointer; }
 
-.projectControls .sorting {
-  border-radius: 5px;
+.sorting {
+  color: #F3F3F3;
+  background-color: #2f3031;
   -webkit-box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.5);
   box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.5);
-  color: #F3F3F3;
-  background-color: #2f3031; }
-  .projectControls .sorting .sortingGroup {
-    padding-right: 10px; }
-  .projectControls .sorting .filterToggle {
-    background-color: grey;
-    color: #F3F3F3; }
-
-.projectControls .controlButton > i {
-  font-weight: 600; }
-
-.projectControls .controlButton.filterButton:hover {
-  cursor: pointer; }
+  display: none; }
+  .sorting > *:last-child {
+    margin-bottom: 0; }
+  .sorting .sortingGroup {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    margin-bottom: 10px; }
+    .sorting .sortingGroup .orderingButtons {
+      width: 100%; }
+      .sorting .sortingGroup .orderingButtons .orderButton,
+      .sorting .sortingGroup .orderingButtons .orderButtonInlineControl {
+        width: calc(100% / 3);
+        background-color: #F3F3F3; }
 
 .slick-slide {
   display: inline-block;
@@ -252,10 +318,12 @@ hr {
   z-index: 1001; }
 
 .modalShowing {
-  overflow: hidden; }
+  overflow: hidden;
+  height: 100%;
+  position: relative; }
 
-.evenMargin {
-  margin: 20px 0; }
+.paragraphMargin {
+  margin: 15px 0; }
 
 .disabledButton {
   color: #909090; }
@@ -263,7 +331,7 @@ hr {
     cursor: wait; }
 
 .projectControls .active {
-  background-color: grey;
+  background-color: grey !important;
   color: white; }
 
 .padding-10 {
@@ -272,10 +340,33 @@ hr {
 .inlineBlock {
   display: inline-block; }
 
+.rotationalInvert {
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg); }
+
 @media screen and (min-width: 800px) {
   .loadMoreProjects {
     width: 350px;
-    margin: 0 auto; } }
+    margin: 0 auto; }
+  .projectControls {
+    position: fixed;
+    top: 31px;
+    left: auto;
+    bottom: auto;
+    right: 0;
+    width: 350px;
+    margin: 0 0 0 auto; }
+    .projectControls .drawerOpener {
+      border: 1px solid #F3F3F3;
+      border-right: none;
+      left: 100%;
+      -webkit-transform: translateX(-100%);
+      transform: translateX(-100%);
+      border-radius: 5px 0 0 5px; }
+  .sorting {
+    border: 1px solid #F3F3F3;
+    border-right: none;
+    border-radius: 5px 0 0 5px; } }
 
 @media screen and (min-width: 1000px) {
   .modalContent {

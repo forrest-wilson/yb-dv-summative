@@ -7,6 +7,26 @@
         width: 350px;
         margin: 0 auto;
     }
+
+    .projectControls {
+        @include positioning(fixed, $t: 31px, $r: 0, $b: auto, $l: auto);
+        width: 350px;
+        margin: 0 0 0 auto;
+
+        .drawerOpener {
+            border: 1px solid $whiteColor;
+            border-right: none;
+            left: 100%;
+            transform: translateX(-100%);
+            border-radius: 5px 0 0 5px;
+        }
+    }
+
+    .sorting {
+        border: 1px solid $whiteColor;
+        border-right: none;
+        border-radius: 5px 0 0 5px;
+    }
 }
 
 @media screen and (min-width: 1000px) {

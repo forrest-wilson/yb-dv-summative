@@ -4,6 +4,8 @@ $(document).ready(function() {
     //**** Variable Declarations ****//
     //*******************************//
 
+    // var apiKey = 'bkY4tooDFiYTkMp6XERO1F9ZEyRdTbNJ',
+    // var apiKey = 'z8OjkjKiNmjfHT2A68DFrSojrYTtlCRE',
     var apiKey = '8PyTZKuJ1VEQWvDvoOsARLkT8f6N71db',
         usersURL = 'https://api.behance.net/v2/users/',
         projectsURL = 'https://www.behance.net/v2/projects/',
@@ -16,7 +18,8 @@ $(document).ready(function() {
             commentsPerPage: 10,
             nextPageNumber: 1
         },
-        moreProjectsToLoad = [];
+        slick,
+        moreProjectsToLoad = {};
 
     //*******************************//
     //**** Plugin Initialisation ****//
@@ -42,12 +45,14 @@ $(document).ready(function() {
     //************************//
 
     // Generic AJAX function. Increases reuseablility
-    function getData(url, successFunction) {
+    function getData(url, successFunction, designer) {
         $.ajax({
             method: 'GET',
             dataType: 'jsonp',
             url: url,
-            success: successFunction,
+            success: function(data) {
+                successFunction(data, designer);
+            },
             error: function(err) {
                 throw new Error('Unhandled AJAX Error: ', err);
             }
@@ -77,7 +82,7 @@ $(document).ready(function() {
     function getProjects(pageNum) {
         // Commented to reduce AJAX requests during development
         for (var i = 0; i < designers.length; i++) {
-            getData(usersURL + designers[i] + '/projects?client_id=' + apiKey + '&per_page=' + pagination.projectsPerPage + '&page=' + pageNum, populateProjects);
+            getData(usersURL + designers[i] + '/projects?client_id=' + apiKey + '&per_page=' + pagination.projectsPerPage + '&page=' + pageNum, populateProjects, designers[i]);
         }
 
         // Increases the page number to send with the next getProjects AJAX request
@@ -96,44 +101,52 @@ $(document).ready(function() {
     // Gets the comments associated with a specific project
     function getProjectComments(projectID) {
         getData(projectsURL + projectID + '/comments?client_id=' + apiKey + '&per_page=' + commentPagination.commentsPerPage + '&page=' + commentPagination.nextPageNumber, function(data) {
-            if (data.comments.length > 0) {
-                populateComments(data);
-                commentPagination.nextPageNumber++;
-                $('#loadMoreComments').removeClass('disabledButton');
-            } else {
-                $('#loadMoreComments').hide();
-            }
+            populateComments(data);
+            commentPagination.nextPageNumber++;
         });
     }
 
     //**** Data Parser methods ****//
 
     // Compiles a project template and appends it to the DOM
-    function populateProjects(data) {
+    function populateProjects(data, forDesigner) {
         console.log(data);
 
         var projects = data.projects,
-            counter = $('.project').length;
+            counter = $('.project').length,
+            buttonDisabled = false;
 
         // Performs a check on whether or not there will be more projects to load
         if (projects.length < pagination.projectsPerPage) {
-            // If there are less than pagination.projectsPerPage projects to load, push false to an array
-            moreProjectsToLoad.push(false);
+            
+            // If there are less than pagination.projectsPerPage projects to load, add a key-value pair to the object
+            if (!moreProjectsToLoad[forDesigner]) {
+                moreProjectsToLoad[forDesigner] = false;
+
+                // For loop must be in reverse order in order to not skip indexes when splicing items
+                for (var i = designers.length - 1; i >= 0; i--) {
+                    if (designers[i] === forDesigner) {
+                        designers.splice(i, 1);
+                        break; // No point continuing the loop if the designer reference doesn't exist anymore
+                    }
+                }
+            }
 
             // If the array has more than or the same amount of items that the designers array has, hide the loadMoreProjects button 
-            if (moreProjectsToLoad.length >= designers.length) {
-                $('#loadMoreProjects').hide();
+            if (Object.keys(moreProjectsToLoad).length >= 3) {
+                $('#loadMoreProjects').text('No more projects to load').css('cursor', 'not-allowed');
+                buttonDisabled = true;
             }
         }
 
         // Only run this block of code if there are more than 0 projects in the data object
         if (projects.length > 0) {
-            for (var i = 0; i < projects.length; i++) {
+            for (var j = 0; j < projects.length; j++) {
                 // Counter for data-order in template
                 counter = counter + 1;
 
                 // Context to pass to the Template7 template
-                var project = projects[i],
+                var project = projects[j],
                     projectInfo = {
                     coverImage: project.covers[404],
                     projectName: project.name,
@@ -157,8 +170,8 @@ $(document).ready(function() {
                     projectInfo.creator = project.owners[0].display_name;
                 }
 
-                for (var ii = 0; ii < project.owners.length; ii++) {
-                    var owner = project.owners[ii];
+                for (var jj = 0; jj < project.owners.length; jj++) {
+                    var owner = project.owners[jj];
                     projectInfo.creatorID.push(owner.id);
                 }
     
@@ -169,8 +182,10 @@ $(document).ready(function() {
             }
         }
 
-        // Enables the loadMoreProjects button to be clicked again
-        $('#loadMoreProjects').removeClass('disabledButton');
+        if (!buttonDisabled) {
+            // Enables the loadMoreProjects button to be clicked again
+            $('#loadMoreProjects').removeClass('disabledButton');
+        }
     }
 
     // Populates the modal with info being passed to a template
@@ -244,7 +259,8 @@ $(document).ready(function() {
         $('#modalContent').append(compiledTemplate);
 
         // Initializes the slick slideshow
-        $('#images').slick({
+        slick = $('#images').slick({
+            lazyLoad: 'progressive',
             initialSlide: 1,
             slidesToShow: 1,
             slidesToScroll: 1,
@@ -264,8 +280,9 @@ $(document).ready(function() {
             ]
         });
 
-        // Forces slick to re-calculate parent image elements
-        $(window).trigger('resize');
+        slick.on('lazyLoaded', function() {
+            slick.slick('setPosition');
+        });
     }
 
     // Populates the comments of a specific project
@@ -273,10 +290,12 @@ $(document).ready(function() {
         console.log(data);
 
         var comments = data.comments,
-            commentElements = [];
+            commentElements = [],
+            buttonDisabled = false;
 
-        // Only run this block if there are more than 0 comments in the data
+        // Check for whether there is at least more than 0 comments in the array
         if (comments.length > 0) {
+            // Loop through each comment, compile, and append each comment to the commentElements array
             for (var i = 0; i < comments.length; i++) {
                 var comment = comments[i],
                     commentInfo = {
@@ -300,7 +319,12 @@ $(document).ready(function() {
 
         // Removes the loadMoreComments button if there are less than a predetermined amount to load
         if (comments.length < commentPagination.commentsPerPage) {
-            $('#loadMoreComments').hide();
+            $('#loadMoreComments').text('No more comments to load').css('cursor', 'not-allowed');
+            buttonDisabled = true;
+        }
+
+        if (!buttonDisabled) {
+            $('#loadMoreComments').removeClass('disabledButton');
         }
     }
 
@@ -335,6 +359,7 @@ $(document).ready(function() {
         commentPagination.nextPageNumber = 1;
         toggleBodyScroll();
         toggleMask(function() {
+            slick.slick('unslick');
             $('#modalContent').empty();
         });
     }
@@ -377,8 +402,19 @@ $(document).ready(function() {
         }
     });
 
+    //**** Filtering Event Listeners ****//
+
+    // Event listener for mobile filter 'drawer'
+    $('#drawerOpener').on('click', function() {
+        $('#sortingControls').slideToggle(300);
+        $('#drawerOpener p i').toggleClass('rotationalInvert');
+    });
+
+    // Triggers a MixItUp API event to sort projects
     $('.sortButton').on('click', function() {
         var order = $('.orderButton.active')[0].dataset.sortonly;
+
+        $('#sortingTopic').text(this.innerText);
 
         $('.sortButton').removeClass('active');
         $(this).addClass('active');
@@ -386,6 +422,7 @@ $(document).ready(function() {
         mixer.sort(this.dataset.sortonly + ':' + order);
     });
 
+    // Triggers a MixItUp API event to order projects
     $('.orderButton').on('click', function() {
         var sort = $('.sortButton.active')[0].dataset.sortonly;
 
@@ -395,7 +432,9 @@ $(document).ready(function() {
         mixer.sort(sort + ':' + this.dataset.sortonly);
     });
 
+    // Triggers a MixItUp API event to filter projects
     $('.filterButton').on('click', function() {
+        $('#filteringTopic').text(this.innerText);
         $('.filterButton').removeClass('active');
         $(this).addClass('active');
     });

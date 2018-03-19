@@ -2,6 +2,25 @@
 //**** Modules SASS ****//
 //**********************//
 
+.header {
+    .wrapper {
+        background: linear-gradient(to bottom right, black, #464646);
+        height: 100px;
+        box-shadow: $boxShadow;
+
+        .logo {
+            height: 100%;
+            padding: 10px;
+        }
+    }
+
+    .lip {
+        height: 10px;
+        box-shadow: $boxShadow;
+        background: linear-gradient(to bottom right, black, #464646);
+    }
+}
+
 .project {
     padding: 10px;
     font-size: 0; // Workaround for empty space on the .project element. Explicit font-size should be defined in child elements
@@ -94,7 +113,7 @@
 
 .modalMask {
     @include positioning(fixed, 0, 0, 0, 0);
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.6);
     z-index: 1000;
     display: none;
     overflow-y: auto;
@@ -166,6 +185,7 @@
 
     .commentText {
         margin: 10px 0;
+        word-wrap: break-word;
     }
 
     .publishedOnText {
@@ -198,7 +218,8 @@
 }
 
 .loadMoreProjectsButtonWrapper {
-    padding: 10px
+    padding: 10px;
+    margin-bottom: 50px;
 }
 
 .loadMoreProjects {
@@ -208,24 +229,47 @@
 }
 
 .projectControls {
-    .dropdownWrapper {
-        position: relative;
+    @include positioning(fixed, $b: 0, $l: 0, $r: 0);
+    z-index: 250;
+    border-radius: $borderRadius;
+
+    .drawerOpener {
+        @include positioning(relative, $l: 50%);
+        transform: translateX(-50%);
         display: inline-block;
-    }
-
-    .sorting {
-        border-radius: $borderRadius;
-        box-shadow: $boxShadow;
-        color: $whiteColor;
+        border-top-left-radius: $borderRadius;
+        border-top-right-radius: $borderRadius;
         background-color: #2f3031;
+        color: $whiteColor;
+        box-shadow: $boxShadow;
 
-        .sortingGroup {
-            padding-right: 10px;
+        &:hover {
+            cursor: pointer;
         }
 
-        .filterToggle {
-            background-color: $controlButtonColor;
-            color: $whiteColor;
+        p {
+            margin: 8px 25px;
+
+            i {
+                transition: $transTime;
+            }
+        }
+    }
+
+    .dropdownWrapper {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+
+        .dropdown {
+            width: 100%;
+
+            .filterToggle {
+                background-color: $controlButtonColor;
+                color: $whiteColor;
+                width: 100%;
+            }
         }
     }
 
@@ -233,7 +277,37 @@
         font-weight: 600;
     }
 
-    .controlButton.filterButton:hover {
-        cursor: pointer;
+    .controlButton {
+        &.filterButton:hover,
+        &.sortButton:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.sorting {
+    color: $whiteColor;
+    background-color: #2f3031;
+    box-shadow: $boxShadow;
+    display: none;
+
+    & > *:last-child {
+        margin-bottom: 0;
+    }
+
+    .sortingGroup {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+
+        .orderingButtons {
+            width: 100%;
+
+            .orderButton,
+            .orderButtonInlineControl {
+                width: calc(100% / 3);
+                background-color: $whiteColor;
+            }
+        }
     }
 }

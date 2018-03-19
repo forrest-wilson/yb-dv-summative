@@ -21,10 +21,12 @@
 
 .modalShowing {
     overflow: hidden;
+    height: 100%;
+    position: relative;
 }
 
-.evenMargin {
-    margin: 20px 0;
+.paragraphMargin {
+    margin: 15px 0;
 }
 
 .disabledButton {
@@ -36,7 +38,7 @@
 }
 
 .projectControls .active {
-    background-color: $controlButtonColor;
+    background-color: $controlButtonColor!important;
     color: white;
 }
 
@@ -46,4 +48,8 @@
 
 .inlineBlock {
     display: inline-block;
+}
+
+.rotationalInvert {
+    transform: rotate(180deg);
 }
