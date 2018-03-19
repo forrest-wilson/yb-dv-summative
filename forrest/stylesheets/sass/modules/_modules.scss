@@ -294,6 +294,11 @@
         &.sortButton:hover {
             cursor: pointer;
         }
+
+        &.filterButton:active,
+        &.sortButton:active {
+            background-color: rgba(0, 0, 0, 0.2);
+        }
     }
 }
 

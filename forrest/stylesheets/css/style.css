@@ -251,6 +251,8 @@ hr {
     font-weight: 600; }
   .projectControls .controlButton.filterButton:hover, .projectControls .controlButton.sortButton:hover {
     cursor: pointer; }
+  .projectControls .controlButton.filterButton:active, .projectControls .controlButton.sortButton:active {
+    background-color: rgba(0, 0, 0, 0.2); }
 
 .sorting {
   color: #F3F3F3;
