@@ -277,6 +277,29 @@ hr {
         width: calc(100% / 3);
         background-color: #F3F3F3; }
 
+.errorModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+  display: none; }
+  .errorModal .errorMessage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background-color: #F3F3F3;
+    text-align: center;
+    border-radius: 5px;
+    width: 90%;
+    max-width: 400px;
+    -webkit-box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.5); }
+
 .slick-slide {
   display: inline-block;
   outline: 0; }

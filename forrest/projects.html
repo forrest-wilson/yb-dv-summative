@@ -84,6 +84,15 @@
         <div id='modalContent' class='modalContent'></div>
     </div>
 
+    <div id='errorModal' class='errorModal'>
+        <div class='errorMessage inner'>
+            <h3>Oops! You've run out of requests!</h3>
+            <p>I'm sorry! It looks like the Behance API has stopped sending us data!</p>
+            <p>This happens sometimes. We should be up back to normal in under an hour.</p>
+            <p>If this message isn't here when you reload the page, you're good to go!</p>
+        </div>
+    </div>
+
     <script id='projectTemplate' type='text/template7'>
         <div class='project col-sm-12 col-md-6 col-lg-4 col-xl-3 col-xxl-2 {{#each creatorID}}id-{{this}} {{/each}}' data-published-on={{publishedOn}} data-likes={{stats.likes}} data-views={{stats.views}} data-comments={{stats.comments}} data-name={{projectName}} data-order={{counter}}>
             <div class='projectInner' data-projectid={{projectID}}>

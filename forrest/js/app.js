@@ -54,7 +54,11 @@ $(document).ready(function() {
                 successFunction(data, designer);
             },
             error: function(err) {
-                throw new Error('Unhandled AJAX Error: ', err);
+                if (err.statusText === 'error' || err.statusText === 404) {
+                    $('#errorModal').show();
+                    $('body').addClass('modalShowing');
+                    throw new Error('No More API Requests');
+                }
             }
         });
     }

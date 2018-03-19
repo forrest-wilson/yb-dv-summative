@@ -328,3 +328,21 @@
         }
     }
 }
+
+.errorModal {
+    @include positioning(fixed, 0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    display: none;
+
+    .errorMessage {
+        @include positioning(absolute, $t: 50%, $l: 50%);
+        transform: translate(-50%, -50%);
+        background-color: $whiteColor;
+        text-align: center;
+        border-radius: $borderRadius;
+        width: 90%;
+        max-width: 400px;
+        box-shadow: $boxShadow;
+    }
+}
