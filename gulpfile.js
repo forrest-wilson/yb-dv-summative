@@ -3,15 +3,14 @@ var gulp = require('gulp'),
     autoprefixer = require('gulp-autoprefixer'),
     cleanCSS = require('gulp-clean-css'),
     rename = require('gulp-rename'),
-    runSequence = require('run-sequence'),
     jshint = require('gulp-jshint'),
     uglify = require('gulp-uglify'),
     browserSync = require('browser-sync').create();
 
-var contributors = ['anthony', 'cam', 'forrest'];
+var contributors = ['anthony', 'cam', 'forrest', 'home'];
 
 // Compiles SASS to CSS and outputs it to the /stylesheets/css/ folder
-gulp.task('sass-minify', function() {
+gulp.task('css', function() {
     for (var i = 0; i < contributors.length; i++) {
         gulp.src(contributors[i] + '/stylesheets/sass/style.scss')
             .pipe(sass().on('error', sass.logError))
@@ -27,12 +26,11 @@ gulp.task('sass-minify', function() {
 });
 
 // Lints the JS code and checks for errors. .jshintrc config can be found in the root dir
-gulp.task('jshint-minify', function() {
+gulp.task('js', function() {
     for (var i = 0; i < contributors.length; i++) {
         gulp.src(contributors[i] + '/js/*.js')
             .pipe(jshint())
             .pipe(jshint.reporter('default'))
-            // .pipe(gulp.dest(contributors[i] + '/js/compiled'))
             .pipe(uglify())
             .pipe(rename({suffix: '.min'}))
             .pipe(gulp.dest(contributors[i] + '/js/compiled/'));
@@ -46,6 +44,7 @@ gulp.task('server', function() {
             baseDir: '.', // Where the server will start from
             index: 'index.html' // Default file to load
         },
+        ghostMode: false,
         port: 3000, // Using the default port. Change if needed but don't commit
         ui: {
             port: 3001 // Using the default port. Change if needed but don't commit
@@ -58,24 +57,13 @@ gulp.task('server', function() {
 // Reloads the browser
 gulp.task('reload-server', function() {
     gulp.src('.')
-    .pipe(browserSync.reload({
-        stream: true
-    }));
-});
-
-// Runs CSS tasks in sequence
-gulp.task('css', function(cb) {
-    runSequence('sass-minify', cb);
-});
-
-// Runs JS tasks in sequence
-gulp.task('js', function(cb) {
-    runSequence('jshint-minify', cb);
+        .pipe(browserSync.reload({
+            stream: true
+        }));
 });
 
 // Default Gulp task that runs when called in the command line
-gulp.task('default', function(cb) {
-    runSequence('css', 'js', 'server', cb);
+gulp.task('default', ['css', 'js', 'server'], function(cb) {
 
     for (var i = 0; i < contributors.length; i++) {
         gulp.watch(contributors[i] + '/stylesheets/sass/**/*.scss', ['css', 'reload-server'], cb);
