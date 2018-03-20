@@ -9,23 +9,27 @@
     }
 
     .projectControls {
-        @include positioning(fixed, $t: 31px, $r: 0, $b: auto, $l: auto);
-        width: 350px;
+        @include positioning(sticky, 10px, 0, 0, 0);
+        width: auto;
         margin: 0 0 0 auto;
 
         .drawerOpener {
-            border: 1px solid $whiteColor;
-            border-right: none;
-            left: 100%;
-            transform: translateX(-100%);
-            border-radius: 5px 0 0 5px;
+            display: none;
         }
     }
 
     .sorting {
-        border: 1px solid $whiteColor;
-        border-right: none;
-        border-radius: 5px 0 0 5px;
+        border-radius: $borderRadius;
+        display: grid!important; // Has to overwrite the inline CSS populated through JS toggle
+        grid-template-columns: repeat(3, 1fr);
+        margin: 10px 10px 0 10px;
+
+        .sortingGroup,
+        .dropdownWrapper {
+            margin-bottom: 0;
+            width: 95%;
+            margin: 0 auto;
+        }
     }
 }
 
