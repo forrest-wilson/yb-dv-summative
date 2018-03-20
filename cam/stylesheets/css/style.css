@@ -16,12 +16,10 @@ h1 {
   text-shadow: 0px 13px 14px rgba(0, 0, 0, 0.14); }
 
 h3 {
-  font-size: 18px;
-  font-family: 'Oswald', sans-serif; }
+  font-size: 18px; }
 
 h2 {
-  font-size: 2vw;
-  font-family: 'Oswald', sans-serif; }
+  font-size: 2vw; }
 
 ul li {
   font-family: 'Oswald', sans-serif;
@@ -47,6 +45,7 @@ ul li {
   box-sizing: border-box; }
 
 .profileUno {
+  border-radius: 5px;
   height: 305px;
   width: 290px;
   padding: 10px;
@@ -62,6 +61,7 @@ ul li {
   box-shadow: 0px 7px 80px 10px rgba(15, 86, 89, 0.76); }
 
 .profileDos {
+  border-radius: 5px;
   height: 305px;
   width: 290px;
   padding: 10px;
@@ -77,6 +77,7 @@ ul li {
   box-shadow: 0px 7px 80px 10px rgba(15, 86, 89, 0.76); }
 
 .profileTres {
+  border-radius: 5px;
   height: 305px;
   width: 290px;
   padding: 10px;
@@ -136,7 +137,7 @@ img {
   .heightToggle #ashThorpFields, .heightToggle #codyCobbFields, .heightToggle #filipHodasFields {
     display: block;
     margin-left: 20px;
-    font-size: 3vw;
+    font-size: 2.5vw;
     color: #3a8fb1;
     text-align: left; }
   .heightToggle ul {
@@ -205,6 +206,7 @@ img:hover {
   border-radius: 50%; }
 
 #backButton {
+  border-radius: 5px;
   position: absolute;
   top: 40px;
   left: 50px;
