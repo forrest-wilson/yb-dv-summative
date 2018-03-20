@@ -1,6 +1,12 @@
 # Yoobee Data Visualisation Summative
 
-## Base Folder Structure
+This project is part of the Yoobee School of Design, Level 6 Web & UX Course aimed at Visualising Data.
+
+## Getting Started
+
+Read the sections below to gain a basic understanding of the project set up and tasks.
+
+### Base Folder Structure
 
 ```
 contributor
@@ -16,7 +22,7 @@ contributor
         |___style.scss - Base SASS File. You can add more SASS files here if you please
 ```
 
-## Terminal Commands
+### Terminal Commands
 
 Note: If you are developing within Vagrant, please make sure your Vagrant server has NodeJS installed.
 
