@@ -18,11 +18,11 @@ h1 {
 
 h3 {
 	font-size: 18px;
-	font-family: 'Oswald', sans-serif;
+	// font-family: 'Oswald', sans-serif;
 }
 h2 {
 	font-size: 2vw;
-	font-family: 'Oswald', sans-serif;
+	// font-family: 'Oswald', sans-serif;
 }
 ul li {
 	font-family: 'Oswald', sans-serif;
@@ -54,6 +54,7 @@ ul li {
 }
 
 .profileUno {
+	border-radius: 5px;
 	height: 305px;
 	width: 290px;
 	padding: 10px;
@@ -68,6 +69,7 @@ ul li {
 }
 
 .profileDos {
+	border-radius: 5px;
 	height: 305px;
 	width: 290px;
 	padding: 10px;
@@ -82,6 +84,7 @@ ul li {
 }
 
 .profileTres {
+	border-radius: 5px;
 	height: 305px;
 	width: 290px;
 	padding: 10px;
@@ -149,7 +152,7 @@ ul li {
 			display: block;
 			// margin: 5px auto;
 			margin-left: 20px;
-			font-size: 3vw;
+			font-size: 2.5vw;
 			color: #3a8fb1;
 			text-align: left;
 		}
@@ -245,6 +248,7 @@ img:hover {
 #backButton {
 	// opacity: 0;
 	// display: none;
+	border-radius: 5px;
 	position: absolute;
 	top: 40px;
 	left: 50px;
