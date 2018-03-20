@@ -58,6 +58,10 @@ body {
   .buttons a:hover {
     text-decoration: none; }
 
+.behanceLogo {
+  margin: 0 auto 30px auto;
+  display: block; }
+
 .inner {
   padding: 10px; }
 
@@ -70,4 +74,6 @@ body {
     height: 75vh; }
   .intro .content .introText,
   .intro .content .logo {
-    margin: 30px 20px; } }
+    margin: 30px 20px; }
+  .behanceLogo {
+    margin: 0; } }
