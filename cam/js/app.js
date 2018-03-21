@@ -1,7 +1,7 @@
 
 $(document).ready(function() {
 
-var apiKey = 'Iamkq0sRqOd6PqC7IEFwofD3YVs30ox9';
+var apiKey = 'Iamkq0sRqOd6PqC7IEFwofD3YVs30ox9'; // behance api key
 var apiKey2 = 'KxiDWLIreraa9YM633j8JQy3mRmU6Smh';
 
 var ashThorpUrl = 'https://api.behance.net/v2/users/ashthorp?client_id=';
