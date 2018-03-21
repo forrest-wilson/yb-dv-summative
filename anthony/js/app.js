@@ -19,8 +19,7 @@ function drawChart() {
 				success(data);
 			},
             error:function(error) {
-	            console.log(error);
-	            console.log('something went wrong');
+	            alert(error + 'something went wrong');
 	        }
         });
 
@@ -46,7 +45,6 @@ function drawChart() {
 			};
 			var chart = new google.visualization.ColumnChart(document.getElementById('chartLocation'));
 			chart.draw(data, options);
-			console.log(obj.codycobb.stats.all_time.project_views);
 
 			document.getElementById('cody').addEventListener('click', function() {
 
@@ -202,7 +200,6 @@ function drawChart() {
 
 		dataGrab(usersURL + id + '/stats?client_id=' + apiKey, function(res) {
 			statsAll[id] = res;
-			console.log(statsAll);
 			countObj(statsAll);
 		});
           	
