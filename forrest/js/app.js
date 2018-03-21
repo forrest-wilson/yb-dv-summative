@@ -114,8 +114,6 @@ $(document).ready(function() {
 
     // Compiles a project template and appends it to the DOM
     function populateProjects(data, forDesigner) {
-        console.log(data);
-
         var projects = data.projects,
             counter = $('.project').length,
             buttonDisabled = false;
@@ -194,8 +192,6 @@ $(document).ready(function() {
 
     // Populates the modal with info being passed to a template
     function populateModal(data) {
-        console.log(data);
-
         var project = data.project,
             info = {
                 articles: [],
@@ -214,7 +210,7 @@ $(document).ready(function() {
             };
 
         // If a description exists, replace the null value with the description
-        if (project.description != '') {
+        if (project.description !== '') {
             info.description = project.description;
         }
 
@@ -291,8 +287,6 @@ $(document).ready(function() {
 
     // Populates the comments of a specific project
     function populateComments(data) {
-        console.log(data);
-
         var comments = data.comments,
             commentElements = [],
             buttonDisabled = false;
