@@ -116,7 +116,7 @@ ul li {
 	}
 	.heightToggle {
 		height: 80vh;
-		width: 60vw;
+		width: 73vw;
 		overflow: auto;
 		img {
 			max-width: 25%;
@@ -211,6 +211,9 @@ ul li {
 		li {
 			width: 42%;
 		}
+		#ashThorp, #codyCobb, #filipHodas {
+			margin-top: 10px;
+		}
 	}
 
 	h3 {
@@ -275,4 +278,16 @@ img:hover {
     vertical-align: bottom;
 }
 
-
+@media only screen and (min-width: 576px) and (max-width: 768px) {
+	h2 {
+		font-size: 3vw;
+	}
+	.heightToggle {
+		.profileUno, .profileTres {
+			height: auto;
+		}
+	}
+	.heightToggle #ashThorp, .heightToggle #codyCobb, .heightToggle #filipHodas {
+    	margin-top: 30px;
+	}
+}

@@ -110,7 +110,7 @@ img {
 
 .heightToggle {
   height: 80vh;
-  width: 60vw;
+  width: 73vw;
   overflow: auto; }
   .heightToggle img {
     max-width: 25%;
@@ -183,6 +183,8 @@ img {
       margin: 10px; }
     .heightToggle li {
       width: 42%; }
+    .heightToggle #ashThorp, .heightToggle #codyCobb, .heightToggle #filipHodas {
+      margin-top: 10px; }
   h3 {
     font-size: 18px;
     font-family: 'Oswald', sans-serif; }
@@ -229,3 +231,11 @@ img:hover {
   color: rgba(0, 0, 0, 0.24);
   text-align: center;
   vertical-align: bottom; }
+
+@media only screen and (min-width: 576px) and (max-width: 768px) {
+  h2 {
+    font-size: 3vw; }
+  .heightToggle .profileUno, .heightToggle .profileTres {
+    height: auto; }
+  .heightToggle #ashThorp, .heightToggle #codyCobb, .heightToggle #filipHodas {
+    margin-top: 30px; } }
