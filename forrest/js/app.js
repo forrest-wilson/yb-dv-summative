@@ -221,13 +221,13 @@ $(document).ready(function() {
             // Only allow certain 'types' to be appendable to the DOM
             switch(mod.type) {
                 case('image'):
-                    info.articles.push(mod.sizes.max_1200);
+                    info.articles.push(mod.sizes.disp);
                     break;
                 case('media_collection'):
                     var component = mod.components;
 
                     for (var ii = 0; ii < component.length; ii++) {
-                        info.articles.push(component[ii].sizes.max_1200);
+                        info.articles.push(component[ii].sizes.disp);
                     }
 
                     break;
